@@ -7,10 +7,18 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 
 public class Catalog {
+
+
+
+    public static List<Question> getQuestionList() {
+        return questionList;
+    }
+
     /**
      * Relation (1 zu n) zu Questions - Klasse
      * ArrayList Type Object (alle Objekte die aus der Klasse Questions initialisiert werden)
@@ -24,7 +32,9 @@ public class Catalog {
 
     //Read Questions from csv-File
 
-    public static Question[] questionList;
+    private static List<Question> questionList;
+
+    //getter Question über index, größe
 
 
     public static void initQuestions() {
@@ -34,7 +44,7 @@ public class Catalog {
         assert csvInputStream != null;
         BufferedReader csvReader = new BufferedReader(new InputStreamReader(csvInputStream));
 
-        ArrayList<Question> questionList = new ArrayList<Question>();
+        questionList = new ArrayList<Question>();
 
         try {
             // This code depends on the file to have two columns of which the second one can be parsed as double
@@ -63,15 +73,18 @@ public class Catalog {
                     default:
                         //throw exception due to an incomplete Question (initPriorityException)
 
+
+
                 }
 
                 // Add new Question object to ArrayList
                 questionList.add(new Question(questionContent, mode, inputType, category, priority));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Catalog.questionList = questionList.toArray(new Question[0]);
+
 
 
 
