@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.love_calculator.catalog;
 
 
+import de.hdm_stuttgart.love_calculator.answers.Answer;
 import de.hdm_stuttgart.love_calculator.questions.Question;
 
 import java.io.BufferedReader;
@@ -8,16 +9,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 
 public class Catalog {
-
-
-
-    public static List<Question> getQuestionList() {
-        return questionList;
-    }
 
     /**
      * Relation (1 zu n) zu Questions - Klasse
@@ -33,8 +27,16 @@ public class Catalog {
     //Read Questions from csv-File
 
     private static List<Question> questionList;
+    private static List<Answer> answerList;
 
-    //getter Question über index, größe
+
+    public static List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public static List<Answer> getAnswerList() {
+        return answerList;
+    }
 
 
     public static void initQuestions() {
@@ -47,7 +49,7 @@ public class Catalog {
         questionList = new ArrayList<Question>();
 
         try {
-            // This code depends on the file to have two columns of which the second one can be parsed as double
+            // This code depends on the file to have several columns which include the information for the Question Object
             while (csvReader.ready()) {
                 // Read new line and split it at separation symbol
                 String row = csvReader.readLine();
@@ -56,34 +58,59 @@ public class Catalog {
                 // Store split values in variables and convert to correct types
                 String questionContent = content[0];
                 char mode = content[1].charAt(0);
-                char inputType = content[2].charAt(0);
-                String category = content[3];
-                Question.Priority priority = null;
-                switch (content[4].toUpperCase()) {
-
-                    case "LOW":
-                        priority = Question.Priority.LOW;
-                        break;
-                    case "MEDIUM":
-                        priority = Question.Priority.MEDIUM;
-                        break;
-                    case "HIGH":
-                        priority = Question.Priority.HIGH;
-                        break;
-                    default:
-                        //throw exception due to an incomplete Question (initPriorityException)
-
-
-
-                }
+                String category = content[2];
+                String priority = content[3];
 
                 // Add new Question object to ArrayList
-                questionList.add(new Question(questionContent, mode, inputType, category, priority));
+                questionList.add(new Question(questionContent, mode, category, priority));
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
+
+    }
+
+
+    public static void initAnswers() {
+
+        InputStream csvInputStream = Question.class.getClassLoader().getResourceAsStream("answers.csv");
+        //check if an InputStream is available
+        assert csvInputStream != null;
+        BufferedReader csvReader = new BufferedReader(new InputStreamReader(csvInputStream));
+
+        answerList = new ArrayList<Answer>();
+
+        try {
+            // This code depends on the file to have several columns which include the information for the Answer Object
+            while (csvReader.ready()) {
+                // Read new line and split it at separation symbol
+                String row = csvReader.readLine();
+                String[] content = row.split(";");
+
+                // Store split values in variables and convert to correct types
+                char inputType = content[0].charAt(0);
+                String answer = content[1];
+
+                // Add new Question object to ArrayList
+                answerList.add(new Answer(inputType, answer));
+
+                if(content.length > 2){
+
+                    for(int i = 2; i < content.length; i++){
+
+                    }
+
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
 
 

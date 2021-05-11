@@ -5,18 +5,17 @@ public class Question {
 
     // Content: Questions
     // Mode: Basic / Advanced / Speed
-    // Input-Type: Checkbox<c> / Radio<r> / Text <t> / Slider <s>
     // Category: Headline/Topic of the question
     // Priority: x1<low> , 2x<medium>, 3X<high>
 
 
 
-    private String questionContent;
-    private char mode;
-    private char inputType;
-    private String category;
+    final public String questionContent;
+    final public char mode;
+    final public String category;
+    final public String priority;
 
-    public Question(String content, char mode, char inputType, String category, Priority priority) {
+    public Question(String content, char mode, String category, String priority) {
 
         this.questionContent = content;
         this.mode = mode;
@@ -40,15 +39,16 @@ public class Question {
     }
 
 
-    @Override
+    /*@Override
     public String toString() {
         return "Question{" +
                 "questionContent='" + questionContent + '\'' +
                 ", mode=" + mode +
                 ", inputType=" + inputType +
-                ", category='" + category + '\'' +
+                ", category='" + category +
+                ", priority='" + priority + '\'' +
                 '}';
-    }
+    }*/
 
 
 
