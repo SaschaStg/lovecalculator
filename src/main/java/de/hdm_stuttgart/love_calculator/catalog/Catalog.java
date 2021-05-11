@@ -57,7 +57,7 @@ public class Catalog {
 
                 // Store split values in variables and convert to correct types
                 String questionContent = content[0];
-                char mode = content[1].charAt(0);
+                String mode = content[1];
                 String category = content[2];
                 String priority = content[3];
 
@@ -92,15 +92,18 @@ public class Catalog {
                 String[] content = row.split(";");
 
                 // Store split values in variables and convert to correct types
-                char inputType = content[0].charAt(0);
+
+                String inputType = content[0];
                 String answer = content[1];
 
                 // Add new Question object to ArrayList
                 answerList.add(new Answer(inputType, answer));
-
+                //for multiple answer options
                 if(content.length > 2){
 
                     for(int i = 2; i < content.length; i++){
+
+                        answerList.get(answerList.size() - 1).addAnswer(content[i]);
 
                     }
 
@@ -110,9 +113,6 @@ public class Catalog {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
 
 
     }

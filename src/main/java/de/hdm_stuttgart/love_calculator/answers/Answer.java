@@ -6,11 +6,11 @@ public class Answer {
 
     // Input-Type: Checkbox<c> / Radio<r> / Text <t> / Slider <s>
 
-    final public char inputType;
+    final public String inputType;
     final public ArrayList<String> answerOptions = new ArrayList<String>();
 
 
-    public Answer(char inputType, final String answer){
+    public Answer(String inputType, final String answer){
 
         this.inputType = inputType;
         this.answerOptions.add(answer);
@@ -20,6 +20,14 @@ public class Answer {
 
         this.answerOptions.add(answer);
 
+    }
+
+    public void getAnswers(){
+        for(int i = 0; i < answerOptions.size(); i++){
+
+            System.out.println(answerOptions.get(i));
+
+        }
     }
 
 

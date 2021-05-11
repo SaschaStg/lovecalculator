@@ -12,33 +12,31 @@ public class App {
     public static void main(String[] args) {
 
         Catalog.initQuestions();
+        Catalog.initAnswers();
+
+
 
         //System.out.println(Catalog.getQuestionList().get(ques));
 
         for(int i = 0; i < Catalog.getQuestionList().size(); i++) {
             System.out.println("");
-            System.out.println("##### Frage " + i + " #####");
+            System.out.println("##### Frage " + i + " Mit Antwort #####");
             System.out.println(Catalog.getQuestionList().get(i).questionContent);
-            System.out.println(Catalog.getQuestionList().get(i).mode);
-            System.out.println(Catalog.getQuestionList().get(i).category);
-            System.out.println(Catalog.getQuestionList().get(i).priority);
-            System.out.println("");
+            Catalog.getAnswerList().get(i).getAnswers();
 
-        }
+            }
 
 
-        Answer essenstyp = new Answer( 'a', "Vegetarisch");
-        Answer sporttyp = new Answer( 'b', "Fussball");
-        sporttyp.addAnswer("Basketball");
 
-        System.out.println(essenstyp.inputType);
-        System.out.println(essenstyp.answerOptions.get(0));
 
-        for(int i = 0; i < sporttyp.answerOptions.size(); i++ ){
 
-            System.out.println(sporttyp.answerOptions.get(i));
 
-        }
+
+
+
+
+
+
 
 
 
