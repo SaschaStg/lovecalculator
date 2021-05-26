@@ -3,6 +3,10 @@ module gui {
     requires javafx.fxml;
     requires org.apache.logging.log4j;
 
-    opens org.example to javafx.fxml;
-    exports org.example;
+    opens de.hdm_stuttgart.love_calculator.gui.GuiController to javafx.fxml;
+    opens de.hdm_stuttgart.love_calculator.gui to javafx.fxml;
+
+    exports de.hdm_stuttgart.love_calculator.gui;
+    exports de.hdm_stuttgart.love_calculator.gui.GuiController;
+
 }

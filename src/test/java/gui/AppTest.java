@@ -1,4 +1,4 @@
-package org.example;
+package gui;
 
 import org.junit.Assert;
 import org.junit.Test;
