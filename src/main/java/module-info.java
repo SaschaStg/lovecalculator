@@ -4,6 +4,7 @@ module gui {
     requires org.apache.logging.log4j;
 
     opens de.hdm_stuttgart.love_calculator.gui.GuiController to javafx.fxml;
+    //opens de.hdm_stuttgart.love_calculator.gui.SettingsController to javafx.fxml;
     opens de.hdm_stuttgart.love_calculator.gui to javafx.fxml;
 
     exports de.hdm_stuttgart.love_calculator.gui;
