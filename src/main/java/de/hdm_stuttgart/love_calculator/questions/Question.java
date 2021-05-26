@@ -11,30 +11,18 @@ public class Question {
 
 
     final public String questionContent;
-    final public char mode;
-    final public String category;
-    final public String priority;
+    final private String mode;
+    final private String category;
+    final private String priority;
 
-    public Question(String content, char mode, String category, String priority) {
+
+    public Question(String content, String mode, String category, String priority) {
 
         this.questionContent = content;
         this.mode = mode;
-        this.inputType = inputType;
         this.category = category;
+        this.priority = priority;
 
-    }
-
-    public enum Priority {
-
-        LOW(1),
-        MEDIUM(2),
-        HIGH(3);
-
-        Priority(final int value) {
-            this.value = value;
-        }
-
-        private final int value;
 
     }
 
