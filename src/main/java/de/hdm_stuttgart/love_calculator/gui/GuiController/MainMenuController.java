@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class MainMenuController {
 
-    @FXML private Stage window;
     @FXML private Button startButton;
     @FXML private Button playButton;
     @FXML private Button profileButton;
@@ -24,11 +23,19 @@ public class MainMenuController {
     @FXML
     public void startScene() {
         FxmlGuiDriver.sceneSwitcher("/fxml/startScene.fxml", startButton);
+
     }
 
     @FXML
     public void playScene() {
-        FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
+        //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
+        playButton.setOnAction(e -> {
+            try {
+                QuestionsController.startClassicQuestions();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        });
     }
 
     @FXML

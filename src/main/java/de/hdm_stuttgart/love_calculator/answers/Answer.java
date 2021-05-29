@@ -30,6 +30,10 @@ public class Answer {
         }
     }
 
+    public String getOneAnswer(int answerIndex){
+        return answerOptions.get(answerIndex);
+    }
+
 
 
 
