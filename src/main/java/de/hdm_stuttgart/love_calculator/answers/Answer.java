@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Answer {
 
-    // Input-Type: Checkbox<c> / Radio<r> / Text <t> / Slider <s>
+    // Input-Type: checkbox / radiobutton / textfield / slider
 
     final public String inputType;
     final public ArrayList<String> answerOptions = new ArrayList<String>();
@@ -37,7 +37,7 @@ public class Answer {
 
 
 
-    //Raphael bumms der den Scheiss ausliest!
+
 
 
 
