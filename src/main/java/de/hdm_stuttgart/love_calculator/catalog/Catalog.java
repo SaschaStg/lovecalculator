@@ -7,6 +7,10 @@ import de.hdm_stuttgart.love_calculator.questions.Question;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,18 +81,13 @@ public class Catalog {
 
     public static void initAnswers() {
 
-        InputStream csvInputStream = Question.class.getClassLoader().getResourceAsStream("answers.csv");
-        //check if an InputStream is available
-        assert csvInputStream != null;
-        BufferedReader csvReader = new BufferedReader(new InputStreamReader(csvInputStream));
-
         answerList = new ArrayList<Answer>();
 
-        try {
+        try (BufferedReader csvReader = Files.newBufferedReader(Paths.get(URI.create(Question.class.getClassLoader().getResource("answers.csv").toExternalForm())), StandardCharsets.UTF_8);){
             // This code depends on the file to have several columns which include the information for the Answer Object
-            while (csvReader.ready()) {
+            String row;
+            while ((row = csvReader.readLine()) != null) {
                 // Read new line and split it at separation symbol
-                String row = csvReader.readLine();
                 String[] content = row.split(";");
 
                 // Store split values in variables and convert to correct types

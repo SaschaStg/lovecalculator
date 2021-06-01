@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.catalog.Catalog;
-import de.hdm_stuttgart.love_calculator.user.User;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -35,9 +34,6 @@ public class QuestionsController {
         next.setText("->");
         next.setTranslateY(300);
         next.setTranslateX(400);
-
-
-
 
         StackPane layout = new StackPane();
 
@@ -98,22 +94,23 @@ public class QuestionsController {
         label.setTranslateY(-100);
 
         //check type
-        switch (Catalog.getAnswerList().get(index).inputType) {
+        InputType test = Enum.valueOf(InputType.class, Catalog.getAnswerList().get(index).inputType.trim().toUpperCase());
+        switch (test) {
 
-            case "checkbox":
+            case CHECKBOX:
                 generateCheckboxes(index, pane);
                 break;
-            case "radiobutton":
+            case RADIOBUTTON:
                 generateRadiobuttons(index, pane);
                 break;
-            case "textfield":
+            case TEXTFIELD:
                 generateTextField(index, pane);
                 break;
-            case "slider":
+            case SLIDER:
                 break;
 
             default:
-                System.out.println("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
+                System.out.println("ERROR INPUTTYPE IS " + test);
 
         }
 
