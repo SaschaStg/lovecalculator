@@ -5,10 +5,7 @@ import de.hdm_stuttgart.love_calculator.user.User;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -24,6 +21,7 @@ public class QuestionsController {
     private static Stage questionStage = new Stage();
 
     private static CheckBox[] checkBoxesClone;
+    private static RadioButton[] radioButtonClone;
 
 
 
@@ -43,7 +41,7 @@ public class QuestionsController {
 
         StackPane layout = new StackPane();
 
-        loadQuestionAndAnswers(2, layout);
+        loadQuestionAndAnswers(0, layout);
 
         //generateCheckboxes(0, layout);
 
@@ -106,7 +104,8 @@ public class QuestionsController {
                 generateCheckboxes(index, pane);
                 break;
             case "radiobutton":
-                //generateRadiobuttons(i, pane);
+                generateRadiobuttons(index, pane);
+                break;
             case "textfield":
                 generateTextField(index, pane);
                 break;
@@ -129,6 +128,34 @@ public class QuestionsController {
         pane.getChildren().add(textfield);
     }
 
+    private static void generateRadiobuttons(final int index, StackPane pane){
+
+        //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
+        RadioButton[] radioButtons = new RadioButton[Catalog.getAnswerList().get(index).answerOptions.size()];
+        ToggleGroup radioGroup = new ToggleGroup();
+
+        for(int i = 0; i < radioButtons.length; i++){
+
+            /*button1[i] = new Button();
+            button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));      // you have twice this line
+            button1[i].setTranslateY(i*30);
+
+            System.out.println(button1[i].getText());
+            pane.getChildren().addAll(button1[i]);*/
+
+            radioButtons[i] = new RadioButton();
+            radioButtons[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));      // you have twice this line
+            radioButtons[i].setTranslateY(i*30);
+            radioButtons[i].setToggleGroup(radioGroup);
+            //System.out.println(radioButtons[i].getText());
+            pane.getChildren().addAll(radioButtons[i]);
+
+        }
+
+        radioButtonClone = radioButtons;
+
+    }
+
 
     private static void generateCheckboxes(final int index, StackPane pane){
 
@@ -147,8 +174,7 @@ public class QuestionsController {
             checkBoxes[i] = new CheckBox();
             checkBoxes[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));      // you have twice this line
             checkBoxes[i].setTranslateY(i*30);
-
-            System.out.println(checkBoxes[i].getText());
+            //System.out.println(checkBoxes[i].getText());
             pane.getChildren().addAll(checkBoxes[i]);
 
         }
@@ -163,7 +189,27 @@ public class QuestionsController {
 
     private static void nextButton(final int index, StackPane pane){
 
+        switch (Catalog.getAnswerList().get(index).inputType) {
 
+            case "checkbox":
+                getCheckboxInput(index);
+                break;
+            case "radiobutton":
+                getRadioButtonInput(index);
+                break;
+            case "textfield":
+                generateTextField(index, pane);
+                break;
+            case "slider":
+                break;
+
+            default:
+                System.out.println("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
+
+        }
+}
+
+    private static void getCheckboxInput(int index) {
 
 
         int sumSelectedFields = 0;
@@ -179,17 +225,13 @@ public class QuestionsController {
         }
 
         String[] tickedCheckboxes = new String[sumSelectedFields];
-
+        int indexTickedCheckbox = 0;
 
         for(int i = 0; i < checkBoxesClone.length; i++){
 
             if(checkBoxesClone[i].isSelected()){
-
-                for(int e = 0; e < tickedCheckboxes.length; e++){
-
-                    tickedCheckboxes[e] = String.valueOf(checkBoxesClone[e]);
-
-                }
+                tickedCheckboxes[indexTickedCheckbox] = String.valueOf(checkBoxesClone[i].getText());
+                indexTickedCheckbox++;
             }
         }
 
@@ -197,9 +239,30 @@ public class QuestionsController {
         //System.out.println(User2.result.get(0));
 
         System.out.println("Gecheckte Checkboxen:");
-        System.out.println(Arrays.deepToString(User2.result.toArray()));
+        System.out.println(Arrays.deepToString(User2.result.get(index)));
+        //System.out.println(User2.result.get(0).toString());
 
     }
 
 
+    private static void getRadioButtonInput(int index) {
+
+        final String[] tickedRadioButton = new String[1];
+
+        for(int i = 0; i < radioButtonClone.length; i++){
+
+            if(radioButtonClone[i].isSelected()) {
+
+                    tickedRadioButton[0] = String.valueOf(radioButtonClone[i].getText());
+                    User2.result.add(tickedRadioButton);
+
+                    System.out.println("Gecheckte RadioButton:");
+                    System.out.println(Arrays.deepToString(User2.result.get(index)));
+
+                    break;
+            }
+        }
+
+
+    }
 }
