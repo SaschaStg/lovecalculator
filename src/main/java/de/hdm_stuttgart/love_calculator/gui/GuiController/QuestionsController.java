@@ -8,8 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.util.Arrays;
 
 public class QuestionsController {
 
@@ -28,8 +31,9 @@ public class QuestionsController {
     @FXML
     public static void startClassicQuestions() throws Exception {
 
+        questionStage.setTitle("Classic Mode");
+
         Button next = new Button();
-        //warning: unicode used
         next.setText("->");
         next.setTranslateY(300);
         next.setTranslateX(400);
@@ -37,14 +41,17 @@ public class QuestionsController {
 
 
 
-
-        label = new Label();
-        label.setText(Catalog.getQuestionList().get(1).questionContent);
-        questionStage.setTitle("Classic Mode");
-
         StackPane layout = new StackPane();
+
+        loadQuestionAndAnswers(2, layout);
+
+        //generateCheckboxes(0, layout);
+
         layout.getChildren().addAll(label, next);
-        generateCheckboxes(1, layout);
+
+
+        //generateCheckboxes(1, layout);
+        //generateTextField(1, layout);
 
         next.setOnAction(e -> {
             try {
@@ -85,21 +92,41 @@ public class QuestionsController {
     }
 
 
-    private static void displayQuestionsAndAnswers(final int index){
+    private static void loadQuestionAndAnswers(final int index, StackPane pane){
+
+        //Load question
+        label = new Label();
+        label.setText(Catalog.getQuestionList().get(index).questionContent);
+        label.setTranslateY(-100);
 
         //check type
-        switch(Catalog.getAnswerList().get(index).inputType){
+        switch (Catalog.getAnswerList().get(index).inputType) {
 
-            case"checkbox":
-
+            case "checkbox":
+                generateCheckboxes(index, pane);
                 break;
-            case"radiobutton":
-            case"textfield":
-            case"slider":
+            case "radiobutton":
+                //generateRadiobuttons(i, pane);
+            case "textfield":
+                generateTextField(index, pane);
+                break;
+            case "slider":
+                break;
+
+            default:
+                System.out.println("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
 
         }
 
 
+        System.out.println("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
+
+
+    }
+
+    private static void generateTextField(final int index, StackPane pane) {
+        TextField textfield = new TextField();
+        pane.getChildren().add(textfield);
     }
 
 
@@ -167,6 +194,10 @@ public class QuestionsController {
         }
 
         User2.result.add(tickedCheckboxes);
+        //System.out.println(User2.result.get(0));
+
+        System.out.println("Gecheckte Checkboxen:");
+        System.out.println(Arrays.deepToString(User2.result.toArray()));
 
     }
 
