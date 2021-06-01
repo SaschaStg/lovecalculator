@@ -158,11 +158,11 @@ public class QuestionsController {
 
             if(checkBoxesClone[i].isSelected()){
 
-                    for(int e = 0; e < tickedCheckboxes.length; e++){
+                for(int e = 0; e < tickedCheckboxes.length; e++){
 
-                        tickedCheckboxes[e] = String.valueOf(checkBoxesClone[e]);
+                    tickedCheckboxes[e] = String.valueOf(checkBoxesClone[e]);
 
-                    }
+                }
             }
         }
 
