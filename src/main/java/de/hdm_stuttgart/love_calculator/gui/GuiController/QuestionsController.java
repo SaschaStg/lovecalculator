@@ -25,6 +25,9 @@ public class QuestionsController {
     private static CheckBox[] checkBoxesClone;
     private static RadioButton[] radioButtonClone;
     private static int index = 0;
+    private static boolean isSelected = false;
+    private static StackPane layout = new StackPane();
+    private static Scene scene = new Scene(layout, 1065, 670);
 
 
 
@@ -38,8 +41,6 @@ public class QuestionsController {
         next.setText("->");
         next.setTranslateY(300);
         next.setTranslateX(400);
-
-        StackPane layout = new StackPane();
 
         loadQuestionAndAnswers(layout);
 
@@ -60,7 +61,6 @@ public class QuestionsController {
         });
 
 
-        Scene scene = new Scene(layout, 1065, 670);
         questionStage.setScene(scene);
         questionStage.show();
 
@@ -90,38 +90,36 @@ public class QuestionsController {
     }
 
 
-    private static void loadQuestionAndAnswers(StackPane pane){
+    private static void loadQuestionAndAnswers(StackPane pane) {
 
-        //Load question
-        label = new Label();
-        label.setText(Catalog.getQuestionList().get(index).questionContent);
-        label.setTranslateY(-100);
+            //Load question
+            label = new Label();
+            label.setText(Catalog.getQuestionList().get(index).questionContent);
+            label.setTranslateY(-100);
 
-        //check type
-        InputType test = Enum.valueOf(InputType.class, Catalog.getAnswerList().get(index).inputType.trim().toUpperCase());
-        switch (test) {
+            //check type
+            InputType test = Enum.valueOf(InputType.class, Catalog.getAnswerList().get(index).inputType.trim().toUpperCase());
+            switch (test) {
 
-            case CHECKBOX:
-                generateCheckboxes(pane);
-                break;
-            case RADIOBUTTON:
-                generateRadiobuttons(pane);
-                break;
-            case TEXTFIELD:
-                generateTextField(pane);
-                break;
-            case SLIDER:
-                break;
+                case CHECKBOX:
+                    generateCheckboxes(pane);
+                    break;
+                case RADIOBUTTON:
+                    generateRadiobuttons(pane);
+                    break;
+                case TEXTFIELD:
+                    generateTextField(pane);
+                    break;
+                case SLIDER:
+                    break;
 
-            default:
-                log.error("ERROR INPUTTYPE IS " + test);
+                default:
+                    log.error("ERROR INPUTTYPE IS " + test);
 
-        }
-
-
-        log.info("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
+            }
 
 
+            log.info("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
     }
 
     private static void generateTextField(StackPane pane) {
@@ -190,44 +188,57 @@ public class QuestionsController {
 
     private static void nextButton(StackPane pane) throws Exception {
 
-        switch (Catalog.getAnswerList().get(index).inputType) {
+            switch (Catalog.getAnswerList().get(index).inputType) {
 
-            case "checkbox":
-                getCheckboxInput();
-                break;
-            case "radiobutton":
-                getRadioButtonInput();
-                break;
-            case "textfield":
-                generateTextField(pane);
-                break;
-            case "slider":
-                break;
+                case "checkbox":
+                    getCheckboxInput();
+                    break;
+                case "radiobutton":
+                    getRadioButtonInput();
+                    break;
+                case "textfield":
+                    generateTextField(pane);
+                    break;
+                case "slider":
+                    break;
 
-            default:
-                log.error("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
+                default:
+                    log.error("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
 
-        }
+            }
 
-        log.info("Felder Input:");
-        log.info(Arrays.deepToString(User2.result.get(index)));
-        log.info("");
-        log.info("Gesamter User Result Array:");
-        log.info(Arrays.deepToString(User2.result.toArray()));
+            if(isSelected) {
+                log.info("Felder Input:");
+                log.info(Arrays.deepToString(User2.result.get(index)));
+                log.info("");
+                log.info("Gesamter User Result Array:");
+                log.info(Arrays.deepToString(User2.result.toArray()));
 
-        pane.getChildren().clear();
-        index++;
-        startClassicQuestions();
-}
+                //Reset User Input Check
+                isSelected = false;
+                pane.getChildren().clear();
+
+                //IMPORTANT: Size of answerlist is -1 from index! If 10 answers -> AnswerList size is 9!
+                if (Catalog.getAnswerList().size() - 1 > index) {
+                    index++;
+                    startClassicQuestions();
+                } else {
+                    //Show results after all questions are finished
+                    showResults(pane);
+                }
+            } else {
+            showAlertBox("Fehler!", "Bitte wähle eine Antwort aus!");
+            log.info("Es wurde keine Antwort ausgewählt!");
+            }
+    }
 
     private static void getCheckboxInput() {
 
-
         int sumSelectedFields = 0;
 
-        for(int i = 0; i < checkBoxesClone.length; i++){
+        for (int i = 0; i < checkBoxesClone.length; i++) {
 
-            if(checkBoxesClone[i].isSelected()){
+            if (checkBoxesClone[i].isSelected()) {
 
                 sumSelectedFields++;
 
@@ -238,20 +249,22 @@ public class QuestionsController {
         String[] tickedCheckboxes = new String[sumSelectedFields];
         int indexTickedCheckbox = 0;
 
-        for(int i = 0; i < checkBoxesClone.length; i++){
+        for (int i = 0; i < checkBoxesClone.length; i++) {
 
-            if(checkBoxesClone[i].isSelected()){
+            if (checkBoxesClone[i].isSelected()) {
                 tickedCheckboxes[indexTickedCheckbox] = String.valueOf(checkBoxesClone[i].getText());
                 indexTickedCheckbox++;
             }
         }
 
-        User2.result.add(tickedCheckboxes);
+        //CHECK IF INPUT IS EMPTY
+        if (tickedCheckboxes.length > 0) {
+            isSelected = true;
 
-        //System.out.println(User2.result.get(0));
-        //System.out.println(User2.result.get(0).toString());
-
+            User2.result.add(tickedCheckboxes);
+        }
     }
+
 
 
     private static void getRadioButtonInput() {
@@ -264,11 +277,34 @@ public class QuestionsController {
 
                     tickedRadioButton[0] = String.valueOf(radioButtonClone[i].getText());
                     User2.result.add(tickedRadioButton);
+                    isSelected = true;
 
                     break;
             }
         }
 
 
+    }
+
+    private static void showResults(StackPane pane) {
+
+        label = new Label();
+        label.setText("Du hast es geschafft! Hier deine Ergebnisse: " + Arrays.deepToString(User2.result.toArray()));
+        label.setTranslateY(-100);
+
+        layout.getChildren().add(label);
+
+        questionStage.setScene(scene);
+        questionStage.show();
+
+        System.out.println("Ergebnisse: " + Arrays.deepToString(User2.result.toArray()));
+    }
+
+
+    private static void showAlertBox(String title, String header) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.showAndWait();
     }
 }
