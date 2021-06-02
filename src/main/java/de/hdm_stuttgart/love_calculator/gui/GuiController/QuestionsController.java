@@ -1,12 +1,15 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.catalog.Catalog;
+import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -14,13 +17,14 @@ public class QuestionsController {
 
     private static Button button;
 
-
+    private static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
 
     private static Label label;
     private static Stage questionStage = new Stage();
 
     private static CheckBox[] checkBoxesClone;
     private static RadioButton[] radioButtonClone;
+    private static int index = 0;
 
 
 
@@ -37,7 +41,7 @@ public class QuestionsController {
 
         StackPane layout = new StackPane();
 
-        loadQuestionAndAnswers(0, layout);
+        loadQuestionAndAnswers(layout);
 
         //generateCheckboxes(0, layout);
 
@@ -49,7 +53,7 @@ public class QuestionsController {
 
         next.setOnAction(e -> {
             try {
-                nextButton(1, layout);
+                nextButton(layout);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -86,7 +90,7 @@ public class QuestionsController {
     }
 
 
-    private static void loadQuestionAndAnswers(final int index, StackPane pane){
+    private static void loadQuestionAndAnswers(StackPane pane){
 
         //Load question
         label = new Label();
@@ -98,34 +102,34 @@ public class QuestionsController {
         switch (test) {
 
             case CHECKBOX:
-                generateCheckboxes(index, pane);
+                generateCheckboxes(pane);
                 break;
             case RADIOBUTTON:
-                generateRadiobuttons(index, pane);
+                generateRadiobuttons(pane);
                 break;
             case TEXTFIELD:
-                generateTextField(index, pane);
+                generateTextField(pane);
                 break;
             case SLIDER:
                 break;
 
             default:
-                System.out.println("ERROR INPUTTYPE IS " + test);
+                log.error("ERROR INPUTTYPE IS " + test);
 
         }
 
 
-        System.out.println("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
+        log.info("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
 
 
     }
 
-    private static void generateTextField(final int index, StackPane pane) {
+    private static void generateTextField(StackPane pane) {
         TextField textfield = new TextField();
         pane.getChildren().add(textfield);
     }
 
-    private static void generateRadiobuttons(final int index, StackPane pane){
+    private static void generateRadiobuttons(StackPane pane){
 
         //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
         RadioButton[] radioButtons = new RadioButton[Catalog.getAnswerList().get(index).answerOptions.size()];
@@ -134,14 +138,14 @@ public class QuestionsController {
         for(int i = 0; i < radioButtons.length; i++){
 
             /*button1[i] = new Button();
-            button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));      // you have twice this line
+            button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
             button1[i].setTranslateY(i*30);
 
             System.out.println(button1[i].getText());
             pane.getChildren().addAll(button1[i]);*/
 
             radioButtons[i] = new RadioButton();
-            radioButtons[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));      // you have twice this line
+            radioButtons[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
             radioButtons[i].setTranslateY(i*30);
             radioButtons[i].setToggleGroup(radioGroup);
             //System.out.println(radioButtons[i].getText());
@@ -154,7 +158,7 @@ public class QuestionsController {
     }
 
 
-    private static void generateCheckboxes(final int index, StackPane pane){
+    private static void generateCheckboxes(StackPane pane){
 
         //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
         CheckBox[] checkBoxes = new CheckBox[Catalog.getAnswerList().get(index).answerOptions.size()];
@@ -162,14 +166,14 @@ public class QuestionsController {
         for(int i = 0; i < checkBoxes.length; i++){
 
             /*button1[i] = new Button();
-            button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));      // you have twice this line
+            button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
             button1[i].setTranslateY(i*30);
 
             System.out.println(button1[i].getText());
             pane.getChildren().addAll(button1[i]);*/
 
             checkBoxes[i] = new CheckBox();
-            checkBoxes[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));      // you have twice this line
+            checkBoxes[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
             checkBoxes[i].setTranslateY(i*30);
             //System.out.println(checkBoxes[i].getText());
             pane.getChildren().addAll(checkBoxes[i]);
@@ -184,29 +188,39 @@ public class QuestionsController {
 
 
 
-    private static void nextButton(final int index, StackPane pane){
+    private static void nextButton(StackPane pane) throws Exception {
 
         switch (Catalog.getAnswerList().get(index).inputType) {
 
             case "checkbox":
-                getCheckboxInput(index);
+                getCheckboxInput();
                 break;
             case "radiobutton":
-                getRadioButtonInput(index);
+                getRadioButtonInput();
                 break;
             case "textfield":
-                generateTextField(index, pane);
+                generateTextField(pane);
                 break;
             case "slider":
                 break;
 
             default:
-                System.out.println("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
+                log.error("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
 
         }
+
+        log.info("Felder Input:");
+        log.info(Arrays.deepToString(User2.result.get(index)));
+        log.info("");
+        log.info("Gesamter User Result Array:");
+        log.info(Arrays.deepToString(User2.result.toArray()));
+
+        pane.getChildren().clear();
+        index++;
+        startClassicQuestions();
 }
 
-    private static void getCheckboxInput(int index) {
+    private static void getCheckboxInput() {
 
 
         int sumSelectedFields = 0;
@@ -233,16 +247,14 @@ public class QuestionsController {
         }
 
         User2.result.add(tickedCheckboxes);
-        //System.out.println(User2.result.get(0));
 
-        System.out.println("Gecheckte Checkboxen:");
-        System.out.println(Arrays.deepToString(User2.result.get(index)));
+        //System.out.println(User2.result.get(0));
         //System.out.println(User2.result.get(0).toString());
 
     }
 
 
-    private static void getRadioButtonInput(int index) {
+    private static void getRadioButtonInput() {
 
         final String[] tickedRadioButton = new String[1];
 
@@ -252,9 +264,6 @@ public class QuestionsController {
 
                     tickedRadioButton[0] = String.valueOf(radioButtonClone[i].getText());
                     User2.result.add(tickedRadioButton);
-
-                    System.out.println("Gecheckte RadioButton:");
-                    System.out.println(Arrays.deepToString(User2.result.get(index)));
 
                     break;
             }
