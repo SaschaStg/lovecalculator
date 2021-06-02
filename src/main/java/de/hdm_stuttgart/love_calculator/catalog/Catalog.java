@@ -61,12 +61,13 @@ public class Catalog {
 
                 // Store split values in variables and convert to correct types
                 String questionContent = content[0];
-                String mode = content[1];
-                String category = content[2];
-                String priority = content[3];
+                String questionContentUser2 = content[1];
+                String mode = content[2];
+                String category = content[3];
+                String priority = content[4];
 
                 // Add new Question object to ArrayList
-                questionList.add(new Question(questionContent, mode, category, priority));
+                questionList.add(new Question(questionContent, questionContentUser2, mode, category, priority));
 
             }
         } catch (Exception e) {

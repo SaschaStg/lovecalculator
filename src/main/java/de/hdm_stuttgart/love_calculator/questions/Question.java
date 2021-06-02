@@ -11,14 +11,16 @@ public class Question {
 
 
     final public String questionContent;
+    final public String questionContentUser2;
     final private String mode;
     final private String category;
     final private String priority;
 
 
-    public Question(String content, String mode, String category, String priority) {
+    public Question(String content, String content2, String mode, String category, String priority) {
 
         this.questionContent = content;
+        this.questionContentUser2 = content2;
         this.mode = mode;
         this.category = category;
         this.priority = priority;

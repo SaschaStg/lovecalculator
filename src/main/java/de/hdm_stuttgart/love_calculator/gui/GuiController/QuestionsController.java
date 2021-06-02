@@ -2,6 +2,7 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.catalog.Catalog;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -24,10 +25,14 @@ public class QuestionsController {
 
     private static CheckBox[] checkBoxesClone;
     private static RadioButton[] radioButtonClone;
+
+    private static TextField textfield = new TextField();
+
     private static int index = 0;
     private static boolean isSelected = false;
     private static StackPane layout = new StackPane();
     private static Scene scene = new Scene(layout, 1065, 670);
+    private static boolean isUser1 = true;
 
 
 
@@ -64,29 +69,6 @@ public class QuestionsController {
         questionStage.setScene(scene);
         questionStage.show();
 
-
-
-
-
-
-        /*Stage window = new Stage();
-
-        window.setTitle("Classic Mode");
-        window.setWidth(1065);
-        window.setHeight(720);
-
-
-
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(question, vorname);
-        layout.setAlignment(Pos.CENTER);
-
-        Scene scene = new Scene(layout);
-        window.setScene(scene);
-        window.showAndWait();*/
-
-
-
     }
 
 
@@ -94,8 +76,13 @@ public class QuestionsController {
 
             //Load question
             label = new Label();
-            label.setText(Catalog.getQuestionList().get(index).questionContent);
             label.setTranslateY(-100);
+
+            if(isUser1) {
+                label.setText(Catalog.getQuestionList().get(index).questionContent);
+            } else {
+                label.setText(Catalog.getQuestionList().get(index).questionContentUser2);
+            }
 
             //check type
             InputType test = Enum.valueOf(InputType.class, Catalog.getAnswerList().get(index).inputType.trim().toUpperCase());
@@ -123,7 +110,6 @@ public class QuestionsController {
     }
 
     private static void generateTextField(StackPane pane) {
-        TextField textfield = new TextField();
         pane.getChildren().add(textfield);
     }
 
@@ -197,7 +183,7 @@ public class QuestionsController {
                     getRadioButtonInput();
                     break;
                 case "textfield":
-                    generateTextField(pane);
+                    getTextFieldInput();
                     break;
                 case "slider":
                     break;
@@ -209,10 +195,10 @@ public class QuestionsController {
 
             if(isSelected) {
                 log.info("Felder Input:");
-                log.info(Arrays.deepToString(User2.result.get(index)));
+                log.info(Arrays.deepToString(User1.result.get(index)));
                 log.info("");
                 log.info("Gesamter User Result Array:");
-                log.info(Arrays.deepToString(User2.result.toArray()));
+                log.info(Arrays.deepToString(User1.result.toArray()));
 
                 //Reset User Input Check
                 isSelected = false;
@@ -223,13 +209,37 @@ public class QuestionsController {
                     index++;
                     startClassicQuestions();
                 } else {
-                    //Show results after all questions are finished
-                    showResults(pane);
+                    //Check if User2 has already entered answers, if not start questions for user2
+                    if(isUser1) {
+                        index = 0;
+                        isUser1 = false;
+                        log.info("User 2 Fragen starten jetzt!");
+                        showAlertBox("Schwarm ist dran!", "Super! Jetzt beantworte bitte noch die Fragen für deinen Schwarm!");
+                        startClassicQuestions();
+                    } else {
+                        //Show results after all questions are finished
+                        showResults(pane);
+                    }
                 }
             } else {
             showAlertBox("Fehler!", "Bitte wähle eine Antwort aus!");
             log.info("Es wurde keine Antwort ausgewählt!");
             }
+    }
+
+
+    private static void getTextFieldInput() {
+        if (!textfield.getText().isEmpty()) {
+            String[] userInput = new String[1];
+            userInput[0] = textfield.getText();
+            isSelected = true;
+
+            if(isUser1) {
+                User1.result.add(userInput);
+            } else {
+                User2.result.add(userInput);
+            }
+        }
     }
 
     private static void getCheckboxInput() {
@@ -261,7 +271,11 @@ public class QuestionsController {
         if (tickedCheckboxes.length > 0) {
             isSelected = true;
 
-            User2.result.add(tickedCheckboxes);
+            if(isUser1) {
+                User1.result.add(tickedCheckboxes);
+            } else {
+                User2.result.add(tickedCheckboxes);
+            }
         }
     }
 
@@ -276,8 +290,13 @@ public class QuestionsController {
             if(radioButtonClone[i].isSelected()) {
 
                     tickedRadioButton[0] = String.valueOf(radioButtonClone[i].getText());
-                    User2.result.add(tickedRadioButton);
                     isSelected = true;
+
+                if(isUser1) {
+                    User1.result.add(tickedRadioButton);
+                } else {
+                    User2.result.add(tickedRadioButton);
+                }
 
                     break;
             }
@@ -289,22 +308,28 @@ public class QuestionsController {
     private static void showResults(StackPane pane) {
 
         label = new Label();
-        label.setText("Du hast es geschafft! Hier deine Ergebnisse: " + Arrays.deepToString(User2.result.toArray()));
+        label.setText("Du hast es geschafft! Hier deine Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
         label.setTranslateY(-100);
 
-        layout.getChildren().add(label);
+        Label schwarm;
+        schwarm = new Label();
+        schwarm.setText("Und hier die Ergebnisse deines Schwarms: " + Arrays.deepToString(User2.result.toArray()));
+        schwarm.setTranslateX(-200);
+
+        layout.getChildren().addAll(label, schwarm);
 
         questionStage.setScene(scene);
         questionStage.show();
 
-        System.out.println("Ergebnisse: " + Arrays.deepToString(User2.result.toArray()));
+        System.out.println("Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
     }
 
 
-    private static void showAlertBox(String title, String header) {
+    private static void showAlertBox(String title, String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
-        alert.setHeaderText(header);
+        alert.setHeaderText(null);
+        alert.setContentText(text);
         alert.showAndWait();
     }
 }
