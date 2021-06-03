@@ -309,19 +309,31 @@ public class QuestionsController {
 
         label = new Label();
         label.setText("Du hast es geschafft! Hier deine Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
-        label.setTranslateY(-100);
+        label.setTranslateY(-300);
 
         Label schwarm;
         schwarm = new Label();
         schwarm.setText("Und hier die Ergebnisse deines Schwarms: " + Arrays.deepToString(User2.result.toArray()));
-        schwarm.setTranslateX(-200);
+        schwarm.setTranslateY(-200);
 
-        layout.getChildren().addAll(label, schwarm);
+        System.out.println("Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
+
+        Label studiengang;
+        studiengang = new Label();
+
+        //Check if answers are the same
+        if(checkEqualAnswers(1)) {
+            studiengang.setText("Studienpartner! Ihr Studiert beide " + Arrays.deepToString(User2.result.get(1)));
+        } else {
+            studiengang.setText("Hm.. vom Studium passt ihr leider nicht zusammen!");
+        }
+
+        studiengang.setTranslateY(-100);
+
+        layout.getChildren().addAll(label, schwarm, studiengang);
 
         questionStage.setScene(scene);
         questionStage.show();
-
-        System.out.println("Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
     }
 
 
@@ -331,5 +343,18 @@ public class QuestionsController {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
+    }
+
+    private static boolean checkEqualAnswers(int index) {
+        if(Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
+            log.info("Ergebnisse für Antwort " + index + " sind gleich!");
+            log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+            log.info("User 2 input: " + Arrays.deepToString(User1.result.get(index)));
+            return true;
+        }
+        log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
+        log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+        log.info("User 2 input: " + Arrays.deepToString(User1.result.get(index)));
+        return false;
     }
 }
