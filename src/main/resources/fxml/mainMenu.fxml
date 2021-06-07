@@ -2,13 +2,96 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
    <children>
-      <Button fx:id="startButton" layoutX="57.0" layoutY="47.0" mnemonicParsing="false" onAction="#startScene" prefHeight="23.0" prefWidth="81.0" text="Start" />
-      <Button fx:id="profileButton" layoutX="57.0" layoutY="231.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="23.0" prefWidth="81.0" text="Profile" />
-      <Button fx:id="playButton" layoutX="57.0" layoutY="138.0" mnemonicParsing="false" onAction="#playScene" prefHeight="23.0" prefWidth="81.0" text="Play" />
-      <ToggleButton layoutX="69.0" layoutY="335.0" mnemonicParsing="false" text="Darkmode" />
+      <BorderPane prefHeight="670.0" prefWidth="1065.0">
+         <top>
+            <Pane prefHeight="1.0" prefWidth="1065.0" BorderPane.alignment="CENTER" />
+         </top>
+         <left>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="670.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="startButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="167.5" prefWidth="200.0" text="Start" underline="true">
+                           <graphic>
+                              <ImageView fitHeight="70.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/startheartactive.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="playButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#playScene" prefHeight="167.5" prefWidth="200.0" text="Play">
+                           <graphic>
+                              <ImageView fitHeight="70.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/startplay.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileScene" prefHeight="167.5" prefWidth="200.0" text="Profile">
+                           <graphic>
+                              <ImageView fitHeight="70.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/startprofile.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <ToggleButton mnemonicParsing="false" prefHeight="167.5" prefWidth="200.0" text="Darkmode" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="425.57220458984375" minWidth="10.0" prefWidth="247.30484008789062" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="626.6085205078125" minWidth="10.0" prefWidth="617.6951599121094" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <image>
+                                    <Image url="@../images/heart.png" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam" wrappingWidth="559.1507873535156" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="135.0" fitWidth="721.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                                 <image>
+                                    <Image url="@../images/lovelogoplaceholder.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </GridPane>
+                     </children></StackPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>
