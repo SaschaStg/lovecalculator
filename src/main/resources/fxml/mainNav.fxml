@@ -7,15 +7,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
+
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MainNav">
    <children>
-      <ImageView fitHeight="674.0" fitWidth="1078.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Start.png" />
-         </image>
-      </ImageView>
       <SplitPane prefHeight="670.0" prefWidth="156.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
@@ -61,11 +56,5 @@
             </AnchorPane>
          </items>
       </SplitPane>
-      <AnchorPane layoutX="156.0" prefHeight="670.0" prefWidth="909.0" stylesheets="@../styles/styles.css">
-         <children>
-            <Text layoutX="316.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-p" text="Du bist verzweifelter Single, unglücklich in einer Beziehung oder einfach auf der Suche nach der großen Liebe? Dann bist du hier genau richtig! Finde hier  heraus wer das fehlende Puzzleteil in deinem Leben ist." wrappingWidth="540.1404876708984" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="339.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

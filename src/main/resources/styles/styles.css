@@ -7,38 +7,23 @@
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
-.leftnav{
-    -fx-background-color: red;
-}
-
 .button {
     -fx-text-fill: #3C3957;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
-    -fx-background-color: #F0F0F0;
+    -fx-background-color: none;
 }
 
-.icon-button{
-    -fx-font-family: "Courier New";
+.split-pane {
+    -fx-background-color: #F0F0F0;;
 }
+
 .button:hover{
 	 -fx-background-color: #395bae;
 }
 
-.main-side-panel {
-    -fx-background-color: white;
+.text-p{
+    -fx-font-family: "Poppins Light";
+    -fx-font-weight: 100;
+    -fx-font-size: 24px;
 }
-
-/* Component specific styles */
-
-
-.main-panel {
-    -fx-background-image: url("../images/background.jpg");
-}
-
-.hello-message {
-    -fx-text-fill: #AA0000;
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
-}
-
