@@ -1,5 +1,9 @@
 /* Application wide styles */
 
+@font-face {
+    src: url("../fonts/MouseMemoirs-Regular.ttf");
+}
+
 .label {
     -fx-font-size: 12px;
     -fx-font-weight: bold;
@@ -18,12 +22,17 @@
     -fx-background-color: #F0F0F0;;
 }
 
-.button:hover{
-	 -fx-background-color: #395bae;
-}
-
 .text-p{
     -fx-font-family: "Poppins Light";
-    -fx-font-weight: 100;
     -fx-font-size: 24px;
+    -fx-font-weight: 100;
+}
+
+.btn-play{
+    -fx-border-color: #3C3957;
+    -fx-border-width: 7;
+    -fx-border-radius: 40px;
+    -fx-font-size: 80px;
+    -fx-font-family: "MouseMemoirs-Regular";
+
 }

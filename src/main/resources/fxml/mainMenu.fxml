@@ -11,20 +11,15 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="1065.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
    <children>
-      <ImageView fitHeight="674.0" fitWidth="1078.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Start.png" />
-         </image>
-      </ImageView>
       <SplitPane prefHeight="670.0" prefWidth="156.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
                <children>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
+                  <Button fx:id="startButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/startheartactive.png" />
+                              <Image url="@../images/navBar_start_active.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -33,11 +28,11 @@
                      </font>
                   </Button>
                   <ToggleButton layoutX="25.0" layoutY="576.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="103.0" text="Darkmode" />
-                  <Button contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
+                  <Button fx:id="playButton" contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/startplay.png" />
+                              <Image url="@../images/navBar_play.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -45,11 +40,11 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
+                  <Button fx:id="profileButton" contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/startprofile.png" />
+                              <Image url="@../images/navBar_profil.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -63,7 +58,17 @@
       </SplitPane>
       <AnchorPane layoutX="156.0" prefHeight="670.0" prefWidth="909.0" stylesheets="@../styles/styles.css">
          <children>
-            <Text layoutX="316.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-p" text="Du bist verzweifelter Single, unglücklich in einer Beziehung oder einfach auf der Suche nach der großen Liebe? Dann bist du hier genau richtig! Finde hier  heraus wer das fehlende Puzzleteil in deinem Leben ist." wrappingWidth="540.1404876708984" />
+            <Text layoutX="318.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-p" text="Du bist verzweifelter Single, unglücklich in einer Beziehung oder einfach auf der Suche nach der großen Liebe? Dann bist du hier genau richtig! Finde hier  heraus wer das fehlende Puzzleteil in deinem Leben ist." wrappingWidth="540.1404876708984" />
+            <ImageView fitHeight="175.0" fitWidth="793.0" layoutX="56.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/lc-logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="204.0" fitWidth="231.0" layoutX="50.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/heart.png" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="339.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
