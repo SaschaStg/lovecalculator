@@ -4,11 +4,13 @@ import de.hdm_stuttgart.love_calculator.catalog.Catalog;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,59 +36,55 @@ public class QuestionsController {
     public static boolean isClassic = true;
 
 
-
-
-
-
-
     public static void loadQuestionAndAnswers(StackPane pane) {
 
-            //Load question
-            label = new Label();
-            label.setTranslateY(-100);
+        //Load question
+        label = new Label();
+        label.setTranslateY(-100);
 
-            if(isUser1) {
-                label.setText(Catalog.getQuestionList().get(index).questionContent);
-            } else {
-                label.setText(Catalog.getQuestionList().get(index).questionContentUser2);
-            }
+        if (isUser1) {
+            label.setText(Catalog.getQuestionList().get(index).questionContent);
+        } else {
+            label.setText(Catalog.getQuestionList().get(index).questionContentUser2);
+        }
 
-            //check type
-            InputType test = Enum.valueOf(InputType.class, Catalog.getAnswerList().get(index).inputType.trim().toUpperCase());
-            switch (test) {
+        //check type
+        InputType input = Enum.valueOf(InputType.class, Catalog.getAnswerList().get(index).inputType.trim().toUpperCase());
+        switch (input) {
 
-                case CHECKBOX:
-                    generateCheckboxes(pane);
-                    break;
-                case RADIOBUTTON:
-                    generateRadiobuttons(pane);
-                    break;
-                case TEXTFIELD:
-                    generateTextField(pane);
-                    break;
-                case SLIDER:
-                    break;
+            case CHECKBOX:
+                generateCheckboxes(pane);
+                break;
+            case RADIOBUTTON:
+                generateRadiobuttons(pane);
+                break;
+            case TEXTFIELD:
+                generateTextField(pane);
+                break;
+            case SLIDER:
+                break;
 
-                default:
-                    FxmlGuiDriver.log.error("ERROR INPUTTYPE IS " + test);
+            default:
+                FxmlGuiDriver.log.error("Error: Inputtype is invalid! (" + input + ")");
+                break;
 
-            }
+        }
 
 
-            FxmlGuiDriver.log.info("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
+        FxmlGuiDriver.log.info("Inputtype for question " + index + " is " + input);
     }
 
     private static void generateTextField(StackPane pane) {
         pane.getChildren().add(textfield);
     }
 
-    private static void generateRadiobuttons(StackPane pane){
+    private static void generateRadiobuttons(StackPane pane) {
 
         //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
         RadioButton[] radioButtons = new RadioButton[Catalog.getAnswerList().get(index).answerOptions.size()];
         ToggleGroup radioGroup = new ToggleGroup();
 
-        for(int i = 0; i < radioButtons.length; i++){
+        for (int i = 0; i < radioButtons.length; i++) {
 
             /*button1[i] = new Button();
             button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
@@ -97,7 +95,7 @@ public class QuestionsController {
 
             radioButtons[i] = new RadioButton();
             radioButtons[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
-            radioButtons[i].setTranslateY(i*30);
+            radioButtons[i].setTranslateY(i * 30);
             radioButtons[i].setToggleGroup(radioGroup);
             //System.out.println(radioButtons[i].getText());
             pane.getChildren().addAll(radioButtons[i]);
@@ -109,12 +107,12 @@ public class QuestionsController {
     }
 
 
-    private static void generateCheckboxes(StackPane pane){
+    private static void generateCheckboxes(StackPane pane) {
 
         //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
         CheckBox[] checkBoxes = new CheckBox[Catalog.getAnswerList().get(index).answerOptions.size()];
 
-        for(int i = 0; i < checkBoxes.length; i++){
+        for (int i = 0; i < checkBoxes.length; i++) {
 
             /*button1[i] = new Button();
             button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
@@ -125,7 +123,7 @@ public class QuestionsController {
 
             checkBoxes[i] = new CheckBox();
             checkBoxes[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
-            checkBoxes[i].setTranslateY(i*30);
+            checkBoxes[i].setTranslateY(i * 30);
             //System.out.println(checkBoxes[i].getText());
             pane.getChildren().addAll(checkBoxes[i]);
 
@@ -136,77 +134,77 @@ public class QuestionsController {
     }
 
 
-
-
-
     public static void nextButton(StackPane pane) throws Exception {
 
-            switch (Catalog.getAnswerList().get(index).inputType) {
+        switch (Catalog.getAnswerList().get(index).inputType) {
 
-                case "checkbox":
-                    getCheckboxInput();
-                    break;
-                case "radiobutton":
-                    getRadioButtonInput();
-                    break;
-                case "textfield":
-                    getTextFieldInput();
-                    break;
-                case "slider":
-                    break;
+            case "checkbox":
+                getCheckboxInput();
+                break;
+            case "radiobutton":
+                getRadioButtonInput();
+                break;
+            case "textfield":
+                getTextFieldInput();
+                break;
+            case "slider":
+                break;
 
-                default:
-                    FxmlGuiDriver.log.error("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
+            default:
+                FxmlGuiDriver.log.error("Error: Inputtype is invalid! (" + Catalog.getAnswerList().get(index).inputType + ")");
+                break;
 
-            }
+        }
 
-            if(isSelected) {
+        if (isSelected) {
 
-                //Reset User Input Check
-                isSelected = false;
-                pane.getChildren().clear();
+            //Reset User Input Check
+            isSelected = false;
+            pane.getChildren().clear();
 
-                //IMPORTANT: Size of answerlist is -1 from index! If 10. answer -> AnswerList index 9!
-                if (Catalog.getAnswerList().size() - 1 > index) {
-                    if(isUser1) {
-                        isUser1 = false;
+            //IMPORTANT: Size of answerlist is -1 from index! If 10. answer -> AnswerList index 9!
+            if (Catalog.getAnswerList().size() - 1 > index) {
+                if (isUser1) {
+                    isUser1 = false;
 
-                        FxmlGuiDriver.log.info("Felder User 1 Input:");
-                        FxmlGuiDriver.log.info(Arrays.deepToString(User1.result.get(index)));
-                        FxmlGuiDriver.log.info("");
-                        FxmlGuiDriver.log.info("Gesamter User 1 Result Array:");
-                        FxmlGuiDriver.log.info(Arrays.deepToString(User1.result.toArray()));
+                    FxmlGuiDriver.log.info("User 1 Input for question " + index + ":");
+                    FxmlGuiDriver.log.info(Arrays.deepToString(User1.result.get(index)));
+                    FxmlGuiDriver.log.info("");
+                    FxmlGuiDriver.log.info("User 1 Result Array:");
+                    FxmlGuiDriver.log.info(Arrays.deepToString(User1.result.toArray()));
 
-                        FxmlGuiDriver.log.info("USER 2 IST JETZT DRAN");
-                    } else {
-
-                        FxmlGuiDriver.log.info("Felder User 2 Input:");
-                        FxmlGuiDriver.log.info(Arrays.deepToString(User2.result.get(index)));
-                        FxmlGuiDriver.log.info("");
-                        FxmlGuiDriver.log.info("Gesamter User 2 Result Array:");
-                        FxmlGuiDriver.log.info(Arrays.deepToString(User2.result.toArray()));
-
-                        isUser1 = true;
-                        index++;
-
-                        FxmlGuiDriver.log.info("USER 1 IST JETZT DRAN, INDEX: " + index);
-                    }
-
-                    //Check which mode
-                    if(isClassic) {
-                        ClassicController.startClassicQuestions();
-                    } else {
-
-                        System.out.println("Advanced modus activated");
-                        //METHOD START ADVANCED QUESTIONS
-                    }
+                    FxmlGuiDriver.log.info("Switch to user 2");
                 } else {
-                showResults(pane);
-                    }
+
+                    FxmlGuiDriver.log.info("User 2 Input for question " + index + ":");
+                    FxmlGuiDriver.log.info(Arrays.deepToString(User2.result.get(index)));
+                    FxmlGuiDriver.log.info("");
+                    FxmlGuiDriver.log.info("User 2 Result Array:");
+                    FxmlGuiDriver.log.info(Arrays.deepToString(User2.result.toArray()));
+
+                    isUser1 = true;
+                    index++;
+
+                    FxmlGuiDriver.log.info("Switch to User 1, next question: " + index);
+                }
+
+                //Check which mode
+                if (isClassic) {
+                    //Start classic questions
+                    ClassicController.startClassicQuestions();
+                } else {
+                    //Start advanced questions
+                    AdvancedController.startAdvancedQuestions();
+                }
             } else {
-            showAlertBox("Fehler!", "Bitte wähle eine Antwort aus!");
-                FxmlGuiDriver.log.info("Es wurde keine Antwort ausgewählt!");
+                //Show results and reset index
+                index = 0;
+                showResults(pane);
             }
+        } else {
+            showAlertBox("Fehler!", "Bitte wähle eine Antwort aus!");
+            FxmlGuiDriver.log.info("Es wurde keine Antwort ausgewählt!");
+        }
     }
 
 
@@ -216,7 +214,7 @@ public class QuestionsController {
             userInput[0] = textfield.getText();
             isSelected = true;
 
-            if(isUser1) {
+            if (isUser1) {
                 User1.result.add(userInput);
             } else {
                 User2.result.add(userInput);
@@ -253,7 +251,7 @@ public class QuestionsController {
         if (tickedCheckboxes.length > 0) {
             isSelected = true;
 
-            if(isUser1) {
+            if (isUser1) {
                 User1.result.add(tickedCheckboxes);
             } else {
                 User2.result.add(tickedCheckboxes);
@@ -262,25 +260,24 @@ public class QuestionsController {
     }
 
 
-
     private static void getRadioButtonInput() {
 
         final String[] tickedRadioButton = new String[1];
 
-        for(int i = 0; i < radioButtonClone.length; i++){
+        for (int i = 0; i < radioButtonClone.length; i++) {
 
-            if(radioButtonClone[i].isSelected()) {
+            if (radioButtonClone[i].isSelected()) {
 
-                    tickedRadioButton[0] = String.valueOf(radioButtonClone[i].getText());
-                    isSelected = true;
+                tickedRadioButton[0] = String.valueOf(radioButtonClone[i].getText());
+                isSelected = true;
 
-                if(isUser1) {
+                if (isUser1) {
                     User1.result.add(tickedRadioButton);
                 } else {
                     User2.result.add(tickedRadioButton);
                 }
 
-                    break;
+                break;
             }
         }
 
@@ -304,7 +301,7 @@ public class QuestionsController {
         studiengang = new Label();
 
         //Check if answers are the same
-        if(checkEqualAnswers(1)) {
+        if (checkEqualAnswers(1)) {
             studiengang.setText("Studienpartner! Ihr Studiert beide " + Arrays.deepToString(User2.result.get(1)));
         } else {
             studiengang.setText("Hm.. vom Studium passt ihr leider nicht zusammen!");
@@ -328,7 +325,7 @@ public class QuestionsController {
     }
 
     public static boolean checkEqualAnswers(int index) {
-        if(Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
+        if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
             FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
             FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
             FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
@@ -338,5 +335,16 @@ public class QuestionsController {
         FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
         FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
         return false;
+    }
+
+
+    public static void safeClose() {
+        //Check if user closes manually, clear layout to prevent duplicates
+        QuestionsController.questionStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                QuestionsController.layout.getChildren().clear();
+                FxmlGuiDriver.log.info("Window closed by user, layout children cleared");
+            }
+        });
     }
 }

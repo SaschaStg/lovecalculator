@@ -1,11 +1,14 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
+import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.stage.WindowEvent;
 
 import java.util.Arrays;
 
@@ -50,7 +53,6 @@ public class ClassicController {
         }
 
 
-
     }
 
 
@@ -85,7 +87,5 @@ public class ClassicController {
         QuestionsController.questionStage.setScene(QuestionsController.scene);
         QuestionsController.questionStage.show();
     }
-
-
 
 }

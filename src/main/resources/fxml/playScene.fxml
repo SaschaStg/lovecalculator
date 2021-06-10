@@ -74,7 +74,7 @@
                   <Font name="Mouse Memoirs" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="108.0" layoutY="468.0" mnemonicParsing="false" prefHeight="157.0" prefWidth="689.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ADVANCED">
+            <Button fx:id="advancedButton" layoutX="108.0" layoutY="468.0" mnemonicParsing="false" onAction="#playAdvanced" prefHeight="157.0" prefWidth="689.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ADVANCED">
                <graphic>
                   <ImageView fitHeight="103.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                      <image>

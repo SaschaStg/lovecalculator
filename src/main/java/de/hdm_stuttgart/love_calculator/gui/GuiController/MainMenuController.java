@@ -20,6 +20,7 @@ public class MainMenuController {
     @FXML private Button playButton;
     @FXML private Button profileButton;
     @FXML private Button classicButton;
+    @FXML private Button advancedButton;
 
     @FXML
     public void startScene() {
@@ -31,7 +32,24 @@ public class MainMenuController {
     public void playClassic() {
         classicButton.setOnAction(e -> {
             try {
+                //Prevent index bug
+                if(QuestionsController.index > 1) {
+                    QuestionsController.index = 0;
+                }
                 ClassicController.startClassicQuestions();
+                QuestionsController.safeClose();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        });
+    }
+
+    @FXML
+    public void playAdvanced() {
+        advancedButton.setOnAction(e -> {
+            try {
+                AdvancedController.startAdvancedQuestions();
+                QuestionsController.safeClose();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
