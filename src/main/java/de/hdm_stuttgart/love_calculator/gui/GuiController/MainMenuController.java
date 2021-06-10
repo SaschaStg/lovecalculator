@@ -40,6 +40,9 @@ public class MainMenuController {
 
     @FXML
     public void profileScene() {
+
+
+
         FxmlGuiDriver.sceneSwitcher("/fxml/profileScene.fxml", profileButton);
     }
 

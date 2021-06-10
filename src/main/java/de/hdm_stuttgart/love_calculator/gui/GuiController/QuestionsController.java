@@ -37,42 +37,10 @@ public class QuestionsController {
 
 
 
-    @FXML
-    public static void startClassicQuestions() throws Exception {
-
-        questionStage.setTitle("Classic Mode");
-
-        Button next = new Button();
-        next.setText("->");
-        next.setTranslateY(300);
-        next.setTranslateX(400);
-
-        loadQuestionAndAnswers(layout);
-
-        //generateCheckboxes(0, layout);
-
-        layout.getChildren().addAll(label, next);
 
 
-        //generateCheckboxes(1, layout);
-        //generateTextField(1, layout);
 
-        next.setOnAction(e -> {
-            try {
-                nextButton(layout);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-        });
-
-
-        questionStage.setScene(scene);
-        questionStage.show();
-
-    }
-
-
-    private static void loadQuestionAndAnswers(StackPane pane) {
+    public static void loadQuestionAndAnswers(StackPane pane) {
 
             //Load question
             label = new Label();
@@ -204,7 +172,7 @@ public class QuestionsController {
                 isSelected = false;
                 pane.getChildren().clear();
 
-                //IMPORTANT: Size of answerlist is -1 from index! If 10 answers -> AnswerList size is 9!
+                //IMPORTANT: Size of answerlist is -1 from index! If 10. answer -> AnswerList index 9!
                 if (Catalog.getAnswerList().size() - 1 > index) {
                     index++;
                     startClassicQuestions();
