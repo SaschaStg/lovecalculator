@@ -26,7 +26,7 @@ import java.io.IOException;
 public class FxmlGuiDriver extends Application {
 
 
-	private static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
+	public static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
 	public Stage window;
 
     /**

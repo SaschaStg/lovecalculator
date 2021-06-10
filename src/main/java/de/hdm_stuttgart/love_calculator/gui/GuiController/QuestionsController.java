@@ -16,23 +16,22 @@ import java.util.Arrays;
 
 public class QuestionsController {
 
-    private static Button button;
+    public static Button button;
 
-    private static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
+    public static Label label;
+    public static Stage questionStage = new Stage();
 
-    private static Label label;
-    private static Stage questionStage = new Stage();
+    public static CheckBox[] checkBoxesClone;
+    public static RadioButton[] radioButtonClone;
 
-    private static CheckBox[] checkBoxesClone;
-    private static RadioButton[] radioButtonClone;
+    public static TextField textfield = new TextField();
 
-    private static TextField textfield = new TextField();
-
-    private static int index = 0;
-    private static boolean isSelected = false;
-    private static StackPane layout = new StackPane();
-    private static Scene scene = new Scene(layout, 1065, 670);
-    private static boolean isUser1 = true;
+    public static int index = 0;
+    public static boolean isSelected = false;
+    public static StackPane layout = new StackPane();
+    public static Scene scene = new Scene(layout, 1065, 670);
+    public static boolean isUser1 = true;
+    public static boolean isClassic = true;
 
 
 
@@ -69,12 +68,12 @@ public class QuestionsController {
                     break;
 
                 default:
-                    log.error("ERROR INPUTTYPE IS " + test);
+                    FxmlGuiDriver.log.error("ERROR INPUTTYPE IS " + test);
 
             }
 
 
-            log.info("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
+            FxmlGuiDriver.log.info("Inputtype for question " + index + " is " + Catalog.getAnswerList().get(index).inputType);
     }
 
     private static void generateTextField(StackPane pane) {
@@ -140,7 +139,7 @@ public class QuestionsController {
 
 
 
-    private static void nextButton(StackPane pane) throws Exception {
+    public static void nextButton(StackPane pane) throws Exception {
 
             switch (Catalog.getAnswerList().get(index).inputType) {
 
@@ -157,16 +156,11 @@ public class QuestionsController {
                     break;
 
                 default:
-                    log.error("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
+                    FxmlGuiDriver.log.error("ERROR INPUTTYPE IS " + Catalog.getAnswerList().get(index).inputType);
 
             }
 
             if(isSelected) {
-                log.info("Felder Input:");
-                log.info(Arrays.deepToString(User1.result.get(index)));
-                log.info("");
-                log.info("Gesamter User Result Array:");
-                log.info(Arrays.deepToString(User1.result.toArray()));
 
                 //Reset User Input Check
                 isSelected = false;
@@ -174,24 +168,44 @@ public class QuestionsController {
 
                 //IMPORTANT: Size of answerlist is -1 from index! If 10. answer -> AnswerList index 9!
                 if (Catalog.getAnswerList().size() - 1 > index) {
-                    index++;
-                    startClassicQuestions();
-                } else {
-                    //Check if User2 has already entered answers, if not start questions for user2
                     if(isUser1) {
-                        index = 0;
                         isUser1 = false;
-                        log.info("User 2 Fragen starten jetzt!");
-                        showAlertBox("Schwarm ist dran!", "Super! Jetzt beantworte bitte noch die Fragen für deinen Schwarm!");
-                        startClassicQuestions();
+
+                        FxmlGuiDriver.log.info("Felder User 1 Input:");
+                        FxmlGuiDriver.log.info(Arrays.deepToString(User1.result.get(index)));
+                        FxmlGuiDriver.log.info("");
+                        FxmlGuiDriver.log.info("Gesamter User 1 Result Array:");
+                        FxmlGuiDriver.log.info(Arrays.deepToString(User1.result.toArray()));
+
+                        FxmlGuiDriver.log.info("USER 2 IST JETZT DRAN");
                     } else {
-                        //Show results after all questions are finished
-                        showResults(pane);
+
+                        FxmlGuiDriver.log.info("Felder User 2 Input:");
+                        FxmlGuiDriver.log.info(Arrays.deepToString(User2.result.get(index)));
+                        FxmlGuiDriver.log.info("");
+                        FxmlGuiDriver.log.info("Gesamter User 2 Result Array:");
+                        FxmlGuiDriver.log.info(Arrays.deepToString(User2.result.toArray()));
+
+                        isUser1 = true;
+                        index++;
+
+                        FxmlGuiDriver.log.info("USER 1 IST JETZT DRAN, INDEX: " + index);
                     }
-                }
+
+                    //Check which mode
+                    if(isClassic) {
+                        ClassicController.startClassicQuestions();
+                    } else {
+
+                        System.out.println("Advanced modus activated");
+                        //METHOD START ADVANCED QUESTIONS
+                    }
+                } else {
+                showResults(pane);
+                    }
             } else {
             showAlertBox("Fehler!", "Bitte wähle eine Antwort aus!");
-            log.info("Es wurde keine Antwort ausgewählt!");
+                FxmlGuiDriver.log.info("Es wurde keine Antwort ausgewählt!");
             }
     }
 
@@ -313,16 +327,16 @@ public class QuestionsController {
         alert.showAndWait();
     }
 
-    private static boolean checkEqualAnswers(int index) {
+    public static boolean checkEqualAnswers(int index) {
         if(Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
-            log.info("Ergebnisse für Antwort " + index + " sind gleich!");
-            log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-            log.info("User 2 input: " + Arrays.deepToString(User1.result.get(index)));
+            FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
+            FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+            FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
             return true;
         }
-        log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
-        log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-        log.info("User 2 input: " + Arrays.deepToString(User1.result.get(index)));
+        FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
+        FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+        FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
         return false;
     }
 }

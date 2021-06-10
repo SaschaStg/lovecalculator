@@ -19,6 +19,7 @@ public class MainMenuController {
     @FXML private Button startButton;
     @FXML private Button playButton;
     @FXML private Button profileButton;
+    @FXML private Button classicButton;
 
     @FXML
     public void startScene() {
@@ -27,11 +28,24 @@ public class MainMenuController {
     }
 
     @FXML
+    public void playClassic() {
+        classicButton.setOnAction(e -> {
+            try {
+                ClassicController.startClassicQuestions();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        });
+    }
+
+
+    @FXML
     public void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
         playButton.setOnAction(e -> {
             try {
-                QuestionsController.startClassicQuestions();
+                FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
+                //ClassicController.startClassicQuestions();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
