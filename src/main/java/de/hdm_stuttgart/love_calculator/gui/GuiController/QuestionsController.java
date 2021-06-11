@@ -75,7 +75,9 @@ public class QuestionsController {
     }
 
     private static void generateTextField(StackPane pane) {
+
         pane.getChildren().add(textfield);
+        textfield.setText(null);
     }
 
     private static void generateRadiobuttons(StackPane pane) {
