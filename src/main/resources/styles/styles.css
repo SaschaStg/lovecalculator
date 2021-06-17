@@ -33,11 +33,12 @@
     -fx-border-width: 3;
     -fx-border-radius: 40px;
     -fx-max-width: 490px;
+    -fx-background-color: none;
 }
 
 .textOutput {
     -fx-font-family: "Poppins Light";
-    -fx-font-size: 40px;
+    -fx-font-size: 32px;
     -fx-font-weight: 100;
 }
 
@@ -45,7 +46,7 @@
     -fx-border-color: #3C3957;
     -fx-border-width: 3;
     -fx-border-radius: 40px;
-    -fx-font-size: 40px;
+    -fx-font-size: 24px;
     -fx-font-family: "Poppins";
 }
 
@@ -61,4 +62,10 @@
     -fx-font-size: 80px;
     -fx-font-family: "MouseMemoirs-Regular";
 
+}
+
+.btn-close{
+    -fx-background-image: url("../images/close.png");
+    -fx-background-size: 32 32;
+    -fx-background-repeat: no-repeat;
 }
