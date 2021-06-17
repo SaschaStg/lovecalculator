@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
+import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
@@ -74,15 +75,14 @@ public class ClassicController {
         studiengang = new Label();
 
         //Check if answers are the same
-        if(QuestionsController.checkEqualAnswers(1)) {
-            studiengang.setText("Studienpartner! Ihr Studiert beide " + Arrays.deepToString(User2.result.get(1)));
-        } else {
-            studiengang.setText("Hm.. vom Studium passt ihr leider nicht zusammen!");
-        }
+       Label name;
+       name = new Label();
+
+       name.setText(Double.toString(NameCalculation.calculate(User1.result.get(0)[0], User2.result.get(0)[0])));
 
         studiengang.setTranslateY(-100);
 
-        QuestionsController.layout.getChildren().addAll(label, schwarm, studiengang);
+        QuestionsController.layout.getChildren().addAll(label, schwarm, studiengang, name);
 
         QuestionsController.questionStage.setScene(QuestionsController.scene);
         QuestionsController.questionStage.show();
