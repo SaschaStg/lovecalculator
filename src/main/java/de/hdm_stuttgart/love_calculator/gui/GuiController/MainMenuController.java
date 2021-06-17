@@ -21,10 +21,18 @@ public class MainMenuController {
     @FXML private Button profileButton;
     @FXML private Button classicButton;
     @FXML private Button advancedButton;
+    @FXML private Button iconmenubutton;
 
     @FXML
     public void startScene() {
         FxmlGuiDriver.sceneSwitcher("/fxml/startScene.fxml", startButton);
+
+    }
+
+    @FXML
+    public void openIconmenu() throws Exception {
+        FxmlGuiDriver.sceneSwitcher("/fxml/iconMenu.fxml", iconmenubutton);
+        IconmenuController.openIconmenu();
 
     }
 
