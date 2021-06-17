@@ -21,7 +21,8 @@ public class ClassicController {
             QuestionsController.questionStage.setTitle("Classic Mode");
 
             Button next = new Button();
-            next.setText("->");
+            next.getStyleClass().add("nextButton");
+            next.setText("Weiter");
             next.setTranslateY(300);
             next.setTranslateX(400);
 

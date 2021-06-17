@@ -38,8 +38,11 @@ public class QuestionsController {
 
     public static void loadQuestionAndAnswers(StackPane pane) {
 
+        scene.getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+
         //Load question
         label = new Label();
+        label.getStyleClass().add("textOutput");
         label.setTranslateY(-100);
 
         if (isUser1) {

@@ -28,6 +28,32 @@
     -fx-font-weight: 100;
 }
 
+.text-field{
+    -fx-border-color: #3C3957;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-max-width: 490px;
+}
+
+.textOutput {
+    -fx-font-family: "Poppins Light";
+    -fx-font-size: 40px;
+    -fx-font-weight: 100;
+}
+
+.btn-small{
+    -fx-border-color: #3C3957;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 40px;
+    -fx-font-family: "Poppins";
+}
+
+
+.nextButton {
+    -fx-font-family: "MouseMemoirs-Regular";
+}
+
 .btn-play{
     -fx-border-color: #3C3957;
     -fx-border-width: 7;
