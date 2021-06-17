@@ -48,7 +48,7 @@ public class FxmlGuiDriver extends Application {
         log.info("Starting Hello JavaFX and Maven demonstration application");
         //final String fxmlFile = "src/main/resources/fxml/mainMenu.fxml";
         final FXMLLoader loader = new FXMLLoader();
-        final Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainMenu.fxml"));
+        final Parent root = FXMLLoader.load(getClass().getResource("/fxml/startScene.fxml"));
         //final Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(root, 1065,670);

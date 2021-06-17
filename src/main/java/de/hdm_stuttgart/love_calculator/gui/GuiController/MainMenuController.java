@@ -21,7 +21,9 @@ public class MainMenuController {
     @FXML private Button profileButton;
     @FXML private Button classicButton;
     @FXML private Button advancedButton;
+    @FXML private Button backToMainMenuButton;
     @FXML private Button iconmenubutton;
+    @FXML private Button subMenuClassicButton;
 
     @FXML
     public void startScene() {
@@ -38,14 +40,18 @@ public class MainMenuController {
 
     @FXML
     public void playClassic() {
+
         classicButton.setOnAction(e -> {
             try {
+                //BUG man muss 2x Klicken, das liegt am Try Catch, müssen wir mal schauen morgen
                 //Prevent index bug
                 if(QuestionsController.index > 1) {
                     QuestionsController.index = 0;
                 }
                 ClassicController.startClassicQuestions();
                 QuestionsController.safeClose();
+                Stage stage = (Stage) classicButton.getScene().getWindow();
+                stage.close();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -68,14 +74,19 @@ public class MainMenuController {
     @FXML
     public void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
-        playButton.setOnAction(e -> {
-            try {
-                FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
-                //ClassicController.startClassicQuestions();
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-        });
+        FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
+    }
+
+    @FXML
+    public void backToMainMenuScene() {
+        //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
+        FxmlGuiDriver.sceneSwitcher("/fxml/startScene.fxml", backToMainMenuButton);
+    }
+
+    @FXML
+    public void subMenuClassicScene() {
+        //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
+        FxmlGuiDriver.sceneSwitcher("/fxml/submenuClassicMode.fxml", subMenuClassicButton);
     }
 
     @FXML
