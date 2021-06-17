@@ -52,6 +52,7 @@ public class FxmlGuiDriver extends Application {
         //final Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(root, 1065,670);
+        scene.getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
         window.setTitle("FXML Welcome");
         window.setScene(scene);
         window.show();
