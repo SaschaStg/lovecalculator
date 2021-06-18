@@ -50,6 +50,7 @@
     -fx-font-family: "Poppins";
 }
 
+.btn-small:hover{ -fx-border-color: #2e2c42;     -fx-background-color: #2e2c42;     -fx-color: #ffffff;     -fx-border-width: 3;     -fx-border-radius: 40px;     -fx-font-size: 24px;     -fx-font-family: "Poppins"; }
 
 .nextButton {
     -fx-font-family: "MouseMemoirs-Regular";

@@ -41,6 +41,25 @@ public class MainMenuController {
     @FXML
     public void playClassic() {
 
+        //no using of .setOnAction because it causes the "button only works on second click" bug (at least with our implementation)
+            try {
+                //Prevent index bug
+                if(QuestionsController.index > 1) {
+                    QuestionsController.index = 0;
+                }
+                ClassicController.startClassicQuestions();
+                QuestionsController.safeClose();
+                Stage stage = (Stage) classicButton.getScene().getWindow();
+                stage.close();
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+
+    }
+
+    /*@FXML
+    public void playClassic() {
+
         classicButton.setOnAction(e -> {
             try {
                 //BUG man muss 2x Klicken, das liegt am Try Catch, müssen wir mal schauen morgen
@@ -56,18 +75,17 @@ public class MainMenuController {
                 exception.printStackTrace();
             }
         });
-    }
+    }*/
 
     @FXML
     public void playAdvanced() {
-        advancedButton.setOnAction(e -> {
+        //no using of .setOnAction because it causes the "button only works on second click" bug (at least with our implementation)
             try {
                 AdvancedController.startAdvancedQuestions();
                 QuestionsController.safeClose();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
-        });
     }
 
 
@@ -91,8 +109,6 @@ public class MainMenuController {
 
     @FXML
     public void profileScene() {
-
-
 
         FxmlGuiDriver.sceneSwitcher("/fxml/profileScene.fxml", profileButton);
     }
