@@ -204,6 +204,7 @@ public class QuestionsController {
             } else {
                 //Show results and reset index
                 index = 0;
+                //only controls advanced mode
                 showResults(pane);
             }
         } else {

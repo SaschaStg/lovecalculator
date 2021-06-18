@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.resultPageClassicController">
+   <children>
+      <Label layoutX="285.0" layoutY="72.0" text="Ergebnis" />
+      <Label fx:id="userNamesLabel" layoutX="79.0" layoutY="151.0" text=" Name 1 und Name 2" />
+      <Label fx:id="descriptionLabel" layoutX="100.0" layoutY="192.0" text="Lustiger Text" />
+      <Label fx:id="percentageLabel" layoutX="432.0" layoutY="237.0" text="Prozent" />
+      <Button fx:id="backToMainMenuButton" layoutX="474.0" layoutY="332.0" mnemonicParsing="false" text="zurück zum Start" />
+   </children>
+</AnchorPane>

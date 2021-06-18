@@ -6,14 +6,22 @@ import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ClassicController {
+
+
+   private static Button next = new Button();
+
 
     @FXML
     public static void startClassicQuestions() throws Exception {
@@ -21,7 +29,7 @@ public class ClassicController {
         if (QuestionsController.index < 2) {
             QuestionsController.questionStage.setTitle("Classic Mode");
 
-            Button next = new Button();
+
             next.getStyleClass().add("nextButton");
             next.setText("Weiter");
             next.setTranslateY(300);
@@ -51,7 +59,16 @@ public class ClassicController {
 
         } else {
             QuestionsController.isClassic = false;
-            showResults(QuestionsController.layout);
+            //FxmlGuiDriver.sceneSwitcher("/fxml/resultsPageClassic.fxml", next);
+
+            try {
+                FXMLLoader loader = new FXMLLoader(FxmlGuiDriver.class.getResource("/fxml/resultsPageClassic.fxml"));
+                Scene scene = new Scene(loader.load(), 1065, 670);
+                QuestionsController.questionStage.setScene(scene);
+            }catch (IOException io){
+                io.printStackTrace();
+            }
+            //showResults(QuestionsController.layout);
         }
 
 
@@ -60,7 +77,9 @@ public class ClassicController {
 
     private static void showResults(StackPane pane) {
 
-        Label label;
+        System.out.println("results");
+
+       /* Label label;
         label = new Label();
         label.setText("Du hast es geschafft! Hier deine Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
         label.setTranslateY(-300);
@@ -86,7 +105,7 @@ public class ClassicController {
         QuestionsController.layout.getChildren().addAll(label, schwarm, studiengang, name);
 
         QuestionsController.questionStage.setScene(QuestionsController.scene);
-        QuestionsController.questionStage.show();
+        QuestionsController.questionStage.show();*/
     }
 
 }
