@@ -12,8 +12,8 @@ import javafx.scene.layout.StackPane;
 
 import java.util.Arrays;
 
-public class AdvancedMode extends Scene {
-    private Session session = new Session(false);
+//public class AdvancedMode extends Scene {
+  /*  private Session session = new Session(false);
 
     public AdvancedMode() {
         super(new Group());
@@ -89,7 +89,7 @@ public class AdvancedMode extends Scene {
 
         QuestionsFactory.questionStage.setScene(QuestionsFactory.scene);
         QuestionsFactory.questionStage.show();
-    }
+    }*/
 
 
-}
+//}

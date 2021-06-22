@@ -56,8 +56,8 @@ public class MainMenuController {
     public void playAdvanced() {
         //no using of .setOnAction because it causes the "button only works on second click" bug (at least with our implementation)
             try {
-                AdvancedMode.startAdvancedQuestions();
-                QuestionsFactory.safeClose();
+                //AdvancedMode.startAdvancedQuestions();
+                //QuestionsFactory.safeClose();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }

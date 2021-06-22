@@ -8,6 +8,7 @@ import de.hdm_stuttgart.love_calculator.game.Question;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.WindowEvent;
@@ -27,8 +28,9 @@ public class QuestionsFactory {
 
         //Load question
         Label label = new Label();
+        label.getStyleClass().add("questionLabel");
         label.getStyleClass().add("textOutput");
-        label.setTranslateY(-100);
+        label.setTranslateY(-150);
 
         Question question = Catalog.INSTANCE.getQuestion(session.getCurrentQuestionIndex());
         Answers answers = Catalog.INSTANCE.getAnswers(question);
@@ -83,7 +85,7 @@ public class QuestionsFactory {
     // TODO same as generateCheckboxes
     private static void generateRadiobuttons(Session session, Answers answers, StackPane pane) {
         //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
-        RadioButton[] radioButtons = new RadioButton[answers.getAnswersCount()];
+       /* RadioButton[] radioButtons = new RadioButton[answers.getAnswersCount()];
         ToggleGroup radioGroup = new ToggleGroup();
 
         for (int i = 0; i < radioButtons.length; i++) {
@@ -94,7 +96,7 @@ public class QuestionsFactory {
             System.out.println(button1[i].getText());
             pane.getChildren().addAll(button1[i]);*/
 
-            radioButtons[i] = new RadioButton();
+           /* radioButtons[i] = new RadioButton();
             radioButtons[i].setText(answers.getAnswer(i));
             radioButtons[i].setTranslateY(i * 30);
             radioButtons[i].setToggleGroup(radioGroup);
@@ -103,7 +105,7 @@ public class QuestionsFactory {
 
         }
 
-        radioButtonClone = radioButtons;
+        radioButtonClone = radioButtons;*/
     }
 
     private static void generateCheckboxes(Answers answers, Session session, StackPane pane) {

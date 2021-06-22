@@ -33,10 +33,11 @@ public class FxmlGuiDriver extends Application {
     public void start(Stage primaryStage) throws Exception {
         //Read csv's from questions and answers
         Catalog.INSTANCE.initialize();
+
         window = primaryStage;
 
         //Scanner input = new Scanner(new File("src/main/resources/fxml/mainMenu.fxml"));
-        log.info("Starting Hello JavaFX and Maven demonstration application");
+
         //final String fxmlFile = "src/main/resources/fxml/mainMenu.fxml";
         final FXMLLoader loader = new FXMLLoader();
         final Parent root = FXMLLoader.load(getClass().getResource("/fxml/startScene.fxml"));

@@ -4,7 +4,7 @@
     src: url("../fonts/MouseMemoirs-Regular.ttf");
 }
 
-.label {
+.questionLabel {
     -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
@@ -19,7 +19,7 @@
 }
 
 .split-pane {
-    -fx-background-color: #F0F0F0;;
+    -fx-background-color: #F0F0F0;
 }
 
 .text-p{

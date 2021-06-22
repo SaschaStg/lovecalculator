@@ -22,6 +22,9 @@ public class ClassicMode extends Scene {
         session = new Session(true);
 
         mainPane = new StackPane();
+        mainPane.setMinHeight(670);
+        mainPane.setMinWidth(1065);
+
         parent.getChildren().add(mainPane);
 
         next = new Button();
