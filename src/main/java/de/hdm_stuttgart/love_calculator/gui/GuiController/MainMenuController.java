@@ -1,21 +1,10 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class MainMenuController {
-
     @FXML private Button startButton;
     @FXML private Button playButton;
     @FXML private Button profileButton;
@@ -27,34 +16,20 @@ public class MainMenuController {
 
     @FXML
     public void startScene() {
-        FxmlGuiDriver.sceneSwitcher("/fxml/startScene.fxml", startButton);
-
+        FxmlGuiDriver.setScene("/fxml/startScene.fxml");
     }
 
     @FXML
     public void openIconmenu() throws Exception {
-        FxmlGuiDriver.sceneSwitcher("/fxml/iconMenu.fxml", iconmenubutton);
+        FxmlGuiDriver.setScene("/fxml/iconMenu.fxml");
         IconmenuController.openIconmenu();
-
     }
 
     @FXML
     public void playClassic() {
-
+        FxmlGuiDriver.setTitle("Classic Mode");
         //no using of .setOnAction because it causes the "button only works on second click" bug (at least with our implementation)
-            try {
-                //Prevent index bug
-                if(QuestionsController.index > 1) {
-                    QuestionsController.index = 0;
-                }
-                ClassicController.startClassicQuestions();
-                QuestionsController.safeClose();
-                Stage stage = (Stage) classicButton.getScene().getWindow();
-                stage.close();
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-
+        FxmlGuiDriver.setScene(new ClassicMode());
     }
 
     /*@FXML
@@ -81,36 +56,34 @@ public class MainMenuController {
     public void playAdvanced() {
         //no using of .setOnAction because it causes the "button only works on second click" bug (at least with our implementation)
             try {
-                AdvancedController.startAdvancedQuestions();
-                QuestionsController.safeClose();
+                AdvancedMode.startAdvancedQuestions();
+                QuestionsFactory.safeClose();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
     }
 
-
     @FXML
     public void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
-        FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
+        FxmlGuiDriver.setScene("/fxml/playScene.fxml");
     }
 
     @FXML
     public void backToMainMenuScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
-        FxmlGuiDriver.sceneSwitcher("/fxml/startScene.fxml", backToMainMenuButton);
+        FxmlGuiDriver.setScene("/fxml/startScene.fxml");
     }
 
     @FXML
     public void subMenuClassicScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
-        FxmlGuiDriver.sceneSwitcher("/fxml/submenuClassicMode.fxml", subMenuClassicButton);
+        FxmlGuiDriver.setScene("/fxml/submenuClassicMode.fxml");
     }
 
     @FXML
     public void profileScene() {
-
-        FxmlGuiDriver.sceneSwitcher("/fxml/profileScene.fxml", profileButton);
+        FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
     }
 
 

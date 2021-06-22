@@ -1,34 +1,42 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import javafx.stage.WindowEvent;
 
 import java.util.Arrays;
 
-public class AdvancedController {
+public class AdvancedMode extends Scene {
+    private Session session = new Session(false);
+
+    public AdvancedMode() {
+        super(new Group());
+        Group group = (Group) getParent();
+
+
+    }
 
     @FXML
-    public static void startAdvancedQuestions() throws Exception {
-        QuestionsController.isClassic = false;
-            QuestionsController.questionStage.setTitle("Advanced Mode");
+    public static void startAdvancedQuestions() {
+        QuestionsFactory.isClassic = false;
+            QuestionsFactory.questionStage.setTitle("Advanced Mode");
 
             Button next = new Button();
             next.setText("->");
             next.setTranslateY(300);
             next.setTranslateX(400);
 
-            QuestionsController.loadQuestionAndAnswers(QuestionsController.layout);
+            QuestionsFactory.generateQuestionPane(QuestionsFactory.layout);
 
             //generateCheckboxes(0, layout);
 
-            QuestionsController.layout.getChildren().addAll(QuestionsController.label, next);
+            QuestionsFactory.layout.getChildren().addAll(QuestionsFactory.label, next);
 
 
             //generateCheckboxes(1, layout);
@@ -36,15 +44,15 @@ public class AdvancedController {
 
             next.setOnAction(e -> {
                 try {
-                    QuestionsController.nextButton(QuestionsController.layout);
+                    QuestionsFactory.tryAdvanceTurn(QuestionsFactory.layout);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
             });
 
 
-            QuestionsController.questionStage.setScene(QuestionsController.scene);
-            QuestionsController.questionStage.show();
+            QuestionsFactory.questionStage.setScene(QuestionsFactory.scene);
+            QuestionsFactory.questionStage.show();
 
 
 
@@ -69,7 +77,7 @@ public class AdvancedController {
         studiengang = new Label();
 
         //Check if answers are the same
-        if(QuestionsController.checkEqualAnswers(1)) {
+        if(QuestionsFactory.checkEqualAnswers(1)) {
             studiengang.setText("Studienpartner! Ihr Studiert beide " + Arrays.deepToString(User2.result.get(1)));
         } else {
             studiengang.setText("Hm.. vom Studium passt ihr leider nicht zusammen!");
@@ -77,10 +85,10 @@ public class AdvancedController {
 
         studiengang.setTranslateY(-100);
 
-        QuestionsController.layout.getChildren().addAll(label, schwarm, studiengang);
+        QuestionsFactory.layout.getChildren().addAll(label, schwarm, studiengang);
 
-        QuestionsController.questionStage.setScene(QuestionsController.scene);
-        QuestionsController.questionStage.show();
+        QuestionsFactory.questionStage.setScene(QuestionsFactory.scene);
+        QuestionsFactory.questionStage.show();
     }
 
 

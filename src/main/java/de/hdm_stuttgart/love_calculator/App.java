@@ -1,18 +1,11 @@
 package de.hdm_stuttgart.love_calculator;
 
-import de.hdm_stuttgart.love_calculator.answers.Answer;
-import de.hdm_stuttgart.love_calculator.catalog.Catalog;
-import de.hdm_stuttgart.love_calculator.questions.Question;
-
-import java.util.Arrays;
-import java.util.List;
+import de.hdm_stuttgart.love_calculator.game.Catalog;
 
 public class App {
 
     public static void main(String[] args) {
-
-        Catalog.initQuestions();
-        Catalog.initAnswers();
+        Catalog.INSTANCE.initialize();
 
 /*
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class User2 {
 
-    static final public ArrayList<String[]> result = new ArrayList<>();
 
 
 }

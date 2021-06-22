@@ -19,10 +19,8 @@ import java.io.IOException;
  *
  */
 public class FxmlGuiDriver extends Application {
-
-
 	public static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
-	public Stage window;
+    private static Stage window;
 
     /**
      * @param args unused
@@ -31,12 +29,10 @@ public class FxmlGuiDriver extends Application {
         launch(args);
     }
 
+    @FXML
     public void start(Stage primaryStage) throws Exception {
-
         //Read csv's from questions and answers
-        Catalog.initQuestions();
-        Catalog.initAnswers();
-
+        Catalog.INSTANCE.initialize();
         window = primaryStage;
 
         //Scanner input = new Scanner(new File("src/main/resources/fxml/mainMenu.fxml"));
@@ -48,23 +44,26 @@ public class FxmlGuiDriver extends Application {
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(root, 1065,670);
         scene.getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
-        window.setTitle("FXML Welcome");
-        window.setScene(scene);
-        window.show();
+        primaryStage.setTitle("FXML Welcome");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
+    public static void setTitle(String title) {
+        window.setTitle(title);
+    }
 
-    @FXML
-    public static void sceneSwitcher(String path, Button button) {
+    public static void setScene(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(FxmlGuiDriver.class.getResource(path));
-            Stage stage = (Stage) button.getScene().getWindow();
-            Scene scene = new Scene(loader.load(), 1065, 670);
-            stage.setScene(scene);
+            FXMLLoader loader = new FXMLLoader(FxmlGuiDriver.class.getResource(fxmlPath));
+            setScene(new Scene(loader.load(), 1065, 670));
         }catch (IOException io){
             io.printStackTrace();
         }
     }
 
+    public static void setScene(Scene scene) {
+        window.setScene(scene);
+    }
 
 }
