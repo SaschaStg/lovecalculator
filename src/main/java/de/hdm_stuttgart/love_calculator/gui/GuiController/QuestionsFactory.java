@@ -5,8 +5,6 @@ import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -16,29 +14,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
-public class QuestionsController {
+public class QuestionsFactory {
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
-    public static Button button;
-
-    public static Label label;
-    public static Stage questionStage = new Stage();
-
-    public static CheckBox[] checkBoxesClone;
-    public static RadioButton[] radioButtonClone;
-
-    public static TextField textfield = new TextField();
-
-    public static int index = 0;
-    public static boolean isSelected = false;
-    public static StackPane layout = new StackPane();
-    public static Scene scene = new Scene(layout, 1065, 670);
-    public static boolean isUser1 = true;
-    public static boolean isClassic = true;
-
-
-    public static void loadQuestionAndAnswers(StackPane pane) {
-
-        scene.getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+    public static void generateQuestionPane(Session session, StackPane pane) {
+        pane.getParent().getStylesheets()
+                .add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
 
         //Load question
         label = new Label();
@@ -213,144 +194,16 @@ public class QuestionsController {
         }
     }
 
-
-    private static void getTextFieldInput() {
-        if (!textfield.getText().isEmpty()) {
-            String[] userInput = new String[1];
-            userInput[0] = textfield.getText();
-            isSelected = true;
-
-            if (isUser1) {
-                User1.result.add(userInput);
-            } else {
-                User2.result.add(userInput);
-            }
-        }
-    }
-
-    private static void getCheckboxInput() {
-
-        int sumSelectedFields = 0;
-
-        for (int i = 0; i < checkBoxesClone.length; i++) {
-
-            if (checkBoxesClone[i].isSelected()) {
-
-                sumSelectedFields++;
-
-            }
-
-        }
-
-        String[] tickedCheckboxes = new String[sumSelectedFields];
-        int indexTickedCheckbox = 0;
-
-        for (int i = 0; i < checkBoxesClone.length; i++) {
-
-            if (checkBoxesClone[i].isSelected()) {
-                tickedCheckboxes[indexTickedCheckbox] = String.valueOf(checkBoxesClone[i].getText());
-                indexTickedCheckbox++;
-            }
-        }
-
-        //CHECK IF INPUT IS EMPTY
-        if (tickedCheckboxes.length > 0) {
-            isSelected = true;
-
-            if (isUser1) {
-                User1.result.add(tickedCheckboxes);
-            } else {
-                User2.result.add(tickedCheckboxes);
-            }
-        }
-    }
-
-
-    private static void getRadioButtonInput() {
-
-        final String[] tickedRadioButton = new String[1];
-
-        for (int i = 0; i < radioButtonClone.length; i++) {
-
-            if (radioButtonClone[i].isSelected()) {
-
-                tickedRadioButton[0] = String.valueOf(radioButtonClone[i].getText());
-                isSelected = true;
-
-                if (isUser1) {
-                    User1.result.add(tickedRadioButton);
-                } else {
-                    User2.result.add(tickedRadioButton);
-                }
-
-                break;
-            }
-        }
-
-
-    }
-
-    private static void showResults(StackPane pane) {
-
-        label = new Label();
-        label.setText("Du hast es geschafft! Hier deine Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
-        label.setTranslateY(-300);
-
-        Label schwarm;
-        schwarm = new Label();
-        schwarm.setText("Und hier die Ergebnisse deines Schwarms: " + Arrays.deepToString(User2.result.toArray()));
-        schwarm.setTranslateY(-200);
-
-        System.out.println("Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
-
-        Label studiengang;
-        studiengang = new Label();
-
-        //Check if answers are the same
-        if (checkEqualAnswers(1)) {
-            studiengang.setText("Studienpartner! Ihr Studiert beide " + Arrays.deepToString(User2.result.get(1)));
-        } else {
-            studiengang.setText("Hm.. vom Studium passt ihr leider nicht zusammen!");
-        }
-
-        studiengang.setTranslateY(-100);
-
-        layout.getChildren().addAll(label, schwarm, studiengang);
-
-        questionStage.setScene(scene);
-        questionStage.show();
-    }
-
-
-    private static void showAlertBox(String title, String text) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(text);
-        alert.showAndWait();
-    }
-
-    public static boolean checkEqualAnswers(int index) {
-        if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
-            FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
-            FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-            FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-            return true;
-        }
-        FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
-        FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-        FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-        return false;
-    }
-
-
-    public static void safeClose() {
-        //Check if user closes manually, clear layout to prevent duplicates
-        QuestionsController.questionStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                QuestionsController.layout.getChildren().clear();
-                FxmlGuiDriver.log.info("Window closed by user, layout children cleared");
-            }
-        });
-    }
+    // public static boolean checkEqualAnswers(int index) {
+    //     if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
+    //         FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
+    //         FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+    //         FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
+    //         return true;
+    //     }
+    //     FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
+    //     FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+    //     FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
+    //     return false;
+    // }
 }

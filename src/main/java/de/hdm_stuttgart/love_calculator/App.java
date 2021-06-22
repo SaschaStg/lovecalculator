@@ -14,6 +14,7 @@ public class App {
         Catalog.initQuestions();
         Catalog.initAnswers();
 
+/*
 
 
         //System.out.println(Catalog.getQuestionList().get(ques));
@@ -25,6 +26,7 @@ public class App {
             Catalog.getAnswerList().get(i).getAnswers();
 
             }
+*/
 
 
 
