@@ -11,8 +11,9 @@ import javafx.scene.layout.StackPane;
 import java.util.Optional;
 
 public class ClassicMode extends Scene {
-    private final Button next;
-
+    //Button
+    private Button next;
+    //empty session object
     private final Session session;
     private final StackPane mainPane;
 
@@ -24,28 +25,29 @@ public class ClassicMode extends Scene {
         mainPane = new StackPane();
         mainPane.setMinHeight(670);
         mainPane.setMinWidth(1065);
-
+        //[parent[ mainPane[ Buttons... ] ] ]
         parent.getChildren().add(mainPane);
 
-        next = new Button();
-        next.getStyleClass().add("nextButton");
-        next.setText("Weiter");
-        next.setTranslateY(300);
-        next.setTranslateX(400);
-        next.setOnAction(e -> {
-            Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
-            if (result.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Fehler!");
-                alert.setHeaderText(null);
-                alert.setContentText("Bitte wähle eine Antwort aus!");
-                alert.showAndWait();
-            } else if (result.get()) {
-                setupPane();
-            } else {
-                showResults();
-            }
-        });
+            next = new Button();
+            next.getStyleClass().add("nextButton");
+            next.setText("Weiter");
+            next.setTranslateY(300);
+            next.setTranslateX(400);
+            next.setOnAction(e -> {
+                //
+                Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
+                if (result.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Fehler!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Bitte wähle eine Antwort aus!");
+                    alert.showAndWait();
+                } else if (result.get()) {
+                    setupPane();
+                } else {
+                    showResults();
+                }
+            });
 
         setupPane();
     }
@@ -60,5 +62,6 @@ public class ClassicMode extends Scene {
 
     private void showResults() {
         FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml");
+        results.showName(session);
     }
 }

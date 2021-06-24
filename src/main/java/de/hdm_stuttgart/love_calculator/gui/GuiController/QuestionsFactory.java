@@ -32,23 +32,29 @@ public class QuestionsFactory {
         label.getStyleClass().add("textOutput");
         label.setTranslateY(-150);
 
+        //gets question q from map and the answers from the current index via getQuestions / getAnswers method
         Question question = Catalog.INSTANCE.getQuestion(session.getCurrentQuestionIndex());
         Answers answers = Catalog.INSTANCE.getAnswers(question);
 
+        //returns true if its user1's turn
         if (session.isUser1Turn()) {
+            //sets question text for user1, otherwise set question text for user2
             label.setText(question.questionContent);
         } else {
             label.setText(question.questionContentUser2);
         }
 
-        //check type
+        //add label to pane
+        pane.getChildren().add(label);
+
+        //check type of question, then display required inputs
         InputType input = Enum.valueOf(InputType.class, answers.inputType);
         switch (input) {
             case CHECKBOX:
                 generateCheckboxes(answers, session, pane);
                 break;
             case RADIOBUTTON:
-                generateRadiobuttons(session, answers, pane);
+                generateRadiobuttons(answers, session, pane);
                 break;
             case TEXTFIELD:
                 generateTextField(session, pane);
@@ -60,7 +66,6 @@ public class QuestionsFactory {
                 break;
         }
 
-        pane.getChildren().add(label);
         LOGGER.info("Input-type for question " + session.getCurrentQuestionIndex() + " is " + input);
     }
 
@@ -109,18 +114,15 @@ public class QuestionsFactory {
     }
 
     private static void generateCheckboxes(Answers answers, Session session, StackPane pane) {
-        //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
-        LOGGER.debug("Generating Answers: " + answers);
-        for (int i = 0; i < answers.getAnswersCount(); i++) {
-            /*button1[i] = new Button();
-            button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
-            button1[i].setTranslateY(i*30);
 
-            System.out.println(button1[i].getText());
-            pane.getChildren().addAll(button1[i]);*/
+        for (int i = 0; i < answers.getAnswersCount(); i++) {
+
+            LOGGER.debug("Generating Answers: " + answers.getAnswer(i));
+
             CheckBox checkBox = new CheckBox();
             checkBox.setText(answers.getAnswer(i));
             checkBox.setTranslateY(i * 30);
+
             checkBox.selectedProperty().addListener((observableProperty, oldValue, newValue) -> {
                 if (newValue) {
                     session.addAnswer(checkBox.getText());
