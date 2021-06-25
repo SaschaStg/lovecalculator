@@ -16,11 +16,14 @@ public class ClassicMode extends Scene {
     private Button back;
     //empty session object
     private final Session session;
+    //sets order on buttons for example
     private final StackPane mainPane;
 
     public ClassicMode() {
         super(new Group());
         Group parent = (Group)getRoot();
+
+        //overloaded constructor with classic mode = true and user1 = true
         session = new Session(true);
 
         mainPane = new StackPane();
@@ -29,32 +32,32 @@ public class ClassicMode extends Scene {
         //[parent[ mainPane[ Buttons... ] ] ]
         parent.getChildren().add(mainPane);
 
-            back = new Button();
-            back.getStyleClass().add("nextButton");
-            back.setText("Zurück");
-            back.setTranslateY(300);
-            back.setTranslateX(-400);
+        back = new Button();
+        back.getStyleClass().add("nextButton");
+        back.setText("Zurück");
+        back.setTranslateY(300);
+        back.setTranslateX(-400);
 
-            next = new Button();
-            next.getStyleClass().add("nextButton");
-            next.setText("Weiter");
-            next.setTranslateY(300);
-            next.setTranslateX(400);
-            next.setOnAction(e -> {
-                //
-                Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
-                if (result.isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Fehler!");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Bitte wähle eine Antwort aus!");
-                    alert.showAndWait();
-                } else if (result.get()) {
-                    setupPane();
-                } else {
-                    showResults();
-                }
-            });
+        next = new Button();
+        next.getStyleClass().add("nextButton");
+        next.setText("Weiter");
+        next.setTranslateY(300);
+        next.setTranslateX(400);
+        next.setOnAction(e -> {
+            //
+            Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
+            if (result.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Fehler!");
+                alert.setHeaderText(null);
+                alert.setContentText("Bitte wähle eine Antwort aus!");
+                alert.showAndWait();
+            } else if (result.get()) {
+                setupPane();
+            } else {
+                showResults();
+            }
+        });
 
 
 

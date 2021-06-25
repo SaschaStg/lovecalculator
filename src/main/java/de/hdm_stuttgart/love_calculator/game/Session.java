@@ -11,22 +11,35 @@ public class Session {
     private boolean isUser1;
     private static int index;
 
-    public Session(boolean classic) {
-        this(true, classic);
-    }
-
+    //toggles user1 and classic mode
     public Session(boolean user1Starts, boolean classicMode) {
         isUser1 = user1Starts;
         this.classicMode = classicMode;
 
+        //creates a list inside of a list (the (multiple) answer options, for every question, are
+        //stored in an arraylists "answersToQuestion1") and this arraylist is stored in "everyAnswerFromUser1"
+        //creates as much empty array lists as there are questions
         for (int i = 0; i < Catalog.INSTANCE.getQuestionsCount(); i++) {
             answersUser1.add(new ArrayList<>());
             answersUser2.add(new ArrayList<>());
         }
     }
 
+    //overloads constructor and sets user1 always true
+    public Session(boolean classic) {
+        this(true, classic);
+    }
+
+    //is classic mode active? return state
     public boolean isClassicMode() {
         return classicMode;
+    }
+
+    public List<String> getUserAnswer(boolean user1, int questionIndex){
+        if(user1){
+            return answersUser1.get(questionIndex);
+        }
+        return answersUser2.get(questionIndex);
     }
 
     public boolean hasAnswers() {
@@ -37,6 +50,7 @@ public class Session {
         }
     }
 
+    //returns whether its user 1s turn
     public boolean isUser1Turn() {
         return isUser1;
     }
@@ -46,29 +60,46 @@ public class Session {
     }
 
     /**
+     * it's the "flamme" (user2) turn, same question for "flamme" is about to be displayed
+     * otherwise next question gets displayed (a whole new question)
      * @return if game should end / results should be displayed (true if game should continue)
      */
     public boolean nextTurn() {
+        //switches users
         nextUser();
 
-        if (isUser1) return nextQuestion();
+        //if it's user1's turn, a whole new question is about to displayed
+        if (isUser1) {
+            return nextQuestion();
+        }
 
         return true;
     }
 
+    //handles whether a next question should be displayed or if it's the end of the game
     private boolean nextQuestion() {
-        index++;
 
-        boolean result = (classicMode && index >= 2) || index < Catalog.INSTANCE.getQuestionsCount();
-        if (!result) index = 0;
+        //question index is incremented by one
+        index++;
+        //first expression handles end of classic mode, second handles end of advanced mode (index is smaller than QuestionCount until end of questions is reached)
+        //question 1 -> index 0
+        //question 2 -> index 1 -> stop here for classic question results
+        boolean result = (classicMode && index < 2) || (!classicMode && index < Catalog.INSTANCE.getQuestionsCount());
+
+        //in case user wants to play another game, index is set to zero
+        if (!result){
+            index = 0;
+        }
 
         return result;
     }
 
+    //switches users
     private void nextUser() {
         isUser1 = !isUser1;
     }
 
+    //fills the empty arraylist, created in Session constructor
     public void addAnswer(String answer) {
         if (isUser1) {
             answersUser1.get(index).add(answer);
@@ -77,6 +108,7 @@ public class Session {
         }
     }
 
+    //in case user un ticks answer option
     public void removeAnswer(String answer) {
         if (isUser1) {
             answersUser1.get(index).remove(answer);
@@ -85,6 +117,7 @@ public class Session {
         }
     }
 
+    //clears answers
     public void clearAnswers() {
         if (isUser1) {
             answersUser1.get(index).clear();

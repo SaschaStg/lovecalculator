@@ -20,13 +20,15 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class QuestionsFactory {
+
+    //create logger for every class
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     public static void generateQuestionPane(Session session, StackPane pane) {
-        pane.getParent().getStylesheets()
-                .add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+        //style sheet is added to pane
+        pane.getParent().getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
 
-        //Load question
+        //Load question label
         Label label = new Label();
         label.getStyleClass().add("questionLabel");
         label.getStyleClass().add("textOutput");
@@ -62,7 +64,7 @@ public class QuestionsFactory {
             case SLIDER:
                 break;
             default:
-                FxmlGuiDriver.log.error("Error: Inputtype is invalid! (" + input + ")");
+                LOGGER.error("Error: Input type is invalid! (" + input + ")");
                 break;
         }
 
@@ -88,29 +90,26 @@ public class QuestionsFactory {
     }
 
     // TODO same as generateCheckboxes
-    private static void generateRadiobuttons(Session session, Answers answers, StackPane pane) {
-        //Button[] button1 = new Button[Catalog.getAnswerList().get(index).answerOptions.size()];
-       /* RadioButton[] radioButtons = new RadioButton[answers.getAnswersCount()];
+    private static void generateRadiobuttons(Answers answers, Session session, StackPane pane) {
+
         ToggleGroup radioGroup = new ToggleGroup();
 
-        for (int i = 0; i < radioButtons.length; i++) {
-            /*button1[i] = new Button();
-            button1[i].setText(Catalog.getAnswerList().get(index).answerOptions.get(i));
-            button1[i].setTranslateY(i*30);
+        for (int i = 0; i < answers.getAnswersCount(); i++) {
 
-            System.out.println(button1[i].getText());
-            pane.getChildren().addAll(button1[i]);*/
+            LOGGER.debug("Generating Answers: " + answers.getAnswer(i));
 
-           /* radioButtons[i] = new RadioButton();
-            radioButtons[i].setText(answers.getAnswer(i));
-            radioButtons[i].setTranslateY(i * 30);
-            radioButtons[i].setToggleGroup(radioGroup);
-            //System.out.println(radioButtons[i].getText());
-            pane.getChildren().addAll(radioButtons[i]);
+            RadioButton radioButton = new RadioButton();
+            radioButton.setText(answers.getAnswer(i));
+            radioButton.setTranslateY(i * 30);
 
+            radioButton.setToggleGroup(radioGroup);
+            radioButton.selectedProperty().addListener((observableProperty, oldValue, newValue) -> {
+                session.removeAnswer(radioButton.getText());
+                session.addAnswer(radioButton.getText());
+                LOGGER.info("Selected radiobutton: " + radioButton.getText());
+            });
+            pane.getChildren().addAll(radioButton);
         }
-
-        radioButtonClone = radioButtons;*/
     }
 
     private static void generateCheckboxes(Answers answers, Session session, StackPane pane) {
