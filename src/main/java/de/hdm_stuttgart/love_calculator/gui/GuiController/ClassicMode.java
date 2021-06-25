@@ -13,6 +13,7 @@ import java.util.Optional;
 public class ClassicMode extends Scene {
     //Button
     private Button next;
+    private Button back;
     //empty session object
     private final Session session;
     private final StackPane mainPane;
@@ -27,6 +28,12 @@ public class ClassicMode extends Scene {
         mainPane.setMinWidth(1065);
         //[parent[ mainPane[ Buttons... ] ] ]
         parent.getChildren().add(mainPane);
+
+            back = new Button();
+            back.getStyleClass().add("nextButton");
+            back.setText("Zurück");
+            back.setTranslateY(300);
+            back.setTranslateX(-400);
 
             next = new Button();
             next.getStyleClass().add("nextButton");
@@ -49,6 +56,9 @@ public class ClassicMode extends Scene {
                 }
             });
 
+
+
+
         setupPane();
     }
 
@@ -57,11 +67,10 @@ public class ClassicMode extends Scene {
 
         QuestionsFactory.generateQuestionPane(session, mainPane);
 
-        mainPane.getChildren().add(next);
+        mainPane.getChildren().addAll(next, back);
     }
 
     private void showResults() {
-        FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml");
-        results.showName(session);
+        FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml", session);
     }
 }

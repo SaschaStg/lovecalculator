@@ -19,7 +19,7 @@ public class NameCalculation {
 
 
 
-    public static double calculate(String nameUser1, String nameUser2){
+    public static int calculate(String nameUser1, String nameUser2){
 
 
         nameUser1 = nameUser1.toLowerCase();
@@ -57,7 +57,7 @@ public class NameCalculation {
             sumOfAllDigits = sumLove - (sumOfAllDigits - sumLove);
         }
 
-        return (double)(sumOfAllDigits * 100 /sumLove);
+        return (sumOfAllDigits * 100 /sumLove);
 
 
 

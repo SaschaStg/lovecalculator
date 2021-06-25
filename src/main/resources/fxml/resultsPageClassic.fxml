@@ -4,12 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.resultPageClassicController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.resultPageClassicController">
    <children>
-      <Label layoutX="285.0" layoutY="72.0" text="Ergebnis" />
-      <Label fx:id="userNamesLabel" layoutX="79.0" layoutY="151.0" text=" Name 1 und Name 2" />
-      <Label fx:id="descriptionLabel" layoutX="100.0" layoutY="192.0" text="Lustiger Text" />
-      <Label fx:id="percentageLabel" layoutX="432.0" layoutY="237.0" text="Prozent" />
-      <Button fx:id="backToMainMenuButton" layoutX="474.0" layoutY="332.0" mnemonicParsing="false" text="zurück zum Start" />
+      <Label layoutX="514.0" layoutY="68.0" text="Ergebnis" />
+      <Label fx:id="userNamesLabel" layoutX="330.0" layoutY="184.0" text=" Name 1 und Name 2" />
+      <Label fx:id="descriptionLabel" layoutX="348.0" layoutY="257.0" text="Lustiger Text" />
+      <Label fx:id="percentageLabel" layoutX="832.0" layoutY="226.0" text="Prozent" />
+      <Button fx:id="backToMainMenuButton" layoutX="848.0" layoutY="604.0" mnemonicParsing="false" onAction="#backToMainMenu" text="zurück zum Start" />
+      <Label fx:id="courseLabel" layoutX="331.0" layoutY="218.0" text="Studiengang 1 und 2" />
    </children>
 </AnchorPane>

@@ -25,6 +25,7 @@ public class Catalog {
 
     public Question getQuestion(int index) {
         return questions.keySet().stream().filter(q -> q.index == index).findFirst().get();
+        //test = (Question q) => { return q.index == index; }
     }
 
     public Answers getAnswers(Question question) {
