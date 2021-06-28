@@ -11,21 +11,32 @@ import javafx.scene.layout.StackPane;
 import java.util.Optional;
 
 public class ClassicMode extends Scene {
-    private final Button next;
-
+    //Button
+    private Button next;
+    private Button back;
+    //empty session object
     private final Session session;
+    //sets order on buttons for example
     private final StackPane mainPane;
 
     public ClassicMode() {
         super(new Group());
         Group parent = (Group)getRoot();
+
+        //overloaded constructor with classic mode = true and user1 = true
         session = new Session(true);
 
         mainPane = new StackPane();
         mainPane.setMinHeight(670);
         mainPane.setMinWidth(1065);
-
+        //[parent[ mainPane[ Buttons... ] ] ]
         parent.getChildren().add(mainPane);
+
+        back = new Button();
+        back.getStyleClass().add("nextButton");
+        back.setText("Zurück");
+        back.setTranslateY(300);
+        back.setTranslateX(-400);
 
         next = new Button();
         next.getStyleClass().add("nextButton");
@@ -33,6 +44,7 @@ public class ClassicMode extends Scene {
         next.setTranslateY(300);
         next.setTranslateX(400);
         next.setOnAction(e -> {
+            //
             Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
             if (result.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -47,6 +59,9 @@ public class ClassicMode extends Scene {
             }
         });
 
+
+
+
         setupPane();
     }
 
@@ -55,10 +70,10 @@ public class ClassicMode extends Scene {
 
         QuestionsFactory.generateQuestionPane(session, mainPane);
 
-        mainPane.getChildren().add(next);
+        mainPane.getChildren().addAll(next, back);
     }
 
     private void showResults() {
-        FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml");
+        FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml", session);
     }
 }

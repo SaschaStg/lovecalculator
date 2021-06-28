@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.love_calculator.gui;
 
 import de.hdm_stuttgart.love_calculator.game.Catalog;
+import de.hdm_stuttgart.love_calculator.gui.GuiController.resultPageClassicController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,17 +55,31 @@ public class FxmlGuiDriver extends Application {
         window.setTitle(title);
     }
 
-    public static void setScene(String fxmlPath) {
+    public static void setScene(String fxmlPath, Object argument) {
         try {
             FXMLLoader loader = new FXMLLoader(FxmlGuiDriver.class.getResource(fxmlPath));
-            setScene(new Scene(loader.load(), 1065, 670));
+            Parent p = loader.load();
+            Object controller = loader.getController();
+            if(controller instanceof Navigatable) {
+                ((Navigatable)controller).onShow(argument);
+            }
+            setScene(new Scene(p, 1065, 670));
         }catch (IOException io){
             io.printStackTrace();
         }
     }
 
+    public static void setScene(String fxmlPath) {
+        setScene(fxmlPath, null);
+    }
+
     public static void setScene(Scene scene) {
         window.setScene(scene);
+    }
+
+    public static void setScene(Scene scene, Object argument) {
+        window.setScene(scene);
+
     }
 
 }
