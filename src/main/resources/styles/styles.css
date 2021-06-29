@@ -71,7 +71,10 @@
     -fx-background-repeat: no-repeat;
 }
 
+.progress-bar {
+    -fx-accent: #e2234c;
+}
 
-.headerPane{
-    -fx-background-color: #eeeeee;
+.progress-bar > .bar, .progress-bar > .track {
+    -fx-background-insets: 0;
 }
