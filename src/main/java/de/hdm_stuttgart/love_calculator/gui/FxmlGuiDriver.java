@@ -36,7 +36,7 @@ public class FxmlGuiDriver extends Application {
         Catalog.INSTANCE.initialize();
 
         window = primaryStage;
-
+        window.setResizable(false);
         //Scanner input = new Scanner(new File("src/main/resources/fxml/mainMenu.fxml"));
 
         //final String fxmlFile = "src/main/resources/fxml/mainMenu.fxml";
