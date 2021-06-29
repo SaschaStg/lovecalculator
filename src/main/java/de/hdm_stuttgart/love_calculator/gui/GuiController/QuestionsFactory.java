@@ -7,6 +7,7 @@ import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.game.Question;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -28,6 +29,8 @@ public class QuestionsFactory {
         //style sheet is added to pane
         pane.getParent().getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
 
+        generateProgressHeader(session,pane);
+
         //Load question label
         Label label = new Label();
         label.getStyleClass().add("questionLabel");
@@ -47,7 +50,7 @@ public class QuestionsFactory {
         }
 
         //add label to pane
-        pane.getChildren().add(label);
+        pane.getChildren().addAll(label);
 
         //check type of question, then display required inputs
         InputType input = Enum.valueOf(InputType.class, answers.inputType);
@@ -151,6 +154,43 @@ public class QuestionsFactory {
             return Optional.empty();
         }
     }
+
+    public static void generateProgressHeader(Session session, StackPane pane){
+
+        ImageView nameActive = new ImageView();
+
+
+        switch (session.getCurrentIndex()) {
+
+            case 0:
+                if(session.isClassicMode()){
+                    setImage(nameActive, "/images/classic-name-active.jpg");
+                }else{
+                    setImage(nameActive, "/images/name-active.jpg");
+                }
+                break;
+            case 1:
+                if(session.isClassicMode()){
+                    setImage(nameActive, "/images/classic-studium-active.jpg");
+                }else{
+                    setImage(nameActive, "/images/studium-active.jpg");
+                }
+                break;
+            default:
+                LOGGER.error("Index out of bonds exception aka theres no image dumb ass");
+        }
+
+        nameActive.setFitWidth(1065);
+        nameActive.setFitHeight(150);
+        nameActive.setTranslateY(-263);
+        pane.getChildren().add(nameActive);
+
+    }
+
+    private static void setImage(ImageView view, String path) {
+        view.setImage(new Image(FxmlGuiDriver.class.getResource(path).toExternalForm()));
+    }
+
 
     // public static boolean checkEqualAnswers(int index) {
     //     if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {

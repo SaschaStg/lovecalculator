@@ -20,6 +20,8 @@ public class ClassicMode extends Scene {
     private final StackPane mainPane;
 
     public ClassicMode() {
+
+        //what is that
         super(new Group());
         Group parent = (Group)getRoot();
 
@@ -58,9 +60,6 @@ public class ClassicMode extends Scene {
                 showResults();
             }
         });
-
-
-
 
         setupPane();
     }

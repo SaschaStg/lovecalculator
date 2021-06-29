@@ -70,3 +70,8 @@
     -fx-background-size: 32 32;
     -fx-background-repeat: no-repeat;
 }
+
+
+.headerPane{
+    -fx-background-color: #eeeeee;
+}
