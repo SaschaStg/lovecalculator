@@ -40,6 +40,11 @@ public class ClassicMode extends Scene {
         back.setTranslateY(300);
         back.setTranslateX(-400);
 
+        back.setOnAction(e -> {
+            session.backQuestion();
+            setupPane();
+                });
+
         next = new Button();
         next.getStyleClass().add("nextButton");
         next.setText("Weiter");

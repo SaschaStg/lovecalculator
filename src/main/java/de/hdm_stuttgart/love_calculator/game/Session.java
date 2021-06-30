@@ -1,5 +1,7 @@
 package de.hdm_stuttgart.love_calculator.game;
 
+import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +76,45 @@ public class Session {
         }
 
         return true;
+    }
+
+    public boolean backQuestion() {
+        //When its not the first question and user1
+        if(index != 0 && isUser1Turn()) {
+            if(answersUser1.get(index) != null) {
+                System.out.println(answersUser1.get(index));
+                answersUser1.remove(index);
+                System.out.println(answersUser1.get(index));
+            }
+            index --;
+            isUser1 = false;
+            return true;
+        }
+        //When its the first question and user2
+        else if(index == 0 && !isUser1Turn()) {
+            if(answersUser1.get(index) != null) {
+                System.out.println(answersUser2.get(index));
+                answersUser2.remove(index);
+                System.out.println(answersUser2.get(index));
+            }
+            isUser1 = true;
+            return true;
+        }
+        //When its not the first question and user2
+        else if(index != 0 && !isUser1Turn()) {
+            if(answersUser1.get(index) != null) {
+                System.out.println(answersUser2.get(index));
+                answersUser2.remove(index);
+                System.out.println(answersUser2.get(index));
+            }
+            index --;
+            isUser1 = true;
+            return true;
+        }
+        //When its the first question and user1
+        answersUser1.remove(index);
+        FxmlGuiDriver.setScene("/fxml/startScene.fxml");
+        return false;
     }
 
     //handles whether a next question should be displayed or if it's the end of the game
