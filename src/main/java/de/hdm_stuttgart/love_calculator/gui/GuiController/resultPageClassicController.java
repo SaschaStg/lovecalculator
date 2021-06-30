@@ -40,7 +40,7 @@ public class resultPageClassicController implements Navigatable {
             this.session = (Session) argument;
             userNamesLabel.setText(session.getUserAnswer(true, 0).get(0) + " und " + session.getUserAnswer(false, 0).get(0));
             descriptionLabel.setText(generateDescription());
-            percentageLabel.setText(String.valueOf(NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0)) + " %"));
+            percentageLabel.setText(String.valueOf(NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0)) + "%"));
             courseLabel.setText("Du Studierst " + session.getUserAnswer(true, 1).get(0) + " und dein Schwarm " +  session.getUserAnswer(false, 1).get(0));
         }
     }
