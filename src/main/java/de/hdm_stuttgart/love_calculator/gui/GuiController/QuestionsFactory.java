@@ -104,6 +104,14 @@ public class QuestionsFactory {
     // TODO same as generateCheckboxes
     private static void generateRadiobuttons(Answers answers, Session session, StackPane pane) {
 
+        FlowPane flowpane = new FlowPane();
+        flowpane.setMaxWidth(900);
+        flowpane.setMaxHeight(500);
+        flowpane.setTranslateY(200);
+        flowpane.setHgap(20);
+        flowpane.setVgap(20);
+        pane.getChildren().add(flowpane);
+
         ToggleGroup radioGroup = new ToggleGroup();
 
         for (int i = 0; i < answers.getAnswersCount(); i++) {
@@ -119,7 +127,7 @@ public class QuestionsFactory {
                 session.addAnswer(radioButton.getText());
                 LOGGER.info("Selected radiobutton: " + radioButton.getText());
             });
-            pane.getChildren().addAll(radioButton);
+            flowpane.getChildren().addAll(radioButton);
         }
     }
 
@@ -174,19 +182,26 @@ public class QuestionsFactory {
                 if(session.isClassicMode()){
                     setProgress(nameActive, "/images/classic-name-active.png", progressBar, 0.4, session);
                 }else{
-                    setProgress(nameActive, "/images/name-active.jpg", progressBar, 0.1, session);
+                    setProgress(nameActive, "/images/advanced-name-active.png", progressBar, 0.1, session);
                 }
-                progressBar.setProgress(0.1);
                 break;
+
             case 1:
                 if(session.isClassicMode()){
                     setProgress(nameActive, "/images/classic-studium-active.png", progressBar, 0.8, session);
                 }else{
-                    setProgress(nameActive, "/images/studium-active.jpg", progressBar, 0.2, session);
-                };
-                break;
+                    setProgress(nameActive, "/images/advanced-studium-active.png", progressBar, 0.2, session); } break;
+
+            case 2: setProgress(nameActive, "/images/advanced-sternzeichen-active.png", progressBar, 0.3, session); break;
+            case 3: setProgress(nameActive, "/images/advanced-party-active.png", progressBar, 0.4, session); break;
+            case 4: setProgress(nameActive, "/images/advanced-zukunft-active.png", progressBar, 0.5, session); break;
+            case 5: setProgress(nameActive, "/images/advanced-instagram-active.png", progressBar, 0.6, session); break;
+            case 6: setProgress(nameActive, "//images/advanced-frage1-active.png", progressBar, 0.7, session); break;
+            case 7: setProgress(nameActive, "/images/advanced-frage2-active.png", progressBar, 0.8, session); break;
+            case 8: setProgress(nameActive, "/images/advanced-frage3-active.png", progressBar, 0.9, session); break;
+
             default:
-                LOGGER.error("Index out of bonds exception aka theres no image dumb ass");
+                LOGGER.error("Index out of bonds exception aka theres no image");
         }
 
         nameActive.setFitWidth(1065);
@@ -221,17 +236,3 @@ public class QuestionsFactory {
         }
     }
     }
-
-
-    // public static boolean checkEqualAnswers(int index) {
-    //     if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
-    //         FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
-    //         FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-    //         FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-    //         return true;
-    //     }
-    //     FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
-    //     FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-    //     FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-    //     return false;
-    // }

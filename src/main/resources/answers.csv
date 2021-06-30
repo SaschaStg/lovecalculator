@@ -1,3 +1,6 @@
 textfield;name
 radiobutton;Medieninformatik;Mobile Medien;Audiovisuelle Medien;Online Medien Management;Jura;Architektur;Medizin
-checkbox;test2;test1;dm;fb;xm;sad
+textfield;datum
+radiobutton;0;1;2;3;4;5;mehr
+radiobutton;bei mir läufts!;geht so;sehr;frag nicht
+textfield;insta
