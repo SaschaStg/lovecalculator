@@ -1,6 +1,8 @@
 /* Application wide styles */
 
+
 @font-face {
+    font-family: "Mouse Memoirs";
     src: url("../fonts/MouseMemoirs-Regular.ttf");
 }
 
@@ -12,10 +14,14 @@
 }
 
 .button {
-    -fx-text-fill: #3C3957;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-weight: bold;
     -fx-background-color: none;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-scale-z: 1.05;
 }
 
 .split-pane {
@@ -50,18 +56,32 @@
     -fx-font-family: "Poppins";
 }
 
-.btn-small:hover{ -fx-border-color: #2e2c42;     -fx-background-color: #2e2c42;     -fx-color: #ffffff;     -fx-border-width: 3;     -fx-border-radius: 40px;     -fx-font-size: 24px;     -fx-font-family: "Poppins"; }
+.btn-small:hover{
+    -fx-border-color: #2e2c42;
+    -fx-background-color: #2e2c42;
+    -fx-border-width: 3;
+    -fx-background-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins"; }
+
+.btn-small .text {
+    -fx-fill:#3C3957;
+}
+.btn-small:hover .text {
+    -fx-fill: #fff;
+}
 
 .nextButton {
-    -fx-font-family: "MouseMemoirs-Regular";
+    -fx-font-family: "Mouse Memoirs-Regular";
 }
 
 .btn-play{
     -fx-border-color: #3C3957;
     -fx-border-width: 7;
+    -fx-font-size: 100;
     -fx-border-radius: 40px;
-    -fx-font-size: 80px;
-    -fx-font-family: "MouseMemoirs-Regular";
+    -fx-text-alignment: LEFT;
+    -fx-font-family: "Mouse Memoirs";
 
 }
 
@@ -78,3 +98,77 @@
 .progress-bar > .bar, .progress-bar > .track {
     -fx-background-insets: 0;
 }
+
+.mouseFont {
+    -fx-font-family: "Mouse Memoirs";
+    -fx-text-fill: #D97791;
+    -fx-font-size: 120;
+}
+
+.mouseFontPercentage {
+    -fx-font-family: "Mouse Memoirs";
+    -fx-border-style: none;
+    -fx-font-color: #3C3957;
+}
+
+.radio-button {
+    /* default properties */
+    -fx-border-color: #3C3957;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+    -fx-padding: 4px;
+}
+
+.radio-button:selected > .radio {
+    /* background color for selected checkbox */
+    -fx-border-color: #d92949;
+    -fx-background-radius: #d92949;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+    -fx-spacing: 10;
+}
+
+.radio-button > .radio {
+    /* background color of unselected checkbox */
+    -fx-border-color: #3C3957;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+}
+
+.radio-button:selected > .radio > .mark,
+.radio-button:indeterminate  > .radio > .mark {
+    /* modify mark color */
+    -fx-border-color: #d92949;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+}
+
+
+.classicModusSubMenuHeader {
+    -fx-font-color: #3C3957;
+    -fx-font-family: "Mouse Memoirs";
+}
+
+
+.userNameLabel {
+
+    -fx-font-family: "Poppins";
+
+}
+
+.courseResult {
+    -fx-font-family: "Poppins";
+}
+
+.creativeText {
+    -fx-font-family: "Poppins";
+}
+

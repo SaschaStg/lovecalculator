@@ -1,23 +1,35 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
-import de.hdm_stuttgart.love_calculator.game.Answers;
-import de.hdm_stuttgart.love_calculator.game.Catalog;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class resultPageClassicController implements Navigatable {
 
-    @FXML private Button backToMainMenuButton;
-    @FXML private Label percentageLabel;
-    @FXML private Label userNamesLabel;
-    @FXML private Label descriptionLabel;
-    @FXML private Label courseLabel;
+    @FXML
+    private Button backToMainMenuButton;
+    @FXML
+    private Label percentageLabel;
+    @FXML
+    private Label userNamesLabel;
+    @FXML
+    private Label descriptionLabel;
+    @FXML
+    private Label courseLabel;
+    @FXML
+    private Label heading;
+
+    private int countToPercentage = 0;
 
     private Session session;
 
@@ -36,12 +48,21 @@ public class resultPageClassicController implements Navigatable {
 
     @Override
     public void onShow(Object argument) {
-        if(argument instanceof Session) {
+
+        if (argument instanceof Session) {
             this.session = (Session) argument;
+
+
+            heading.setText("ERGEBNIS");
+            heading.getStyleClass().add("mouseFont");
             userNamesLabel.setText(session.getUserAnswer(true, 0).get(0) + " und " + session.getUserAnswer(false, 0).get(0));
-            descriptionLabel.setText(generateDescription());
-            percentageLabel.setText(String.valueOf(NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0)) + "%"));
-            courseLabel.setText("Du Studierst " + session.getUserAnswer(true, 1).get(0) + " und dein Schwarm " +  session.getUserAnswer(false, 1).get(0));
+            userNamesLabel.getStyleClass().add("userNameLabel");
+            courseLabel.setText("Du Studierst " + session.getUserAnswer(true, 1).get(0) + " und dein Schwarm " + session.getUserAnswer(false, 1).get(0));
+            courseLabel.getStyleClass().add("courseResult");
+            courseLabel.setWrapText(true);
+            userNamesLabel.setWrapText(true);
+            descriptionLabel.setWrapText(true);
+            generatePercentage();
         }
     }
 
@@ -79,4 +100,57 @@ public class resultPageClassicController implements Navigatable {
         }
         return "Eure Liebe überfordert sogar das System.. das ist wohl was ganz besonderes?";
     }
+
+
+    private void generatePercentage() {
+
+
+        timeline = new Timeline(
+                new KeyFrame(Duration.millis(0),
+                        e -> generateCounter()),
+                new KeyFrame(Duration.millis(70)));
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+    }
+
+    private void generateCounter() {
+
+        int percentage = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
+
+
+        if (countToPercentage <= percentage - (percentage * 0.1)) {
+
+
+            percentageLabel.setText(String.valueOf(countToPercentage++) + "%");
+            percentageLabel.getStyleClass().add("mouseFontPercentage");
+
+        } else {
+            timeline.stop();
+            timeline = new Timeline(
+                    new KeyFrame(Duration.millis(0),
+                            e -> generateCounterSlow(percentage)),
+                    new KeyFrame(Duration.millis(500)));
+
+            timeline.setCycleCount(Animation.INDEFINITE);
+            timeline.play();
+        }
+    }
+
+    private void generateCounterSlow(int percentage) {
+        if (countToPercentage <= percentage) {
+
+            percentageLabel.setText(String.valueOf(countToPercentage++) + "%");
+            percentageLabel.getStyleClass().add("mouseFontPercentage");
+        } else {
+            timeline.stop();
+            descriptionLabel.setText(generateDescription());
+            descriptionLabel.getStyleClass().add("creativeText");
+        }
+    }
 }
+
+
+
+

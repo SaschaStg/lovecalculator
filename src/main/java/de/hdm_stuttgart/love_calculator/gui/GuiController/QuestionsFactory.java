@@ -16,6 +16,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.WindowEvent;
@@ -111,7 +112,6 @@ public class QuestionsFactory {
 
             RadioButton radioButton = new RadioButton();
             radioButton.setText(answers.getAnswer(i));
-            radioButton.setTranslateY(i * 30);
 
             radioButton.setToggleGroup(radioGroup);
             radioButton.selectedProperty().addListener((observableProperty, oldValue, newValue) -> {
@@ -172,7 +172,7 @@ public class QuestionsFactory {
 
             case 0:
                 if(session.isClassicMode()){
-                    setProgress(nameActive, "/images/classic-name-active.jpg", progressBar, 0.1, session);
+                    setProgress(nameActive, "/images/classic-name-active.png", progressBar, 0.4, session);
                 }else{
                     setProgress(nameActive, "/images/name-active.jpg", progressBar, 0.1, session);
                 }
@@ -180,7 +180,7 @@ public class QuestionsFactory {
                 break;
             case 1:
                 if(session.isClassicMode()){
-                    setProgress(nameActive, "/images/classic-studium-active.jpg", progressBar, 0.2, session);
+                    setProgress(nameActive, "/images/classic-studium-active.png", progressBar, 0.8, session);
                 }else{
                     setProgress(nameActive, "/images/studium-active.jpg", progressBar, 0.2, session);
                 };
@@ -190,11 +190,13 @@ public class QuestionsFactory {
         }
 
         nameActive.setFitWidth(1065);
-        nameActive.setFitHeight(150);
+        nameActive.setFitHeight(165);
         nameActive.setTranslateY(-263);
 
-        progressBar.setMinWidth(1065);
-        progressBar.setTranslateY(-328);
+        progressBar.setMaxWidth(1065);
+        //thickness of the progress Bar
+        progressBar.setMaxHeight(10);
+        progressBar.setTranslateY(-330);
         progressBar.getStyleClass().add("progressBar");
 
         pane.getChildren().addAll(nameActive, progressBar);

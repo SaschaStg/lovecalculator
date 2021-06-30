@@ -70,7 +70,6 @@
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="339.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="206.0" layoutY="34.0" mnemonicParsing="false" text="PATRIK VIVI BUTTON TEST SCENE" />
          </children>
       </AnchorPane>
    </children>

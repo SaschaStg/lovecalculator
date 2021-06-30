@@ -19,11 +19,7 @@ public class MainMenuController {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
     }
 
-    @FXML
-    public void openIconmenu() throws Exception {
-        FxmlGuiDriver.setScene("/fxml/iconMenu.fxml");
-        IconmenuController.openIconmenu();
-    }
+
 
     @FXML
     public void playClassic() {
