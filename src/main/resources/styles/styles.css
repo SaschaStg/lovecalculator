@@ -28,12 +28,6 @@
     -fx-font-weight: 100;
 }
 
-.text-heading{
-    -fx-font-family: "Poppins Light";
-    -fx-font-size: 45px;
-    -fx-font-weight: 600;
-}
-
 .text-field{
     -fx-border-color: #3C3957;
     -fx-border-width: 3;
@@ -75,11 +69,4 @@
     -fx-background-image: url("../images/close.png");
     -fx-background-size: 32 32;
     -fx-background-repeat: no-repeat;
-}
-
-.rect-result {
-    -fx-background-color: #f0f0f0;
-    -fx-border-color: #3C3957;
-    -fx-border-width: 7;
-    -fx-border-radius: 40px;
 }

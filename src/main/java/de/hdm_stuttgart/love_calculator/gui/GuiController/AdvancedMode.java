@@ -1,95 +1,83 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 import java.util.Arrays;
+import java.util.Optional;
 
-//public class AdvancedMode extends Scene {
-  /*  private Session session = new Session(false);
+public class AdvancedMode extends Scene {
+    //Button
+    private Button next;
+    private Button back;
+    //empty session object
+    private final Session session;
+    //sets order on buttons for example
+    private final StackPane mainPane;
 
     public AdvancedMode() {
+
+        //what is that
         super(new Group());
-        Group group = (Group) getParent();
+        Group parent = (Group)getRoot();
 
+        //overloaded constructor with classic mode = true and user1 = true
+        session = new Session(false);
 
+        mainPane = new StackPane();
+        mainPane.setMinHeight(670);
+        mainPane.setMinWidth(1065);
+        //[parent[ mainPane[ Buttons... ] ] ]
+        parent.getChildren().add(mainPane);
+
+        back = new Button();
+        back.getStyleClass().add("nextButton");
+        back.setText("Zurück");
+        back.setTranslateY(300);
+        back.setTranslateX(-400);
+
+        next = new Button();
+        next.getStyleClass().add("nextButton");
+        next.setText("Weiter");
+        next.setTranslateY(300);
+        next.setTranslateX(400);
+        next.setOnAction(e -> {
+            //
+            Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
+            if (result.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Fehler!");
+                alert.setHeaderText(null);
+                alert.setContentText("Bitte wähle eine Antwort aus!");
+                alert.showAndWait();
+            } else if (result.get()) {
+                setupPane();
+            } else {
+                showResults();
+            }
+        });
+
+        setupPane();
     }
 
-    @FXML
-    public static void startAdvancedQuestions() {
-        QuestionsFactory.isClassic = false;
-            QuestionsFactory.questionStage.setTitle("Advanced Mode");
+    private void setupPane() {
+        mainPane.getChildren().clear();
 
-            Button next = new Button();
-            next.setText("->");
-            next.setTranslateY(300);
-            next.setTranslateX(400);
+        QuestionsFactory.generateQuestionPane(session, mainPane);
 
-            QuestionsFactory.generateQuestionPane(QuestionsFactory.layout);
-
-            //generateCheckboxes(0, layout);
-
-            QuestionsFactory.layout.getChildren().addAll(QuestionsFactory.label, next);
-
-
-            //generateCheckboxes(1, layout);
-            //generateTextField(1, layout);
-
-            next.setOnAction(e -> {
-                try {
-                    QuestionsFactory.tryAdvanceTurn(QuestionsFactory.layout);
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-            });
-
-
-            QuestionsFactory.questionStage.setScene(QuestionsFactory.scene);
-            QuestionsFactory.questionStage.show();
-
-
-
-
+        mainPane.getChildren().addAll(next, back);
     }
 
-    private static void showResults(StackPane pane) {
-
-        Label label;
-        label = new Label();
-        label.setText("Du hast es geschafft! Hier deine Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
-        label.setTranslateY(-300);
-
-        Label schwarm;
-        schwarm = new Label();
-        schwarm.setText("Und hier die Ergebnisse deines Schwarms: " + Arrays.deepToString(User2.result.toArray()));
-        schwarm.setTranslateY(-200);
-
-        System.out.println("Ergebnisse: " + Arrays.deepToString(User1.result.toArray()));
-
-        Label studiengang;
-        studiengang = new Label();
-
-        //Check if answers are the same
-        if(QuestionsFactory.checkEqualAnswers(1)) {
-            studiengang.setText("Studienpartner! Ihr Studiert beide " + Arrays.deepToString(User2.result.get(1)));
-        } else {
-            studiengang.setText("Hm.. vom Studium passt ihr leider nicht zusammen!");
-        }
-
-        studiengang.setTranslateY(-100);
-
-        QuestionsFactory.layout.getChildren().addAll(label, schwarm, studiengang);
-
-        QuestionsFactory.questionStage.setScene(QuestionsFactory.scene);
-        QuestionsFactory.questionStage.show();
-    }*/
-
-
-//}
+    private void showResults() {
+        FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml", session);
+    }
+}

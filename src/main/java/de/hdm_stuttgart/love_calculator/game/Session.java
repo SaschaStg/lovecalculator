@@ -125,4 +125,9 @@ public class Session {
             answersUser2.get(index).clear();
         }
     }
+
+
+    public int getCurrentIndex(){
+        return this.index;
+    }
 }

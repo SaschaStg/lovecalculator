@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ClassicMode">
+   <children>
+      <SplitPane layoutY="-6.0" orientation="VERTICAL" prefHeight="161.0" prefWidth="1065.0">
+         <items>
+            <AnchorPane prefHeight="314.0" prefWidth="1063.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="69.0" layoutX="47.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/classic_du_active.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="151.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/classic_flamme_active.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="1023.0" layoutY="25.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" styleClass="btn-close" stylesheets="@../styles/styles.css" />
+                  <Label layoutX="67.0" layoutY="109.0" text="Du" />
+                  <Label layoutX="158.0" layoutY="109.0" text="Flamme" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+      <Label layoutX="102.0" layoutY="215.0" text="Mode: Classic" />
+      <Button layoutX="21.0" layoutY="599.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" text="Zurück" />
+      <Button layoutX="899.0" layoutY="602.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="147.0" text="Weiter" />
+      <ImageView fitHeight="15.0" fitWidth="1068.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

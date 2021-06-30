@@ -7,12 +7,20 @@ import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.game.Question;
 import de.hdm_stuttgart.love_calculator.user.User1;
 import de.hdm_stuttgart.love_calculator.user.User2;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.WindowEvent;
 
+import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +35,9 @@ public class QuestionsFactory {
     public static void generateQuestionPane(Session session, StackPane pane) {
         //style sheet is added to pane
         pane.getParent().getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+
+        //Generate Progress Header on top with icons
+            generateProgressHeader(session, pane);
 
         //Load question label
         Label label = new Label();
@@ -47,7 +58,7 @@ public class QuestionsFactory {
         }
 
         //add label to pane
-        pane.getChildren().add(label);
+        pane.getChildren().addAll(label);
 
         //check type of question, then display required inputs
         InputType input = Enum.valueOf(InputType.class, answers.inputType);
@@ -152,6 +163,64 @@ public class QuestionsFactory {
         }
     }
 
+    public static void generateProgressHeader(Session session, StackPane pane){
+
+        ImageView nameActive = new ImageView();
+        ProgressBar progressBar = new ProgressBar();
+
+        switch (session.getCurrentIndex()) {
+
+            case 0:
+                if(session.isClassicMode()){
+                    setProgress(nameActive, "/images/classic-name-active.jpg", progressBar, 0.1, session);
+                }else{
+                    setProgress(nameActive, "/images/name-active.jpg", progressBar, 0.1, session);
+                }
+                progressBar.setProgress(0.1);
+                break;
+            case 1:
+                if(session.isClassicMode()){
+                    setProgress(nameActive, "/images/classic-studium-active.jpg", progressBar, 0.2, session);
+                }else{
+                    setProgress(nameActive, "/images/studium-active.jpg", progressBar, 0.2, session);
+                };
+                break;
+            default:
+                LOGGER.error("Index out of bonds exception aka theres no image dumb ass");
+        }
+
+        nameActive.setFitWidth(1065);
+        nameActive.setFitHeight(150);
+        nameActive.setTranslateY(-263);
+
+        progressBar.setMinWidth(1065);
+        progressBar.setTranslateY(-328);
+        progressBar.getStyleClass().add("progressBar");
+
+        pane.getChildren().addAll(nameActive, progressBar);
+
+    }
+
+    //Generates icon images header on question stackpane. also generates progress bar on top of the icons.
+    private static void setProgress(ImageView view, String path, ProgressBar progressBar, double progress, Session session) {
+
+        view.setImage(new Image(FxmlGuiDriver.class.getResource(path).toExternalForm()));
+
+        Timeline timeline = new Timeline();
+
+        if (session.isUser1Turn()) {
+            progressBar.setProgress(progress - 0.1);
+            KeyValue keyValue = new KeyValue(progressBar.progressProperty(), progress);
+            KeyFrame keyFrame = new KeyFrame(new Duration(800), keyValue);
+            timeline.getKeyFrames().add(keyFrame);
+            timeline.play();
+        } else {
+            progressBar.setProgress(progress);
+        }
+    }
+    }
+
+
     // public static boolean checkEqualAnswers(int index) {
     //     if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
     //         FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
@@ -164,4 +233,3 @@ public class QuestionsFactory {
     //     FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
     //     return false;
     // }
-}
