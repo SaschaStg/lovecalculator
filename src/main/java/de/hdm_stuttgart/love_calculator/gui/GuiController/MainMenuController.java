@@ -81,7 +81,10 @@ public class MainMenuController {
         FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
     }
 
+    @FXML
+    public boolean onLogin() {
 
-
+        return true;
+    }
 
 }

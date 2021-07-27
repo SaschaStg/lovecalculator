@@ -124,7 +124,7 @@
 .radio-button:selected > .radio {
     /* background color for selected checkbox */
     -fx-border-color: #d92949;
-    -fx-background-radius: #d92949;
+    /*-fx-background-radius: #d92949;*/
     -fx-border-width: 3;
     -fx-border-radius: 40px;
     -fx-font-size: 24px;
@@ -172,3 +172,14 @@
     -fx-font-family: "Poppins";
 }
 
+.progress-indicator {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 -16 0;
+    -fx-progress-color: #d92949;
+    -fx-fill: transparent;
+
+}
+
+.progress-indicator .percentage {
+    -fx-fill:null;
+}
