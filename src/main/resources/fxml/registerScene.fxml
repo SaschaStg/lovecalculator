@@ -12,12 +12,18 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
     <children>
-        <Label fx:id="userNameLabel" layoutX="505.0" layoutY="136.0" prefHeight="17.0" prefWidth="127.0" text="Benutzername" />
-        <Label fx:id="passwordLabel" layoutX="512.0" layoutY="189.0" prefHeight="17.0" prefWidth="98.0" text="Passwort" />
-        <TextField fx:id="userNameTextField" layoutX="493.0" layoutY="151.0" />
-        <TextField fx:id="passwordTextField" layoutX="493.0" layoutY="206.0" />
-        <Label fx:id="registerLabel" layoutX="551.0" layoutY="82.0" text="Registrieren" />
-        <Button fx:id="registerButton" layoutX="520.0" layoutY="408.0" mnemonicParsing="false" onAction="#onRegister" text="Registrieren" />
+        <Label fx:id="userNameLabel" layoutX="190.0" layoutY="202.0" prefHeight="45.0" prefWidth="241.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Benutzername" />
+        <Label fx:id="passwordLabel" layoutX="190.0" layoutY="291.0" prefHeight="39.0" prefWidth="190.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Passwort" />
+        <TextField fx:id="userNameTextField" layoutX="473.0" layoutY="202.0" prefHeight="40.0" prefWidth="260.0" styleClass="text-field" stylesheets="@../styles/styles.css" />
+        <TextField fx:id="passwordTextField" layoutX="383.0" layoutY="291.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
+        <Label fx:id="registerLabel" layoutX="342.0" layoutY="50.0" styleClass="classicModusSubMenuHeader" stylesheets="@../styles/styles.css" text="REGISTRIERUNG" textFill="#d97891">
+         <font>
+            <Font size="120.0" />
+         </font></Label>
+        <Button fx:id="registerButton" layoutX="800.0" layoutY="597.0" mnemonicParsing="false" onAction="#onRegister" stylesheets="@../styles/styles.css" text="Registrieren">
+         <font>
+            <Font size="33.0" />
+         </font></Button>
         <SplitPane prefHeight="670.0" prefWidth="156.0">
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
@@ -63,9 +69,9 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-      <Label fx:id="vornameLabel" layoutX="519.0" layoutY="240.0" text="Vorname" />
-      <TextField fx:id="vornameTextField" layoutX="489.0" layoutY="257.0" />
-      <Label fx:id="nachnameLabel" layoutX="501.0" layoutY="294.0" prefHeight="17.0" prefWidth="127.0" text="Nachname" />
-      <TextField fx:id="nachnameTextField" layoutX="489.0" layoutY="309.0" />
+      <Label fx:id="vornameLabel" layoutX="190.0" layoutY="381.0" prefHeight="45.0" prefWidth="158.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname" />
+      <TextField fx:id="vornameTextField" layoutX="385.0" layoutY="382.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
+      <Label fx:id="nachnameLabel" layoutX="190.0" layoutY="469.0" prefHeight="45.0" prefWidth="190.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Nachname" />
+      <TextField fx:id="nachnameTextField" layoutX="419.0" layoutY="469.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
     </children>
 </AnchorPane>

@@ -48,6 +48,11 @@
     -fx-font-weight: 100;
 }
 
+.textRegister {
+    -fx-font-family: "Poppins SemiBold";
+    -fx-font-size: 32px;
+}
+
 .btn-small{
     -fx-border-color: #3C3957;
     -fx-border-width: 3;
@@ -97,6 +102,46 @@
 
 .progress-bar > .bar, .progress-bar > .track {
     -fx-background-insets: 0;
+}
+
+.radio-button {
+    /* default properties */
+    -fx-border-color: #3C3957;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+    -fx-padding: 4px;
+}
+
+.radio-button:selected > .radio {
+    /* background color for selected checkbox */
+    -fx-border-color: #d92949;
+    -fx-background-radius: #d92949;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+    -fx-spacing: 10;
+}
+
+.radio-button > .radio {
+    /* background color of unselected checkbox */
+    -fx-border-color: #3C3957;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+}
+
+.radio-button:selected > .radio > .mark,
+.radio-button:indeterminate  > .radio > .mark {
+    /* modify mark color */
+    -fx-border-color: #d92949;
+    -fx-border-width: 3;
+    -fx-border-radius: 40px;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
 }
 
 .mouseFont {
