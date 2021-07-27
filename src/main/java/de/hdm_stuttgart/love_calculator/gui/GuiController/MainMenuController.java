@@ -81,6 +81,11 @@ public class MainMenuController {
         FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
     }
 
+    @FXML
+    public void onRegister(){
+        RegisterFactory.register(userNameTextField, passwordTextField, vornameTextField, nachnameTextField);
+    }
+
 
 
 

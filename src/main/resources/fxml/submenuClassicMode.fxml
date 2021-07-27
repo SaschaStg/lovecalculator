@@ -15,7 +15,7 @@
          </font>
       </Label>
       <Button fx:id="backToMainMenuButton" layoutX="236.0" layoutY="460.0" mnemonicParsing="false" onAction="#backToMainMenuScene" prefHeight="49.0" prefWidth="209.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Abbrechen" />
-      <Button fx:id="classicButton" layoutX="588.0" layoutY="462.0" mnemonicParsing="false" onAction="#playClassic" prefHeight="49.0" prefWidth="209.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Lets's Go!" />
+      <Button fx:id="classicButton" layoutX="588.0" layoutY="462.0" mnemonicParsing="false" onAction="#playClassic" prefHeight="49.0" prefWidth="209.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Let's Go!" />
       <ImageView fitHeight="95.0" fitWidth="85.0" layoutX="272.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/play_classicButton_bigHeart.png" />
