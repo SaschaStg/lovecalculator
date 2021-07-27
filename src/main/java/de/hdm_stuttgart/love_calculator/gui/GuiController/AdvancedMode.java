@@ -78,6 +78,6 @@ public class AdvancedMode extends Scene {
     }
 
     private void showResults() {
-        FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml", session);
+        FxmlGuiDriver.setScene("/fxml/resultsPageAdvanced.fxml", session);
     }
 }
