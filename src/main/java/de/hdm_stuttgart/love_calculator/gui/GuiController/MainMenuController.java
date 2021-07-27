@@ -3,6 +3,8 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class MainMenuController {
     @FXML private Button startButton;
@@ -13,6 +15,13 @@ public class MainMenuController {
     @FXML private Button backToMainMenuButton;
     @FXML private Button iconmenubutton;
     @FXML private Button subMenuClassicButton;
+
+    @FXML private TextField userNameTextField = new TextField();
+    @FXML private TextField passwordTextField = new TextField();
+    @FXML private TextField vornameTextField = new TextField();
+    @FXML private TextField nachnameTextField = new TextField();
+    @FXML private Label userNameLabel = new Label();
+    @FXML private Label passwordLabel = new Label();
 
     @FXML
     public void startScene() {
@@ -79,6 +88,21 @@ public class MainMenuController {
     @FXML
     public void profileScene() {
         FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
+    }
+
+    @FXML
+    public void loginScene() {
+        FxmlGuiDriver.setScene("/fxml/loginScene.fxml");
+    }
+
+    @FXML
+    public void registerScene() {
+        FxmlGuiDriver.setScene("/fxml/registerScene.fxml");
+    }
+
+    @FXML
+    public void onLogin() {
+        LoginFactory.checkLogin(userNameTextField, passwordTextField);
     }
 
     @FXML
