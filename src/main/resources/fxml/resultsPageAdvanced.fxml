@@ -54,26 +54,26 @@
          </image>
       </ImageView>
       <Label fx:id="nameRingLabel" layoutX="191.0" layoutY="376.0" scaleX="1.5" scaleY="1.5" text="0%" />
-      <ProgressIndicator fx:id="nameRing1" layoutX="335.0" layoutY="247.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="96.0" progress="0.0" scaleX="1.5" scaleY="1.5" />
-      <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="342.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5">
+      <ProgressIndicator fx:id="studiumRing" layoutX="335.0" layoutY="247.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="96.0" progress="0.0" scaleX="1.5" scaleY="1.5" />
+      <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="342.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5">
          <image>
             <Image url="@../images/advanced_ergebnis_studium.png" />
          </image>
       </ImageView>
-      <Label layoutX="376.0" layoutY="376.0" scaleX="1.5" scaleY="1.5" text="0%" />
-      <ProgressIndicator fx:id="nameRing11" layoutX="150.0" layoutY="441.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="96.0" progress="0.0" scaleX="1.5" scaleY="1.5" />
+      <Label fx:id="studiumRingLabel" layoutX="376.0" layoutY="376.0" scaleX="1.5" scaleY="1.5" text="0%" />
+      <ProgressIndicator fx:id="socialRing" layoutX="150.0" layoutY="441.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="96.0" progress="0.0" scaleX="1.5" scaleY="1.5" />
       <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="157.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5">
          <image>
             <Image url="@../images/advanced_ergebnis_party.png" />
          </image>
       </ImageView>
-      <Label layoutX="191.0" layoutY="570.0" scaleX="1.5" scaleY="1.5" text="0%" />
-      <ProgressIndicator fx:id="nameRing111" layoutX="335.0" layoutY="441.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="96.0" progress="0.0" scaleX="1.5" scaleY="1.5" />
+      <Label fx:id="socialRingLabel" layoutX="191.0" layoutY="570.0" scaleX="1.5" scaleY="1.5" text="0%" />
+      <ProgressIndicator fx:id="zodiacRing" layoutX="335.0" layoutY="441.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="96.0" progress="0.0" scaleX="1.5" scaleY="1.5" />
       <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="342.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5">
          <image>
-            <Image url="@../images/advanced_ergebnis_instagram.png" />
+            <Image url="@../images/advanced_ergebnis_sternzeichen.png" />
          </image>
       </ImageView>
-      <Label layoutX="376.0" layoutY="570.0" scaleX="1.5" scaleY="1.5" text="0%" />
+      <Label fx:id="zodiacRingLabel" layoutX="376.0" layoutY="570.0" scaleX="1.5" scaleY="1.5" text="0%" />
    </children>
 </AnchorPane>

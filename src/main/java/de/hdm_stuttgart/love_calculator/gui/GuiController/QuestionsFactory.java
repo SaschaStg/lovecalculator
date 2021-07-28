@@ -16,6 +16,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.WindowEvent;
@@ -37,7 +38,7 @@ public class QuestionsFactory {
         pane.getParent().getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
 
         //Generate Progress Header on top with icons
-            generateProgressHeader(session, pane);
+        generateProgressHeader(session, pane);
 
         //Load question label
         Label label = new Label();
@@ -163,7 +164,7 @@ public class QuestionsFactory {
         }
     }
 
-    public static void generateProgressHeader(Session session, StackPane pane){
+    public static void generateProgressHeader(Session session, StackPane pane) {
 
         ImageView nameActive = new ImageView();
         ProgressBar progressBar = new ProgressBar();
@@ -171,35 +172,61 @@ public class QuestionsFactory {
         switch (session.getCurrentIndex()) {
 
             case 0:
-                if(session.isClassicMode()){
-                    setProgress(nameActive, "/images/classic-name-active.jpg", progressBar, 0.1, session);
-                }else{
-                    setProgress(nameActive, "/images/name-active.jpg", progressBar, 0.1, session);
+                if (session.isClassicMode()) {
+                    setProgress(nameActive, "/images/classic-name-active.png", progressBar, 0.4, session);
+                } else {
+                    setProgress(nameActive, "/images/advanced-name-active.png", progressBar, 0.1, session);
                 }
-                progressBar.setProgress(0.1);
                 break;
+
             case 1:
-                if(session.isClassicMode()){
-                    setProgress(nameActive, "/images/classic-studium-active.jpg", progressBar, 0.2, session);
-                }else{
-                    setProgress(nameActive, "/images/studium-active.jpg", progressBar, 0.2, session);
-                };
+                if (session.isClassicMode()) {
+                    setProgress(nameActive, "/images/classic-studium-active.png", progressBar, 0.8, session);
+                } else {
+                    setProgress(nameActive, "/images/advanced-studium-active.png", progressBar, 0.2, session);
+                }
                 break;
+
+            case 2:
+                setProgress(nameActive, "/images/advanced-sternzeichen-active.png", progressBar, 0.3, session);
+                break;
+            case 3:
+                setProgress(nameActive, "/images/advanced-party-active.png", progressBar, 0.4, session);
+                break;
+            case 4:
+                setProgress(nameActive, "/images/advanced-zukunft-active.png", progressBar, 0.5, session);
+                break;
+            case 5:
+                setProgress(nameActive, "/images/advanced-instagram-active.png", progressBar, 0.6, session);
+                break;
+            case 6:
+                setProgress(nameActive, "//images/advanced-frage1-active.png", progressBar, 0.7, session);
+                break;
+            case 7:
+                setProgress(nameActive, "/images/advanced-frage2-active.png", progressBar, 0.8, session);
+                break;
+            case 8:
+                setProgress(nameActive, "/images/advanced-frage3-active.png", progressBar, 0.9, session);
+                break;
+
             default:
-                LOGGER.error("Index out of bonds exception aka theres no image dumb ass");
+                LOGGER.error("Index out of bonds exception aka theres no image");
         }
 
         nameActive.setFitWidth(1065);
-        nameActive.setFitHeight(150);
+        nameActive.setFitHeight(165);
         nameActive.setTranslateY(-263);
 
-        progressBar.setMinWidth(1065);
-        progressBar.setTranslateY(-328);
+        progressBar.setMaxWidth(1065);
+        //thickness of the progress Bar
+        progressBar.setMaxHeight(10);
+        progressBar.setTranslateY(-330);
         progressBar.getStyleClass().add("progressBar");
 
         pane.getChildren().addAll(nameActive, progressBar);
 
     }
+
 
     //Generates icon images header on question stackpane. also generates progress bar on top of the icons.
     private static void setProgress(ImageView view, String path, ProgressBar progressBar, double progress, Session session) {
@@ -218,18 +245,18 @@ public class QuestionsFactory {
             progressBar.setProgress(progress);
         }
     }
-    }
+}
 
 
-    // public static boolean checkEqualAnswers(int index) {
-    //     if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
-    //         FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
-    //         FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-    //         FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-    //         return true;
-    //     }
-    //     FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
-    //     FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-    //     FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-    //     return false;
-    // }
+// public static boolean checkEqualAnswers(int index) {
+//     if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
+//         FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
+//         FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+//         FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
+//         return true;
+//     }
+//     FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
+//     FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
+//     FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
+//     return false;
+// }

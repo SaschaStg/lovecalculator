@@ -2,28 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.LoggedInController">
     <children>
-        <Label fx:id="userNameLabel" layoutX="190.0" layoutY="202.0" prefHeight="45.0" prefWidth="241.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Benutzername" />
-        <Label fx:id="passwordLabel" layoutX="190.0" layoutY="291.0" prefHeight="39.0" prefWidth="190.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Passwort" />
-        <TextField fx:id="userNameTextField" layoutX="473.0" layoutY="202.0" prefHeight="40.0" prefWidth="260.0" styleClass="text-field" stylesheets="@../styles/styles.css" />
-        <Label fx:id="registerLabel" layoutX="342.0" layoutY="50.0" styleClass="classicModusSubMenuHeader" stylesheets="@../styles/styles.css" text="REGISTRIERUNG" textFill="#d97891">
-         <font>
-            <Font size="120.0" />
-         </font></Label>
-        <Button fx:id="registerButton" layoutX="800.0" layoutY="597.0" mnemonicParsing="false" onAction="#onRegister" stylesheets="@../styles/styles.css" text="Registrieren">
-         <font>
-            <Font size="33.0" />
-         </font></Button>
+        <Button fx:id="logoutButton" layoutX="836.0" layoutY="557.0" mnemonicParsing="false" stylesheets="@../styles/styles.css" text="Abmelden">
+            <font>
+                <Font size="33.0" />
+            </font></Button>
         <SplitPane prefHeight="670.0" prefWidth="156.0">
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
@@ -69,10 +61,16 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-      <Label fx:id="vornameLabel" layoutX="190.0" layoutY="381.0" prefHeight="45.0" prefWidth="158.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname" />
-      <TextField fx:id="vornameTextField" layoutX="385.0" layoutY="382.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
-      <Label fx:id="nachnameLabel" layoutX="190.0" layoutY="469.0" prefHeight="45.0" prefWidth="190.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Nachname" />
-      <TextField fx:id="nachnameTextField" layoutX="419.0" layoutY="469.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
-      <PasswordField fx:id="passwordTextField" layoutX="502.0" layoutY="298.0" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="531.0" layoutX="244.0" layoutY="55.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="418.0" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="110.0" layoutX="820.0" layoutY="217.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="188.0" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="96.0" layoutX="831.0" layoutY="69.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="178.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="353.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="userInformation" layoutX="399.0" layoutY="479.0" text="Vorname nachname" />
+      <Label fx:id="username" layoutX="443.0" layoutY="517.0" text="username" />
+      <Label fx:id="bisherGespielt" layoutX="845.0" layoutY="108.0" text="bisher gespielt:" />
+      <Label fx:id="counter" layoutX="963.0" layoutY="108.0" text="Anzahl" />
+      <Label fx:id="highestMatch" layoutX="853.0" layoutY="231.0" text="Platz 1 Ergebnis:" />
+      <Label fx:id="highestMatchNumber" layoutX="865.0" layoutY="263.0" text="Ergebnis" />
+      <Button fx:id="eigeneFragen" layoutX="854.0" layoutY="432.0" mnemonicParsing="false" text="Eigene Fragen" />
     </children>
 </AnchorPane>

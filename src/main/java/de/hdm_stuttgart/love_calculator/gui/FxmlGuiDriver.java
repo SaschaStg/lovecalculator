@@ -1,6 +1,8 @@
 package de.hdm_stuttgart.love_calculator.gui;
 
+import de.hdm_stuttgart.love_calculator.game.Answers;
 import de.hdm_stuttgart.love_calculator.game.Catalog;
+import de.hdm_stuttgart.love_calculator.game.Question;
 import de.hdm_stuttgart.love_calculator.gui.GuiController.resultPageClassicController;
 import javafx.application.Application;
 import javafx.fxml.FXML;

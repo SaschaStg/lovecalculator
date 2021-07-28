@@ -59,13 +59,18 @@ public class ResultsPageAdvancedController implements Navigatable {
             userNamesLabel.setWrapText(true);
             descriptionLabel.setWrapText(true);
 
-            generatePercentage();
+            generatePercentage(finalLoveCalculation);
 
-            int nameCalculation = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
-            nameRing.setProgress(Double.parseDouble(0 + "." + nameCalculation));
-            nameRingLabel.setText(nameCalculation + " %");
         }
     }
+
+    private void generatePieChar(ProgressIndicator pi, double percentage, Label label) {
+
+            pi.setProgress(percentage / 100);
+
+            label.setText((int)percentage + "%");
+    }
+
 
     private boolean checkAnswers(int questionIndex) {
         if(session.getUserAnswer(true, questionIndex).get(0) == session.getUserAnswer(false, questionIndex).get(0)) {
@@ -122,4 +127,6 @@ public class ResultsPageAdvancedController implements Navigatable {
             descriptionLabel.getStyleClass().add("creativeText");
         }
     }
+
+
 }

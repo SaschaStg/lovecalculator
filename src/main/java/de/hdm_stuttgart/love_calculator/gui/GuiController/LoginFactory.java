@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -19,6 +20,8 @@ public class LoginFactory {
 
     //create logger for every class
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+
+    private static String loggedInUser;
 
     public static boolean checkLogin(TextField usernameTextField, TextField passwordTextField) {
 
@@ -62,6 +65,12 @@ public class LoginFactory {
 
             if(rs.next()){
                 System.out.println("Username: " + rs.getString(2) + "Password: " + rs.getString(3));
+
+
+
+                //Safe Username in String
+                setLoggedInUser(rs.getString(2));
+                FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Benutzername oder Passwort falsch");
@@ -89,12 +98,13 @@ public class LoginFactory {
         return true;
     }
 
+    public static void setLoggedInUser(String setLoggedInUser) {
+        loggedInUser = setLoggedInUser;
+    }
 
-
-
-
-
-
+    public static String getLoggedInUser() {
+        return loggedInUser;
+    }
 
 
 
