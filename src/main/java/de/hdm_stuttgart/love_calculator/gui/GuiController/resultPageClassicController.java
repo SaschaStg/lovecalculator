@@ -68,8 +68,8 @@ public class resultPageClassicController implements Navigatable {
         }
     }
 
-    public String generateDescription() {
-        int percentage = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
+    public static String generateDescription(Session sessionDescription) {
+        int percentage = NameCalculation.calculate(sessionDescription.getUserAnswer(true, 0).get(0), sessionDescription.getUserAnswer(false, 0).get(0));
         if (percentage <= 10) {
             return "Leider passt ihr nicht zusammen :(";
         } else if (percentage > 10 && percentage <= 20) {
@@ -138,7 +138,7 @@ public class resultPageClassicController implements Navigatable {
             percentageLabel.getStyleClass().add("mouseFontPercentage");
         } else {
             timeline.stop();
-            descriptionLabel.setText(generateDescription());
+            descriptionLabel.setText(generateDescription(session));
             descriptionLabel.getStyleClass().add("creativeText");
         }
     }

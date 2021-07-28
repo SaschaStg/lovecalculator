@@ -21,7 +21,6 @@ public class ClassicMode extends Scene {
 
     public ClassicMode() {
 
-        //what is that
         super(new Group());
         Group parent = (Group)getRoot();
 

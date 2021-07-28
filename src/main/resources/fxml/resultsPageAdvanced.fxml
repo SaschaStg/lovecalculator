@@ -25,7 +25,7 @@
             <Image url="@../images/heart.png" />
          </image>
       </ImageView>
-      <Label fx:id="userNamesLabel" layoutX="628.0" layoutY="137.0" prefHeight="43.0" prefWidth="469.0" styleClass="userNameLabel" stylesheets="@../styles/styles.css" text=" Name 1 und Name 2">
+      <Label fx:id="userNamesLabel" layoutX="564.0" layoutY="137.0" prefHeight="37.0" prefWidth="426.0" styleClass="userNameLabel" stylesheets="@../styles/styles.css" text=" Name 1 und Name 2">
          <font>
             <Font name="System Bold" size="30.0" />
          </font></Label>
@@ -42,7 +42,7 @@
             <Font size="86.0" />
          </font>
       </Label>
-      <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="631.0" layoutY="215.0" prefHeight="75.0" prefWidth="354.0" styleClass="creativeText" text="Liebe lädt...">
+      <Label fx:id="descriptionLabel" alignment="TOP_LEFT" layoutX="577.0" layoutY="223.0" prefHeight="75.0" prefWidth="354.0" styleClass="creativeText" text="Liebe lädt...">
          <font>
             <Font size="20.0" />
          </font>
