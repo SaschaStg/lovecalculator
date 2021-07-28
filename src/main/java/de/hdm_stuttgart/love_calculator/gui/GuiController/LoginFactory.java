@@ -31,8 +31,8 @@ public class LoginFactory {
         if(username.isEmpty() || password.isEmpty()) {
             LOGGER.error("No Username and/or password found.");
 
-        return false;
-    }
+            return false;
+        }
         LOGGER.info("Login input found");
 
 

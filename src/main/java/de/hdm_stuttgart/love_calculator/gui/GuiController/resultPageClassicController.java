@@ -8,12 +8,14 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class resultPageClassicController implements Navigatable {
@@ -36,6 +38,8 @@ public class resultPageClassicController implements Navigatable {
     private Session session;
 
     Timeline timeline = new Timeline();
+
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     @FXML
     public void showName() {
@@ -67,6 +71,78 @@ public class resultPageClassicController implements Navigatable {
             userNamesLabel.setWrapText(true);
             descriptionLabel.setWrapText(true);
             generatePercentage();
+
+
+            if(LoginFactory.getLoggedInUser() != null) {
+
+                // Datenbankadresse und Anmeldedaten
+                String url = "jdbc:mysql://s230.goserver.host:3306/web21_db5";
+                String user = "web21_5";
+                String pass = "MLQCZRdX8DUIsxEk";
+
+
+                try {
+                    // Verbindung aufbauen
+                    Connection con = DriverManager.getConnection(url, user, pass);
+                    System.out.println("Verbindung erfolgreich hergestellt");
+
+
+                    String searchInDB = "UPDATE userdata SET gamecount = gamecount + 1 WHERE username = ?";
+
+                    PreparedStatement prepareInsertStatement =
+                            con.prepareStatement(searchInDB);
+
+                    prepareInsertStatement.setString(1, LoginFactory.getLoggedInUser());
+
+                    int rs_insert = prepareInsertStatement.executeUpdate();
+
+                    LOGGER.info("User " + LoginFactory.getLoggedInUser() + " is logged in! Incremented gamecount by 1.");
+
+
+                    String checkPercentage = "SELECT * FROM userdata WHERE username = ?";
+                    PreparedStatement prepareCheckStatement = con.prepareStatement(checkPercentage);
+
+                    prepareCheckStatement.setString(1, LoginFactory.getLoggedInUser());
+
+                    ResultSet percentageResult = prepareCheckStatement.executeQuery();
+
+                    if(percentageResult.next()){
+
+                        int highestMatch = percentageResult.getInt(6);
+                        int currentHighestMatch = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
+
+
+                        if(currentHighestMatch > highestMatch){
+                            LOGGER.info("User " + LoginFactory.getLoggedInUser() + " got a new highest match: " + currentHighestMatch);
+
+                            String setHighestmatch = "UPDATE userdata SET highestmatch = ?, highestmatchNumber = ? WHERE username = ?";
+
+                            PreparedStatement prepareUpdateStatement =
+                                    con.prepareStatement(setHighestmatch);
+
+                            prepareUpdateStatement.setString(1, session.getUserAnswer(false, 0).get(0));
+                            prepareUpdateStatement.setInt(2, currentHighestMatch);
+                            prepareUpdateStatement.setString(3, LoginFactory.getLoggedInUser());
+
+
+                            int rs_update = prepareUpdateStatement.executeUpdate();
+                        }
+
+                    }
+
+
+
+
+
+                    con.close();
+
+
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
+
         }
     }
 

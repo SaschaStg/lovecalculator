@@ -87,7 +87,11 @@ public class MainMenuController {
 
     @FXML
     public void profileScene() {
-        FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
+        if (LoginFactory.getLoggedInUser() != null) {
+            FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
+        } else {
+            FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
+        }
     }
 
     @FXML

@@ -37,8 +37,8 @@ public class Session {
         return classicMode;
     }
 
-    public List<String> getUserAnswer(boolean user1, int questionIndex){
-        if(user1){
+    public List<String> getUserAnswer(boolean user1, int questionIndex) {
+        if (user1) {
             return answersUser1.get(questionIndex);
         }
         return answersUser2.get(questionIndex);
@@ -64,6 +64,7 @@ public class Session {
     /**
      * it's the "flamme" (user2) turn, same question for "flamme" is about to be displayed
      * otherwise next question gets displayed (a whole new question)
+     *
      * @return if game should end / results should be displayed (true if game should continue)
      */
     public boolean nextTurn() {
@@ -80,19 +81,19 @@ public class Session {
 
     public boolean backQuestion() {
         //When its not the first question and user1
-        if(index != 0 && isUser1Turn()) {
-            if(answersUser1.get(index) != null) {
+        if (index != 0 && isUser1Turn()) {
+            if (answersUser1.get(index) != null) {
                 System.out.println(answersUser1.get(index));
                 answersUser1.remove(index);
                 System.out.println(answersUser1.get(index));
             }
-            index --;
+            index--;
             isUser1 = false;
             return true;
         }
         //When its the first question and user2
-        else if(index == 0 && !isUser1Turn()) {
-            if(answersUser1.get(index) != null) {
+        else if (index == 0 && !isUser1Turn()) {
+            if (answersUser1.get(index) != null) {
                 System.out.println(answersUser2.get(index));
                 answersUser2.remove(index);
                 System.out.println(answersUser2.get(index));
@@ -101,13 +102,13 @@ public class Session {
             return true;
         }
         //When its not the first question and user2
-        else if(index != 0 && !isUser1Turn()) {
-            if(answersUser1.get(index) != null) {
+        else if (index != 0 && !isUser1Turn()) {
+            if (answersUser1.get(index) != null) {
                 System.out.println(answersUser2.get(index));
                 answersUser2.remove(index);
                 System.out.println(answersUser2.get(index));
             }
-            index --;
+            index--;
             isUser1 = true;
             return true;
         }
@@ -128,7 +129,7 @@ public class Session {
         boolean result = (classicMode && index < 2) || (!classicMode && index < Catalog.INSTANCE.getQuestionsCount());
 
         //in case user wants to play another game, index is set to zero
-        if (!result){
+        if (!result) {
             index = 0;
         }
 
@@ -168,7 +169,7 @@ public class Session {
     }
 
 
-    public int getCurrentIndex(){
+    public int getCurrentIndex() {
         return this.index;
     }
 

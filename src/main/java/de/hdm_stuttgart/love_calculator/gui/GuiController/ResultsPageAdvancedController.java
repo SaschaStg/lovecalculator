@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
+import de.hdm_stuttgart.love_calculator.calculator.Calculator;
 import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
@@ -19,19 +20,31 @@ public class ResultsPageAdvancedController implements Navigatable {
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     //@FXML private Button backToMainMenuButton;
-    @FXML private Label percentageLabel;
-    @FXML private Label userNamesLabel;
-    @FXML private Label descriptionLabel;
-    @FXML private Label heading;
-    @FXML private Label nameRingLabel;
+    @FXML
+    private Label percentageLabel;
+    @FXML
+    private Label userNamesLabel;
+    @FXML
+    private Label descriptionLabel;
+    @FXML
+    private Label heading;
+    @FXML
+    private Label nameRingLabel;
+    @FXML
+    private Label studiumRingLabel;
+    @FXML
+    private Label socialRingLabel;
+    @FXML
+    private Label zodiacRingLabel;
 
-    @FXML ProgressIndicator nameRing = new ProgressIndicator();
-    @FXML ProgressIndicator drinkRing = new ProgressIndicator();
-    @FXML ProgressIndicator studiumRing = new ProgressIndicator();
-    @FXML ProgressIndicator instagramRing = new ProgressIndicator();
-    @FXML ProgressIndicator custom1Ring = new ProgressIndicator();
-    @FXML ProgressIndicator custom2Ring = new ProgressIndicator();
-    @FXML ProgressIndicator custom3Ring = new ProgressIndicator();
+    @FXML
+    ProgressIndicator nameRing = new ProgressIndicator();
+    @FXML
+    ProgressIndicator socialRing = new ProgressIndicator();
+    @FXML
+    ProgressIndicator studiumRing = new ProgressIndicator();
+    @FXML
+    ProgressIndicator zodiacRing = new ProgressIndicator();
 
     private int studiumPercentage;
     private int partyPercentage;
@@ -48,9 +61,21 @@ public class ResultsPageAdvancedController implements Navigatable {
         if (argument instanceof Session) {
             this.session = (Session) argument;
 
-            if(checkAnswers(1)) {
-                studiumPercentage += 65;
-            }
+            //BERECHNUNG
+
+            int nameCalculation = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
+            generatePieChar(nameRing, nameCalculation, nameRingLabel);
+
+            int studiumCalculation = ((Calculator.calculate(session, 1) + Calculator.calculate(session, 2)) / 2);
+            generatePieChar(studiumRing, studiumCalculation, studiumRingLabel);
+
+            int zodiacCalculation = (Calculator.calculate(session, 3));
+            generatePieChar(zodiacRing, zodiacCalculation, zodiacRingLabel);
+
+            int socialCalculation = ((Calculator.calculate(session, 4) + Calculator.calculate(session, 5)) / 2);
+            generatePieChar(socialRing, socialCalculation, socialRingLabel);
+
+            int finalLoveCalculation = (nameCalculation + studiumCalculation + zodiacCalculation + socialCalculation) / 4;
 
             heading.setText("ERGEBNIS");
             heading.getStyleClass().add("mouseFont");
@@ -80,12 +105,12 @@ public class ResultsPageAdvancedController implements Navigatable {
     }
 
 
-    private void generatePercentage() {
+    private void generatePercentage(int percentage) {
 
 
         timeline = new Timeline(
                 new KeyFrame(Duration.millis(0),
-                        e -> generateCounter()),
+                        e -> generateCounter(percentage)),
                 new KeyFrame(Duration.millis(70)));
 
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -93,10 +118,7 @@ public class ResultsPageAdvancedController implements Navigatable {
 
     }
 
-    private void generateCounter() {
-
-        int percentage = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
-
+    private void generateCounter(int percentage) {
 
         if (countToPercentage <= percentage - (percentage * 0.1)) {
 

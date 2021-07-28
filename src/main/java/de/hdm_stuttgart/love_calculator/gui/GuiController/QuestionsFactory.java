@@ -104,6 +104,14 @@ public class QuestionsFactory {
     // TODO same as generateCheckboxes
     private static void generateRadiobuttons(Answers answers, Session session, StackPane pane) {
 
+        FlowPane flowpane = new FlowPane();
+        flowpane.setMaxWidth(900);
+        flowpane.setMaxHeight(500);
+        flowpane.setTranslateY(200);
+        flowpane.setHgap(20);
+        flowpane.setVgap(20);
+        pane.getChildren().add(flowpane);
+
         ToggleGroup radioGroup = new ToggleGroup();
 
         for (int i = 0; i < answers.getAnswersCount(); i++) {
@@ -112,7 +120,6 @@ public class QuestionsFactory {
 
             RadioButton radioButton = new RadioButton();
             radioButton.setText(answers.getAnswer(i));
-            radioButton.setTranslateY(i * 30);
 
             radioButton.setToggleGroup(radioGroup);
             radioButton.selectedProperty().addListener((observableProperty, oldValue, newValue) -> {
@@ -120,9 +127,10 @@ public class QuestionsFactory {
                 session.addAnswer(radioButton.getText());
                 LOGGER.info("Selected radiobutton: " + radioButton.getText());
             });
-            pane.getChildren().addAll(radioButton);
+            flowpane.getChildren().addAll(radioButton);
         }
     }
+
 
     private static void generateCheckboxes(Answers answers, Session session, StackPane pane) {
 
