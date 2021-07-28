@@ -7,15 +7,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.LoggedInController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.LeaderBoardController">
     <children>
-        <Button fx:id="logoutButton" layoutX="836.0" layoutY="557.0" mnemonicParsing="false" stylesheets="@../styles/styles.css" text="Abmelden">
-            <font>
-                <Font size="33.0" />
-            </font></Button>
         <SplitPane prefHeight="670.0" prefWidth="156.0">
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
@@ -61,16 +56,21 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="531.0" layoutX="244.0" layoutY="55.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="418.0" />
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="110.0" layoutX="820.0" layoutY="217.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="188.0" />
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="96.0" layoutX="831.0" layoutY="69.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="178.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="353.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="userInformation" layoutX="399.0" layoutY="479.0" text="Vorname nachname" />
-      <Label fx:id="username" layoutX="443.0" layoutY="517.0" text="username" />
-      <Label fx:id="bisherGespielt" layoutX="845.0" layoutY="108.0" text="bisher gespielt:" />
-      <Label fx:id="counter" layoutX="963.0" layoutY="108.0" text="Anzahl" />
-      <Label fx:id="highestMatch" layoutX="853.0" layoutY="231.0" text="Platz 1 Ergebnis:" />
-      <Label fx:id="highestMatchNumber" layoutX="865.0" layoutY="263.0" text="Ergebnis" />
-      <Button fx:id="leaderBoard" layoutX="862.0" layoutY="404.0" mnemonicParsing="false" onAction="#openLeaderBoard" prefHeight="35.0" prefWidth="103.0" text="Rangliste" />
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="353.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="platz1Label" layoutX="284.0" layoutY="105.0" text="Platz 1" />
+      <Label fx:id="platz2Label" layoutX="284.0" layoutY="165.0" text="Platz 2" />
+      <Label fx:id="platz3Label" layoutX="284.0" layoutY="222.0" text="Platz 3" />
+      <Label fx:id="platz4Label" layoutX="284.0" layoutY="281.0" text="Platz 4" />
+      <Label fx:id="platz5Label" layoutX="284.0" layoutY="347.0" text="Platz 5" />
+      <Label fx:id="username1Label" layoutX="374.0" layoutY="108.0" text="Name1" />
+      <Label fx:id="username2Label" layoutX="374.0" layoutY="168.0" text="Name2" />
+      <Label fx:id="username3Label" layoutX="374.0" layoutY="225.0" text="Name3" />
+      <Label fx:id="username4Label" layoutX="374.0" layoutY="284.0" text="Name4" />
+      <Label fx:id="username5Label" layoutX="374.0" layoutY="350.0" text="Name5" />
+      <Label fx:id="gamecount1Label" layoutX="491.0" layoutY="111.0" text="gamecount1" />
+      <Label fx:id="gamecount2Label" layoutX="491.0" layoutY="171.0" text="gamecount2" />
+      <Label fx:id="gamecount3Label" layoutX="491.0" layoutY="228.0" text="gamecount3" />
+      <Label fx:id="gamecount4Label" layoutX="491.0" layoutY="287.0" text="gamecount4" />
+      <Label fx:id="gamecount5Label" layoutX="491.0" layoutY="353.0" text="gamecount5" />
     </children>
 </AnchorPane>

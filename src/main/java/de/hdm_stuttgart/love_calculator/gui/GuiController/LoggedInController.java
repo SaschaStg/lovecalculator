@@ -93,6 +93,12 @@ public class LoggedInController implements Navigatable {
     }
 
     @FXML
+    public void openLeaderBoard() {
+            FxmlGuiDriver.setScene("/fxml/leaderBoardScene.fxml");
+            System.out.println("Leaderboard opened!");
+    }
+
+    @FXML
     public void startScene() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
     }
