@@ -1,5 +1,7 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
+import de.hdm_stuttgart.love_calculator.calculator.CalculationAnimation;
+import de.hdm_stuttgart.love_calculator.calculator.Calculator;
 import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
@@ -38,6 +40,7 @@ public class resultPageClassicController implements Navigatable {
 
     private Session session;
 
+
     Timeline timeline = new Timeline();
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
@@ -61,6 +64,11 @@ public class resultPageClassicController implements Navigatable {
         if (argument instanceof Session) {
             this.session = (Session) argument;
 
+            int namePercentage = (NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0)) * 2);
+            int studiumPercentage = Calculator.calculate(session, 1);
+            int finalPercentage = (namePercentage + studiumPercentage) / 3;
+
+            ResultUpdater.updateResult(session, finalPercentage);
 
             heading.setText("ERGEBNIS");
             heading.getStyleClass().add("mouseFont");
@@ -107,12 +115,12 @@ public class resultPageClassicController implements Navigatable {
     }
 
 
-    private void generatePercentage() {
+    private void generatePercentage(int finalPercentage) {
 
 
         timeline = new Timeline(
                 new KeyFrame(Duration.millis(0),
-                        e -> generateCounter()),
+                        e -> generateCounter(finalPercentage)),
                 new KeyFrame(Duration.millis(70)));
 
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -120,9 +128,9 @@ public class resultPageClassicController implements Navigatable {
 
     }
 
-    private void generateCounter() {
+    private void generateCounter(int finalPercentage) {
 
-        int percentage = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
+        int percentage = finalPercentage;
 
 
         if (countToPercentage <= percentage - (percentage * 0.1)) {

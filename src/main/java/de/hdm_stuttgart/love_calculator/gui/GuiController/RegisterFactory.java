@@ -27,6 +27,8 @@ public class RegisterFactory {
         String vorname = vornameTextField.getText();
         String nachname = nachnameTextField.getText();
 
+
+
         if (username.isEmpty() || password.isEmpty() || vorname.isEmpty() || nachname.isEmpty()) {
             LOGGER.error("Not all fields are filled");
 
@@ -78,6 +80,10 @@ public class RegisterFactory {
                 prepareInsertStatement.setString(2, password);
                 prepareInsertStatement.setString(3, vorname);
                 prepareInsertStatement.setString(4, nachname);
+                prepareInsertStatement.setInt(5, (int)Math.floor(Math.random() * (5 - 1 + 1)) + 1);
+
+
+
 
                 int rs_insert = prepareInsertStatement.executeUpdate();
 

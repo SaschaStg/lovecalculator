@@ -38,60 +38,37 @@ public class LeaderBoardController implements Navigatable {
             Connection con = DriverManager.getConnection(url, user, pass);
             Statement stm = con.createStatement();
 
-            ResultSet top1 = stm.executeQuery("SELECT gamecount FROM userdata ORDER BY gamecount DESC LIMIT 1;");
+            ResultSet top1 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 1;");
             if(top1.next()){
                 gamecount1Label.setText(top1.getString(1));
+                username1Label.setText(top1.getString(2));
             }
 
-            ResultSet top2 = stm.executeQuery("SELECT gamecount FROM userdata ORDER BY gamecount DESC LIMIT 1,1;");
+            ResultSet top2 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 1,1;");
             if(top2.next()){
                 gamecount2Label.setText(top2.getString(1));
+                username2Label.setText(top2.getString(2));
             }
 
-            ResultSet top3 = stm.executeQuery("SELECT gamecount FROM userdata ORDER BY gamecount DESC LIMIT 2,1;");
+            ResultSet top3 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 2,1;");
             if(top3.next()){
                 gamecount3Label.setText(top3.getString(1));
+                username3Label.setText(top3.getString(2));
             }
 
-            ResultSet top4 = stm.executeQuery("SELECT gamecount FROM userdata ORDER BY gamecount DESC LIMIT 3,1;");
+            ResultSet top4 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 3,1;");
             if(top4.next()){
                 gamecount4Label.setText(top4.getString(1));
+                username4Label.setText(top4.getString(2));
             }
 
-            ResultSet top5 = stm.executeQuery("SELECT gamecount FROM userdata ORDER BY gamecount DESC LIMIT 4,1;");
+            ResultSet top5 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 4,1;");
             if(top5.next()){
                 gamecount5Label.setText(top5.getString(1));
+                username5Label.setText(top5.getString(2));
             }
-
-            ResultSet user1 = stm.executeQuery("SELECT username FROM userdata ORDER BY gamecount DESC LIMIT 1;");
-            if(user1.next()){
-                username1Label.setText(user1.getString(1));
-            }
-
-            ResultSet user2 = stm.executeQuery("SELECT username FROM userdata ORDER BY gamecount DESC LIMIT 1,1;");
-            if(user2.next()){
-                username2Label.setText(user2.getString(1));
-            }
-
-            ResultSet user3 = stm.executeQuery("SELECT username FROM userdata ORDER BY gamecount DESC LIMIT 2,1;");
-            if(user3.next()){
-                username3Label.setText(user3.getString(1));
-            }
-
-            ResultSet user4 = stm.executeQuery("SELECT username FROM userdata ORDER BY gamecount DESC LIMIT 3,1;");
-            if(user4.next()){
-                username4Label.setText(user4.getString(1));
-            }
-
-            ResultSet user5 = stm.executeQuery("SELECT username FROM userdata ORDER BY gamecount DESC LIMIT 4,1;");
-            if(user5.next()){
-                username5Label.setText(user5.getString(1));
-            }
-
 
             con.close();
-
-
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

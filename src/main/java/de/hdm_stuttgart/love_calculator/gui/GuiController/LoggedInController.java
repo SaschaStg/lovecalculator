@@ -6,6 +6,8 @@ import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.sql.*;
 
@@ -16,6 +18,7 @@ public class LoggedInController implements Navigatable {
     @FXML private Label counter = new Label();
     @FXML private Label highestMatch = new Label();
     @FXML private Label highestMatchNumber = new Label();
+    @FXML private ImageView profilePicture = new ImageView();
 
 
     private Session session;
@@ -58,6 +61,7 @@ public class LoggedInController implements Navigatable {
                     counter.setText(rs.getString(4));
                     highestMatch.setText(rs.getString(5));
                     highestMatchNumber.setText(rs.getString(6));
+                    showProfilePicture(rs.getInt(9));
 
                 }
 
@@ -74,6 +78,30 @@ public class LoggedInController implements Navigatable {
 
 
 
+        }
+
+        @FXML
+        private void logout() {
+        LoginFactory.setLoggedInUser(null);
+        FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
+        }
+
+        private void showProfilePicture(int profilePictureIndex) {
+
+        switch(profilePictureIndex) {
+            case 1: profilePicture.setImage(new Image(FxmlGuiDriver.class.getResource("/images/mike.jpg").toExternalForm()));
+                break;
+            case 2: profilePicture.setImage(new Image(FxmlGuiDriver.class.getResource("/images/amogus.jpg").toExternalForm()));
+                //PB 2
+                break;
+            case 3: profilePicture.setImage(new Image(FxmlGuiDriver.class.getResource("/images/daniel_jung.jpg").toExternalForm()));
+                //PB 2
+                break;
+            case 4: profilePicture.setImage(new Image(FxmlGuiDriver.class.getResource("/images/fish_meme.jpg").toExternalForm()));
+                break;
+            case 5: profilePicture.setImage(new Image(FxmlGuiDriver.class.getResource("/images/harold.jpg").toExternalForm()));
+                break;
+        }
         }
 
     @FXML

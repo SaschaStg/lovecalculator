@@ -191,30 +191,21 @@ public class QuestionsFactory {
                 if (session.isClassicMode()) {
                     setProgress(nameActive, "/images/classic-studium-active.png", progressBar, 0.8, session);
                 } else {
-                    setProgress(nameActive, "/images/advanced-studium-active.png", progressBar, 0.2, session);
+                    setProgress(nameActive, "/images/advanced-studium-active.png", progressBar, 0.18, session);
                 }
                 break;
 
             case 2:
-                setProgress(nameActive, "/images/advanced-sternzeichen-active.png", progressBar, 0.3, session);
+                setProgress(nameActive, "/images/advanced-zukunft-active.png", progressBar, 0.36, session);
                 break;
             case 3:
-                setProgress(nameActive, "/images/advanced-party-active.png", progressBar, 0.4, session);
+                setProgress(nameActive, "/images/advanced-sternzeichen-active.png", progressBar, 0.54, session);
                 break;
             case 4:
-                setProgress(nameActive, "/images/advanced-zukunft-active.png", progressBar, 0.5, session);
+                setProgress(nameActive, "/images/advanced-party-active.png", progressBar, 0.72, session);
                 break;
             case 5:
-                setProgress(nameActive, "/images/advanced-instagram-active.png", progressBar, 0.6, session);
-                break;
-            case 6:
-                setProgress(nameActive, "//images/advanced-frage1-active.png", progressBar, 0.7, session);
-                break;
-            case 7:
-                setProgress(nameActive, "/images/advanced-frage2-active.png", progressBar, 0.8, session);
-                break;
-            case 8:
-                setProgress(nameActive, "/images/advanced-frage3-active.png", progressBar, 0.9, session);
+                setProgress(nameActive, "/images/advanced-instagram-active.png", progressBar, 0.9, session);
                 break;
 
             default:

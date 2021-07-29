@@ -3,7 +3,9 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 import de.hdm_stuttgart.love_calculator.calculator.Calculator;
 import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
 import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
+import de.hdm_stuttgart.love_calculator.sql.ResultUpdater;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -75,7 +77,7 @@ public class ResultsPageAdvancedController implements Navigatable {
             int socialCalculation = ((Calculator.calculate(session, 4) + Calculator.calculate(session, 5)) / 2);
             generatePieChar(socialRing, socialCalculation, socialRingLabel);
 
-            int finalLoveCalculation = (nameCalculation + studiumCalculation + zodiacCalculation + socialCalculation) / 4;
+            int finalPercentage = (nameCalculation + studiumCalculation + zodiacCalculation + socialCalculation) / 4;
 
             heading.setText("ERGEBNIS");
             heading.getStyleClass().add("mouseFont");
@@ -84,7 +86,9 @@ public class ResultsPageAdvancedController implements Navigatable {
             userNamesLabel.setWrapText(true);
             descriptionLabel.setWrapText(true);
 
-            generatePercentage(finalLoveCalculation);
+            ResultUpdater.updateResult(session, finalPercentage);
+            generatePercentage(finalPercentage);
+
 
         }
     }
