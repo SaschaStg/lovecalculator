@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.calculator.Calculator;
+import de.hdm_stuttgart.love_calculator.calculator.Description;
 import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;

@@ -38,7 +38,7 @@ public class LoggedInController implements Navigatable {
 
             try {
                 // Verbindung aufbauen
-                Connection con = DriverManager.getConnection(url, user, pass);
+                Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
                 System.out.println("Verbindung erfolgreich hergestellt");
 
 

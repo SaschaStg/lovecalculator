@@ -17,15 +17,11 @@ public class ResultUpdater{
 
         if(LoginFactory.getLoggedInUser() != null) {
 
-            // Datenbankadresse und Anmeldedaten
-            String url = "jdbc:mysql://s230.goserver.host:3306/web21_db5";
-            String user = "web21_5";
-            String pass = "MLQCZRdX8DUIsxEk";
 
 
             try {
                 // Verbindung aufbauen
-                Connection con = DriverManager.getConnection(url, user, pass);
+                Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
                 System.out.println("Verbindung erfolgreich hergestellt");
 
 

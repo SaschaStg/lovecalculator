@@ -39,12 +39,9 @@ public class FxmlGuiDriver extends Application {
 
         window = primaryStage;
         window.setResizable(false);
-        //Scanner input = new Scanner(new File("src/main/resources/fxml/mainMenu.fxml"));
 
-        //final String fxmlFile = "src/main/resources/fxml/mainMenu.fxml";
         final FXMLLoader loader = new FXMLLoader();
         final Parent root = FXMLLoader.load(getClass().getResource("/fxml/startScene.fxml"));
-        //final Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(root, 1065,670);
         scene.getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());

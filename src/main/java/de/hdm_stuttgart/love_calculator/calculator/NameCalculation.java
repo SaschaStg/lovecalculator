@@ -1,10 +1,5 @@
 package de.hdm_stuttgart.love_calculator.calculator;
 
-import de.hdm_stuttgart.love_calculator.user.User1;
-import de.hdm_stuttgart.love_calculator.user.User2;
-
-import java.util.Locale;
-
 public class NameCalculation {
 
 

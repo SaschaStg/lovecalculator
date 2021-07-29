@@ -15,9 +15,6 @@ public class Calculator {
         Answers answers = Catalog.INSTANCE.getAnswers(question);
 
 
-        //System.out.println("Answers count: " + answers.getAnswersCount());
-        //System.out.println("Answer 1: " + answers.getAnswer(2));
-
         for (int i = 0; i < answers.getAnswersCount(); i++) {
 
             if (session.getUserAnswer(isUser1, questionIndex).get(0).equals(answers.getAnswer(i))) {

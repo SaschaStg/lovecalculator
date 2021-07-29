@@ -25,7 +25,6 @@ public class Catalog {
 
     public Question getQuestion(int index) {
         return questions.keySet().stream().filter(q -> q.index == index).findFirst().get();
-        //test = (Question q) => { return q.index == index; }
     }
 
     public Answers getAnswers(Question question) {
@@ -58,12 +57,9 @@ public class Catalog {
         // Store split values in variables and convert to correct types
         String questionContent = content[0];
         String questionContentUser2 = content[1];
-        String mode = content[2];
-        String category = content[3];
-        String priority = content[4];
 
         // Add new Question object to ArrayList
-        return new Question(index, questionContent, questionContentUser2, mode, category, priority);
+        return new Question(index, questionContent, questionContentUser2);
     }
 
     private static Answers getAnswers(String answersCsvLine) {

@@ -37,25 +37,6 @@ public class MainMenuController {
         FxmlGuiDriver.setScene(new ClassicMode());
     }
 
-    /*@FXML
-    public void playClassic() {
-
-        classicButton.setOnAction(e -> {
-            try {
-                //BUG man muss 2x Klicken, das liegt am Try Catch, müssen wir mal schauen morgen
-                //Prevent index bug
-                if(QuestionsController.index > 1) {
-                    QuestionsController.index = 0;
-                }
-                ClassicController.startClassicQuestions();
-                QuestionsController.safeClose();
-                Stage stage = (Stage) classicButton.getScene().getWindow();
-                stage.close();
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
-        });
-    }*/
 
     @FXML
     public void playAdvanced() {

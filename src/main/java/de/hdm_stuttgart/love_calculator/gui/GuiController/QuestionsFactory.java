@@ -5,27 +5,19 @@ import de.hdm_stuttgart.love_calculator.game.Catalog;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.game.Question;
-import de.hdm_stuttgart.love_calculator.user.User1;
-import de.hdm_stuttgart.love_calculator.user.User2;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.property.DoubleProperty;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.WindowEvent;
 
 import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 public class QuestionsFactory {
@@ -245,17 +237,3 @@ public class QuestionsFactory {
         }
     }
 }
-
-
-// public static boolean checkEqualAnswers(int index) {
-//     if (Arrays.deepToString(User1.result.get(index)).equals(Arrays.deepToString(User2.result.get(index)))) {
-//         FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind gleich!");
-//         FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-//         FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-//         return true;
-//     }
-//     FxmlGuiDriver.log.info("Ergebnisse für Antwort " + index + " sind NICHT gleich!");
-//     FxmlGuiDriver.log.info("User 1 input: " + Arrays.deepToString(User1.result.get(index)));
-//     FxmlGuiDriver.log.info("User 2 input: " + Arrays.deepToString(User2.result.get(index)));
-//     return false;
-// }
