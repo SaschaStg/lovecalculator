@@ -1,11 +1,12 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +18,7 @@ public class RegisterFactory {
 
     //create logger for every class
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+
 
     public static boolean register(TextField usernameTextField, TextField passwordTextField, TextField vornameTextField, TextField nachnameTextField) {
 
@@ -67,8 +69,7 @@ public class RegisterFactory {
 
             } else {
 
-
-                String createUser = "INSERT INTO userdata (username, password,  vorname, nachname) VALUES (?, ?, ?, ?);";
+                String createUser = "INSERT INTO userdata (username, password,  vorname, nachname, picture) VALUES (?, ?, ?, ?, ?);";
 
                 PreparedStatement prepareInsertStatement =
                         con.prepareStatement(createUser);
@@ -96,6 +97,8 @@ public class RegisterFactory {
 
 
             con.close();
+
+            FxmlGuiDriver.setScene("/fxml/loginScene.fxml");
 
 
         } catch (SQLException e) {

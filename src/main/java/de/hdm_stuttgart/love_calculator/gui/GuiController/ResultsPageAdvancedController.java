@@ -150,5 +150,10 @@ public class ResultsPageAdvancedController implements Navigatable {
         }
     }
 
+    @FXML
+    private void backToMainMenu(){
+        FxmlGuiDriver.setScene("/fxml/startScene.fxml");
+    }
+
 
 }

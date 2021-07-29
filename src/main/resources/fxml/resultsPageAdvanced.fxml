@@ -36,7 +36,7 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets></Label>
-      <Button fx:id="backToMainMenuButton" layoutX="736.0" layoutY="610.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="253.0" styleClass="nextButton" stylesheets="@../styles/styles.css" text="zurück zum Start" />
+      <Button fx:id="backToMainMenuButton" layoutX="736.0" layoutY="610.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="30.0" prefWidth="253.0" styleClass="nextButton" stylesheets="@../styles/styles.css" text="zurück zum Start" />
       <Label fx:id="heading" layoutX="101.0" layoutY="42.0" prefHeight="105.0" prefWidth="531.0" styleClass="mouseFont" text="Label">
          <font>
             <Font size="86.0" />
