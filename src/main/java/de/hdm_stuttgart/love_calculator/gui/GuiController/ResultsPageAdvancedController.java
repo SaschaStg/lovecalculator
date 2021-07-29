@@ -96,9 +96,9 @@ public class ResultsPageAdvancedController implements Navigatable {
 
     private void generatePieChar(ProgressIndicator pi, double percentage, Label label) {
 
-            pi.setProgress(percentage / 100);
+        pi.setProgress(percentage / 100);
 
-            label.setText((int)percentage + "%");
+        label.setText((int)percentage + "%");
     }
 
 
@@ -150,7 +150,7 @@ public class ResultsPageAdvancedController implements Navigatable {
             percentageLabel.getStyleClass().add("mouseFontPercentage");
         } else {
             timeline.stop();
-            descriptionLabel.setText(resultPageClassicController.generateDescription(session));
+            descriptionLabel.setText(Description.generateDescription(session, percentage));
             descriptionLabel.getStyleClass().add("creativeText");
         }
     }

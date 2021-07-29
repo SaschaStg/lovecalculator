@@ -3,6 +3,7 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
+import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -38,15 +39,15 @@ public class LoginFactory {
 
 
         // Datenbankadresse und Anmeldedaten
-        String url = "jdbc:mysql://s230.goserver.host:3306/web21_db5";
-        String user = "web21_5";
-        String pass = "MLQCZRdX8DUIsxEk";
+        String url = SqlParameter.URL;
+        String user = SqlParameter.USER;
+        String pass = SqlParameter.PASSW;
 
 
 
         try {
             // Verbindung aufbauen
-            Connection con = DriverManager.getConnection(url, user, pass);
+            Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
             System.out.println("Verbindung erfolgreich hergestellt");
 
 

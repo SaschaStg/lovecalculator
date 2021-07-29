@@ -4,6 +4,7 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
+import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -25,16 +26,6 @@ public class LoggedInController implements Navigatable {
 
     @Override
     public void onShow(Object argument) {
-
-
-            // Datenbankadresse und Anmeldedaten
-            String url = "jdbc:mysql://s230.goserver.host:3306/web21_db5";
-            String user = "web21_5";
-            String pass = "MLQCZRdX8DUIsxEk";
-
-            System.out.println("Working!");
-
-
 
             try {
                 // Verbindung aufbauen
