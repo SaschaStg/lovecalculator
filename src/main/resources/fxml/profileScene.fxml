@@ -62,7 +62,7 @@
                   <Image url="@../images/lc-logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="105.0" layoutY="252.0" mnemonicParsing="false" onAction="#loginScene" prefHeight="157.0" prefWidth="689.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ANMELDEN">
+            <Button layoutX="107.0" layoutY="228.0" mnemonicParsing="false" onAction="#loginScene" prefHeight="93.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ANMELDEN">
                <graphic>
                   <ImageView fitHeight="103.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -74,7 +74,7 @@
                   <Font name="Mouse Memoirs" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="108.0" layoutY="468.0" mnemonicParsing="false" onAction="#registerScene" prefHeight="157.0" prefWidth="689.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="REGISTRIEREN">
+            <Button layoutX="107.0" layoutY="446.0" mnemonicParsing="false" onAction="#registerScene" prefHeight="198.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="REGISTRIEREN">
                <graphic>
                   <ImageView fitHeight="103.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -107,42 +107,45 @@
 .radio-button {
     /* default properties */
     -fx-border-color: #3C3957;
-    -fx-border-width: 3;
+    -fx-border-width: 2 !important;
     -fx-border-radius: 40px;
     -fx-font-size: 24px;
     -fx-font-family: "Poppins";
-    -fx-padding: 4px;
+    -fx-padding: 10px 10px 10px 5px !important;
 }
 
-.radio-button:selected > .radio {
+.radio-button:selected {
     /* background color for selected checkbox */
-    -fx-border-color: #d92949;
-    -fx-background-radius: #d92949;
+    -fx-border-color: #2e2c42;
+    -fx-background-color: #2e2c42;
     -fx-border-width: 3;
-    -fx-border-radius: 40px;
+    -fx-background-radius: 40px;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 24px;
     -fx-font-family: "Poppins";
-    -fx-spacing: 10;
+}
+
+.radio-button:hover {
+    -fx-border-color: #2e2c42;
+    -fx-background-color: #2e2c42;
+    -fx-border-width: 3;
+    -fx-background-radius: 40px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 24px;
+    -fx-font-family: "Poppins";
+    -fx-cursor: hand;
 }
 
 .radio-button > .radio {
-    /* background color of unselected checkbox */
-    -fx-border-color: #3C3957;
-    -fx-border-width: 3;
-    -fx-border-radius: 40px;
-    -fx-font-size: 24px;
-    -fx-font-family: "Poppins";
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0px;
+    -fx-padding: -20px;
+}
+.radio-button:selected > .radio > .dot {
+    -fx-background-color: transparent;
 }
 
-.radio-button:selected > .radio > .mark,
-.radio-button:indeterminate  > .radio > .mark {
-    /* modify mark color */
-    -fx-border-color: #d92949;
-    -fx-border-width: 3;
-    -fx-border-radius: 40px;
-    -fx-font-size: 24px;
-    -fx-font-family: "Poppins";
-}
 
 .mouseFont {
     -fx-font-family: "Mouse Memoirs";
@@ -156,46 +159,13 @@
     -fx-font-color: #3C3957;
 }
 
-.radio-button {
-    /* default properties */
-    -fx-border-color: #3C3957;
-    -fx-border-width: 3;
-    -fx-border-radius: 40px;
-    -fx-font-size: 24px;
-    -fx-font-family: "Poppins";
-    -fx-padding: 4px;
-}
-
-.radio-button:selected > .radio {
+/*.radio-button:selected > .radio {
     /* background color for selected checkbox */
-    -fx-border-color: #d92949;
     /*-fx-background-radius: #d92949;*/
-    -fx-border-width: 3;
-    -fx-border-radius: 40px;
-    -fx-font-size: 24px;
+    /*-fx-font-size: 24px;
     -fx-font-family: "Poppins";
     -fx-spacing: 10;
-}
-
-.radio-button > .radio {
-    /* background color of unselected checkbox */
-    -fx-border-color: #3C3957;
-    -fx-border-width: 3;
-    -fx-border-radius: 40px;
-    -fx-font-size: 24px;
-    -fx-font-family: "Poppins";
-}
-
-.radio-button:selected > .radio > .mark,
-.radio-button:indeterminate  > .radio > .mark {
-    /* modify mark color */
-    -fx-border-color: #d92949;
-    -fx-border-width: 3;
-    -fx-border-radius: 40px;
-    -fx-font-size: 24px;
-    -fx-font-family: "Poppins";
-}
-
+}*/
 
 .classicModusSubMenuHeader {
     -fx-font-color: #3C3957;

@@ -49,6 +49,7 @@ public class Description {
         } else if (percentage == 100) {
             return "Glaubst du an die große Liebe? Dann hast du sie gefunden – Glückwunsch!";
 
+        }
         return "Eure Liebe überfordert sogar das System.. das ist wohl was ganz besonderes?";
     }
 

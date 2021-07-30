@@ -37,7 +37,7 @@ public class QuestionsFactory {
         Label label = new Label();
         label.getStyleClass().add("questionLabel");
         label.getStyleClass().add("textOutput");
-        label.setTranslateY(-150);
+        label.setTranslateY(-90);
 
         //gets question q from map and the answers from the current index via getQuestions / getAnswers method
         Question question = Catalog.INSTANCE.getQuestion(session.getCurrentQuestionIndex());
@@ -78,6 +78,7 @@ public class QuestionsFactory {
 
     private static void generateTextField(Session session, StackPane pane) {
         TextField field = new TextField();
+        field.setTranslateY(20);
 
         field.focusedProperty().addListener((observableProperty, oldValue, newValue) -> {
             if (!newValue) {
@@ -100,7 +101,7 @@ public class QuestionsFactory {
         FlowPane flowpane = new FlowPane();
         flowpane.setMaxWidth(900);
         flowpane.setMaxHeight(500);
-        flowpane.setTranslateY(200);
+        flowpane.setTranslateY(220);
         flowpane.setHgap(20);
         flowpane.setVgap(20);
         pane.getChildren().add(flowpane);
