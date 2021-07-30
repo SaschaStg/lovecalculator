@@ -25,6 +25,8 @@ public class LoginFactory {
 
             if (!sqlLogin(username, password)) {
                 AlertDialogue.showInfoAlert("Benutzername oder Passwort falsch.", "Bist du schon registriert?");
+            } else {
+                FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
             }
         } else {
             AlertDialogue.showInfoAlert("Fehler", "Bitte fülle alle Felder aus.");
@@ -67,8 +69,9 @@ public class LoginFactory {
 
                 //Safe Username in String
                 setLoggedInUser(rs.getString(2));
-                FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
+
                 LOGGER.info("User " + username + " is now logged in.");
+                con.close();
                 return true;
             }else{
                 LOGGER.info("User entered a wrong username or password.");

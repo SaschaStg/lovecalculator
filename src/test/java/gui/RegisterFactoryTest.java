@@ -30,30 +30,6 @@ public class RegisterFactoryTest {
 
     @Test
     public void test_sqlRegister() {
-
         Assert.assertEquals(true, RegisterFactory.validRegister("ExistiertBereits", "S4p3rS1ch3r", "Max", "Mustermann"));
-
-        try {
-            // Verbindung aufbauen
-            Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
-
-            String searchInDB = "DELETE FROM userdata WHERE username = ?";
-
-            PreparedStatement preparedStatement =
-                    con.prepareStatement(searchInDB);
-
-            preparedStatement.setString(1, "meme");
-
-            ResultSet rs = preparedStatement.executeQuery();
-
-            if(rs.next()) {
-
-            }
-            con.close();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
     }
 }
