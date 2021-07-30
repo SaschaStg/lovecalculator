@@ -1,6 +1,9 @@
 package de.hdm_stuttgart.love_calculator.game;
 
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.gui.GuiController.QuestionsFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +15,8 @@ public class Session {
 
     private boolean isUser1;
     private static int index;
+
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     //toggles user1 and classic mode
     public Session(boolean user1Starts, boolean classicMode) {
@@ -79,44 +84,14 @@ public class Session {
         return true;
     }
 
-    public boolean backQuestion() {
-        //When its not the first question and user1
-        if (index != 0 && isUser1Turn()) {
-            if (answersUser1.get(index) != null) {
-                System.out.println(answersUser1.get(index));
-                answersUser1.remove(index);
-                System.out.println(answersUser1.get(index));
-            }
-            index--;
-            isUser1 = false;
-            return true;
-        }
-        //When its the first question and user2
-        else if (index == 0 && !isUser1Turn()) {
-            if (answersUser1.get(index) != null) {
-                System.out.println(answersUser2.get(index));
-                answersUser2.remove(index);
-                System.out.println(answersUser2.get(index));
-            }
-            isUser1 = true;
-            return true;
-        }
-        //When its not the first question and user2
-        else if (index != 0 && !isUser1Turn()) {
-            if (answersUser1.get(index) != null) {
-                System.out.println(answersUser2.get(index));
-                answersUser2.remove(index);
-                System.out.println(answersUser2.get(index));
-            }
-            index--;
-            isUser1 = true;
-            return true;
-        }
-        //When its the first question and user1
-        answersUser1.remove(index);
+   public void backToMenu() {
+        index = 0;
+        answersUser1.clear();
+        answersUser2.clear();
+        isUser1 = false;
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
-        return false;
-    }
+        LOGGER.info("User canceled game, going back to startScene");
+        }
 
     //handles whether a next question should be displayed or if it's the end of the game
     private boolean nextQuestion() {

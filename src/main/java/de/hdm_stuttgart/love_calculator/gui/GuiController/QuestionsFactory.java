@@ -28,6 +28,7 @@ public class QuestionsFactory {
     public static void generateQuestionPane(Session session, StackPane pane) {
         //style sheet is added to pane
         pane.getParent().getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+        LOGGER.info("Loaded styles.css");
 
         //Generate Progress Header on top with icons
         generateProgressHeader(session, pane);
@@ -108,7 +109,7 @@ public class QuestionsFactory {
 
         for (int i = 0; i < answers.getAnswersCount(); i++) {
 
-            LOGGER.debug("Generating Answers: " + answers.getAnswer(i));
+            LOGGER.info("Generating Answers: " + answers.getAnswer(i));
 
             RadioButton radioButton = new RadioButton();
             radioButton.setText(answers.getAnswer(i));
@@ -128,7 +129,7 @@ public class QuestionsFactory {
 
         for (int i = 0; i < answers.getAnswersCount(); i++) {
 
-            LOGGER.debug("Generating Answers: " + answers.getAnswer(i));
+            LOGGER.info("Generating Answers: " + answers.getAnswer(i));
 
             CheckBox checkBox = new CheckBox();
             checkBox.setText(answers.getAnswer(i));
@@ -159,7 +160,7 @@ public class QuestionsFactory {
                 return Optional.of(false);
             }
         } else {
-            LOGGER.info("Es wurde keine Antwort ausgewählt!");
+            LOGGER.info("No answer is selected!");
             return Optional.empty();
         }
     }

@@ -6,8 +6,14 @@ import de.hdm_stuttgart.love_calculator.gui.Navigatable;
 import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.*;
+import java.util.stream.Collectors;
+import static java.util.Map.Entry.*;
+import static java.util.stream.Collectors.toMap;
 
 public class LeaderBoardController implements Navigatable {
 
@@ -22,6 +28,10 @@ public class LeaderBoardController implements Navigatable {
     @FXML private Label gamecount3Label = new Label();
     @FXML private Label gamecount4Label = new Label();
     @FXML private Label gamecount5Label = new Label();
+
+    //create logger for every class
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+
 
     @Override
     public void onShow(Object argument) {

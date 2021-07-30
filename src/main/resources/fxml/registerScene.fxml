@@ -74,10 +74,5 @@
       <Label fx:id="nachnameLabel" layoutX="187.0" layoutY="367.0" prefHeight="45.0" prefWidth="190.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Nachname" />
       <TextField fx:id="nachnameTextField" layoutX="416.0" layoutY="367.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
       <PasswordField fx:id="passwordTextField" layoutX="502.0" layoutY="273.0" />
-      <Label layoutX="187.0" layoutY="422.0" prefHeight="56.0" prefWidth="123.0" text="Profilbild">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Label>
     </children>
 </AnchorPane>

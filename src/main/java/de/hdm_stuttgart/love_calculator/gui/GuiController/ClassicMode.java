@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public class ClassicMode extends Scene {
     //Button
-    private Button next;
-    private Button back;
+    private final Button next;
+    private final Button back;
     //empty session object
     private final Session session;
     //sets order on buttons for example
@@ -35,14 +35,11 @@ public class ClassicMode extends Scene {
 
         back = new Button();
         back.getStyleClass().add("nextButton");
-        back.setText("Zurück");
+        back.setText("Zurück zum Menü");
         back.setTranslateY(300);
         back.setTranslateX(-400);
 
-        back.setOnAction(e -> {
-            session.backQuestion();
-            setupPane();
-                });
+        back.setOnAction(e -> session.backToMenu());
 
         next = new Button();
         next.getStyleClass().add("nextButton");

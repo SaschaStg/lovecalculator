@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public class AdvancedMode extends Scene {
     //Button
-    private Button next;
-    private Button back;
+    private final Button next;
+    private final Button back;
     //empty session object
     private final Session session;
     //sets order on buttons for example
@@ -21,7 +21,7 @@ public class AdvancedMode extends Scene {
 
     public AdvancedMode() {
 
-        //what is that
+        //Super Group
         super(new Group());
         Group parent = (Group)getRoot();
 
@@ -34,19 +34,20 @@ public class AdvancedMode extends Scene {
         //[parent[ mainPane[ Buttons... ] ] ]
         parent.getChildren().add(mainPane);
 
+        //Back to menu Button in case user wants to cancel game
         back = new Button();
         back.getStyleClass().add("nextButton");
         back.setText("Zurück");
         back.setTranslateY(300);
         back.setTranslateX(-400);
 
+        //Next Button to get to the next question or get the results at the end
         next = new Button();
         next.getStyleClass().add("nextButton");
         next.setText("Weiter");
         next.setTranslateY(300);
         next.setTranslateX(400);
         next.setOnAction(e -> {
-            //
             Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
             if (result.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -71,6 +72,7 @@ public class AdvancedMode extends Scene {
 
         mainPane.getChildren().addAll(next, back);
     }
+
 
     private void showResults() {
         FxmlGuiDriver.setScene("/fxml/resultsPageAdvanced.fxml", session);
