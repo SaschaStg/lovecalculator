@@ -1,5 +1,7 @@
 package de.hdm_stuttgart.love_calculator.game;
 
+import de.hdm_stuttgart.love_calculator.exception.InvalidCsvFileSize;
+
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -33,20 +35,25 @@ public class Catalog {
         return questions.get(question);
     }
 
-    public void initialize() {
+    public void initialize() throws InvalidCsvFileSize {
         try {
             List<String> questionsCsv = Files.readAllLines(getPath("questions.csv"));
             List<String> answersCsv = Files.readAllLines(getPath("answers.csv"));
 
-            for (int i = 0; i < questionsCsv.size(); i++) {
-                Question q = getQuestion(questionsCsv.get(i), i);
-                Answers a = getAnswers(answersCsv.get(i));
+            if (answersCsv.size() == questionsCsv.size()) {
 
-                this.questions.put(q, a);
+                for (int i = 0; i < questionsCsv.size(); i++) {
+                    Question q = getQuestion(questionsCsv.get(i), i);
+                    Answers a = getAnswers(answersCsv.get(i));
+
+                    this.questions.put(q, a);
+                }
+            } else {
+                throw new InvalidCsvFileSize("QuestionsCsv and AnswersCsv do not have the same size. Shutting down.");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            } catch(IOException e){
+                e.printStackTrace();
+            }
     }
 
     private static Path getPath(String resource) {

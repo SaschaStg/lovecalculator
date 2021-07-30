@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.gui.Navigatable;
 import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
@@ -11,9 +10,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.*;
-import java.util.stream.Collectors;
-import static java.util.Map.Entry.*;
-import static java.util.stream.Collectors.toMap;
 
 public class LeaderBoardController implements Navigatable {
 
@@ -105,12 +101,6 @@ public class LeaderBoardController implements Navigatable {
     public void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
         FxmlGuiDriver.setScene("/fxml/playScene.fxml");
-    }
-
-    @FXML
-    public void openLeaderBoard() {
-        FxmlGuiDriver.setScene("/fxml/leaderBoardScene.fxml");
-        System.out.println("Leaderboard opened!");
     }
 
     @FXML

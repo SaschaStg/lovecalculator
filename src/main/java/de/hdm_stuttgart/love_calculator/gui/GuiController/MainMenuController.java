@@ -52,13 +52,6 @@ public class MainMenuController {
     }
 
     @FXML
-    public void backToMainMenuScene() {
-        //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
-        FxmlGuiDriver.setScene("/fxml/startScene.fxml");
-        LOGGER.info("Switched scene to startScene");
-    }
-
-    @FXML
     public void profileScene() {
         if (LoginFactory.getLoggedInUser() != null) {
             FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
@@ -81,7 +74,7 @@ public class MainMenuController {
 
     @FXML
     public void onLogin() {
-        LoginFactory.checkLogin(userNameTextField, passwordTextField);
+        LoginFactory.checkLogin(userNameTextField.getText(), passwordTextField.getText());
     }
 
     @FXML

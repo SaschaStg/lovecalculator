@@ -11,7 +11,6 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.util.Duration;
@@ -48,9 +47,6 @@ public class ResultsPageAdvancedController implements Navigatable {
     ProgressIndicator studiumRing = new ProgressIndicator();
     @FXML
     ProgressIndicator zodiacRing = new ProgressIndicator();
-
-    private int studiumPercentage;
-    private int partyPercentage;
 
     private int countToPercentage = 0;
 
@@ -139,15 +135,6 @@ public class ResultsPageAdvancedController implements Navigatable {
         label.setText((int)percentage + "%");
     }
 
-
-    private boolean checkAnswers(int questionIndex) {
-        if(session.getUserAnswer(true, questionIndex).get(0) == session.getUserAnswer(false, questionIndex).get(0)) {
-            return true;
-        }
-        return false;
-    }
-
-
     private void generatePercentage(int percentage) {
 
 
@@ -166,7 +153,7 @@ public class ResultsPageAdvancedController implements Navigatable {
         if (countToPercentage <= percentage - (percentage * 0.1)) {
 
 
-            percentageLabel.setText(String.valueOf(countToPercentage++) + "%");
+            percentageLabel.setText(countToPercentage++ + "%");
             percentageLabel.getStyleClass().add("mouseFontPercentage");
 
         } else {
@@ -184,7 +171,7 @@ public class ResultsPageAdvancedController implements Navigatable {
     private void generateCounterSlow(int percentage) {
         if (countToPercentage <= percentage) {
 
-            percentageLabel.setText(String.valueOf(countToPercentage++) + "%");
+            percentageLabel.setText(countToPercentage++ + "%");
             percentageLabel.getStyleClass().add("mouseFontPercentage");
         } else {
             timeline.stop();

@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -34,27 +35,24 @@ public class AdvancedMode extends Scene {
         //[parent[ mainPane[ Buttons... ] ] ]
         parent.getChildren().add(mainPane);
 
-        //Back to menu Button in case user wants to cancel game
         back = new Button();
-        back.getStyleClass().add("nextButton");
-        back.setText("Zurück");
-        back.setTranslateY(300);
-        back.setTranslateX(-400);
+        back.getStyleClass().add("btn-small");
+        back.setText("Zurück zum Menü");
+        back.setTranslateY(270);
+        back.setTranslateX(-380);
 
-        //Next Button to get to the next question or get the results at the end
+        back.setOnAction(e -> session.backToMenu());
+
         next = new Button();
-        next.getStyleClass().add("nextButton");
+        next.getStyleClass().add("btn-small");
         next.setText("Weiter");
-        next.setTranslateY(300);
-        next.setTranslateX(400);
+        next.setTranslateY(270);
+        next.setTranslateX(440);
+
         next.setOnAction(e -> {
             Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
             if (result.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Fehler!");
-                alert.setHeaderText(null);
-                alert.setContentText("Bitte wähle eine Antwort aus!");
-                alert.showAndWait();
+                AlertDialogue.showInfoAlert("Fehler!", "Bitte gebe eine Antwort ein.");
             } else if (result.get()) {
                 setupPane();
             } else {

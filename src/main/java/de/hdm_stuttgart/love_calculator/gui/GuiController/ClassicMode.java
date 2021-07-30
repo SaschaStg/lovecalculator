@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -23,8 +24,7 @@ public class ClassicMode extends Scene {
     public ClassicMode() {
 
         super(new Group());
-        Group parent = (Group)getRoot();
-
+        Group parent = (Group) getRoot();
         //overloaded constructor with classic mode = true and user1 = true
         session = new Session(true);
 
@@ -47,15 +47,12 @@ public class ClassicMode extends Scene {
         next.setText("Weiter");
         next.setTranslateY(270);
         next.setTranslateX(440);
+
         next.setOnAction(e -> {
             //
             Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
             if (result.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Fehler!");
-                alert.setHeaderText(null);
-                alert.setContentText("Bitte wähle eine Antwort aus!");
-                alert.showAndWait();
+                AlertDialogue.showInfoAlert("Fehler!", "Bitte gebe eine Antwort ein.");
             } else if (result.get()) {
                 setupPane();
             } else {
@@ -73,6 +70,8 @@ public class ClassicMode extends Scene {
 
         mainPane.getChildren().addAll(next, back);
     }
+
+
 
     private void showResults() {
         FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml", session);

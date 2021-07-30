@@ -70,7 +70,9 @@ public class QuestionsFactory {
                 break;
             default:
                 LOGGER.error("Error: Input type is invalid! (" + input + ")");
+
                 break;
+
         }
 
         LOGGER.info("Input-type for question " + session.getCurrentQuestionIndex() + " is " + input);
@@ -93,6 +95,7 @@ public class QuestionsFactory {
         });
 
         pane.getChildren().add(field);
+        field.requestFocus();
     }
 
     // TODO same as generateCheckboxes
