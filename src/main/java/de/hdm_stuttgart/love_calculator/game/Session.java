@@ -84,6 +84,8 @@ public class Session {
         return true;
     }
 
+
+
    public void backToMenu() {
         index = 0;
         answersUser1.clear();
@@ -118,6 +120,12 @@ public class Session {
 
     //fills the empty arraylist, created in Session constructor
     public void addAnswer(String answer) {
+
+        if(answersUser1.size() == 0 || answersUser1.size() == 0){
+
+            List<String> firstInput = new ArrayList<String>();
+            answersUser1.add(firstInput);
+        }
         if (isUser1) {
             answersUser1.get(index).add(answer);
         } else {
@@ -140,6 +148,15 @@ public class Session {
             answersUser1.get(index).clear();
         } else {
             answersUser2.get(index).clear();
+        }
+    }
+
+
+    public int getSizeOfAnswers() {
+        if (isUser1) {
+            return answersUser1.get(index).size();
+        } else {
+            return answersUser2.get(index).size();
         }
     }
 

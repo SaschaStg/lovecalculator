@@ -2,8 +2,6 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -88,7 +86,9 @@ public class MainMenuController {
 
     @FXML
     public void onRegister(){
-        RegisterFactory.register(userNameTextField, passwordTextField, vornameTextField, nachnameTextField);
+
+            RegisterFactory.register(userNameTextField.getText(), passwordTextField.getText(), vornameTextField.getText(), nachnameTextField.getText());
+
     }
 
 

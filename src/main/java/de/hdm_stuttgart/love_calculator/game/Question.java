@@ -13,4 +13,9 @@ public class Question {
         this.questionContentUser2 = content2;
     }
 
+
+
+
+
+
 }

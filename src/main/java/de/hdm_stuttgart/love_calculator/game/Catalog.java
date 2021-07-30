@@ -19,6 +19,8 @@ public class Catalog {
      */
     private final Map<Question, Answers> questions = new HashMap<>();
 
+
+
     public int getQuestionsCount() {
         return questions.size();
     }
@@ -61,6 +63,8 @@ public class Catalog {
         // Add new Question object to ArrayList
         return new Question(index, questionContent, questionContentUser2);
     }
+
+
 
     private static Answers getAnswers(String answersCsvLine) {
         String[] content = answersCsvLine.split(";");
