@@ -16,16 +16,20 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class ResultPageClassicController implements Navigatable {
+public class resultPageClassicController implements Navigatable {
 
-    @FXML private Label percentageLabel;
-    @FXML private Label userNamesLabel;
-    @FXML private Label descriptionLabel;
-    @FXML private Label courseLabel;
-    @FXML private Label heading;
+    @FXML
+    private Label percentageLabel;
+    @FXML
+    private Label userNamesLabel;
+    @FXML
+    private Label descriptionLabel;
+    @FXML
+    private Label courseLabel;
+    @FXML
+    private Label heading;
 
     private int countToPercentage = 0;
-    private Session session;
 
 
     Timeline timeline = new Timeline();
@@ -44,7 +48,8 @@ public class ResultPageClassicController implements Navigatable {
     public void onShow(Object argument) {
 
         if (argument instanceof Session) {
-            this.session = (Session) argument;
+
+            Session session = (Session) argument;
 
             int namePercentage = (NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0)) * 2);
 
@@ -75,7 +80,7 @@ public class ResultPageClassicController implements Navigatable {
             descriptionLabel.setWrapText(true);
             generatePercentage(finalPercentage);
 
-            LOGGER.info("Name percentage is: " + namePercentage/2 + "%");
+            LOGGER.info("Name percentage is: " + namePercentage / 2 + "%");
             LOGGER.info("Studium percentage is: " + finalStudiumResult + "%");
             LOGGER.info("Final percentage is: " + finalPercentage + "%");
 
@@ -95,9 +100,7 @@ public class ResultPageClassicController implements Navigatable {
 
     }
 
-    private void generateCounter(int finalPercentage) {
-
-        int percentage = finalPercentage;
+    private void generateCounter(int percentage) {
 
 
         if (countToPercentage <= percentage - (percentage * 0.1)) {
@@ -125,7 +128,7 @@ public class ResultPageClassicController implements Navigatable {
             percentageLabel.getStyleClass().add("mouseFontPercentage");
         } else {
             timeline.stop();
-            descriptionLabel.setText(Description.generateDescription(session, percentage));
+            descriptionLabel.setText(Description.generateDescription(percentage));
             descriptionLabel.getStyleClass().add("creativeText");
         }
     }

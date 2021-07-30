@@ -50,10 +50,10 @@ public class Session {
     }
 
     public boolean hasAnswers() {
-        
-        if(answersUser1 == null){
+
+        if (answersUser1 == null) {
             return false;
-        }else if(answersUser2.get(index) == null){
+        } else if (answersUser2.get(index) == null) {
             return false;
         }
 
@@ -92,15 +92,14 @@ public class Session {
     }
 
 
-
-   public void backToMenu() {
+    public void backToMenu() {
         index = 0;
         answersUser1.clear();
         answersUser2.clear();
         isUser1 = false;
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
         LOGGER.info("User canceled game, going back to startScene");
-        }
+    }
 
     //handles whether a next question should be displayed or if it's the end of the game
     private boolean nextQuestion() {
@@ -128,9 +127,9 @@ public class Session {
     //fills the empty arraylist, created in Session constructor
     public void addAnswer(String answer) {
 
-        if(answersUser1.size() == 0 || answersUser1.size() == 0){
+        if (answersUser1.size() == 0 || answersUser2.size() == 0) {
 
-            List<String> firstInput = new ArrayList<String>();
+            List<String> firstInput = new ArrayList<>();
             answersUser1.add(firstInput);
         }
         if (isUser1) {
@@ -169,11 +168,6 @@ public class Session {
 
 
     public int getCurrentIndex() {
-        return this.index;
+        return index;
     }
-
-
-
-
-
 }

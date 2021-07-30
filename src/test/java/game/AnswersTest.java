@@ -11,10 +11,8 @@ import java.util.Arrays;
 public class AnswersTest {
 
 
-
     @Test
-    public void test_getAnswer(){
-
+    public void test_getAnswer() {
 
 
         String[] test_moreAnswers = new String[2];
@@ -35,7 +33,7 @@ public class AnswersTest {
     }
 
     @Test
-    public void test_getAnswerCount(){
+    public void test_getAnswerCount() {
 
         String[] test_moreAnswers = new String[2];
         test_moreAnswers[0] = "Mobile Medien";
@@ -46,7 +44,6 @@ public class AnswersTest {
         Assert.assertNotEquals(66, test_Answer.getAnswersCount());
 
     }
-
 
 
 }

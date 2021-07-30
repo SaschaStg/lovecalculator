@@ -3,13 +3,10 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
-
 
 
 public class LoginFactory {
@@ -21,7 +18,7 @@ public class LoginFactory {
 
     public static void checkLogin(String username, String password) {
 
-        if(checkLoginInput(username, password)) {
+        if (checkLoginInput(username, password)) {
 
             if (!sqlLogin(username, password)) {
                 AlertDialogue.showInfoAlert("Benutzername oder Passwort falsch.", "Bist du schon registriert?");
@@ -42,7 +39,7 @@ public class LoginFactory {
     }
 
     public static boolean checkLoginInput(String username, String password) {
-        if(username.isEmpty() || password.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty()) {
             LOGGER.error("No Username and/or password found.");
             return false;
         }
@@ -65,7 +62,7 @@ public class LoginFactory {
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()) {
 
                 //Safe Username in String
                 setLoggedInUser(rs.getString(2));
@@ -73,7 +70,7 @@ public class LoginFactory {
                 LOGGER.info("User " + username + " is now logged in.");
                 con.close();
                 return true;
-            }else{
+            } else {
                 LOGGER.info("User entered a wrong username or password.");
             }
 
@@ -87,9 +84,4 @@ public class LoginFactory {
         }
         return false;
     }
-
-
-
-
-
 }

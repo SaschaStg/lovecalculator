@@ -9,25 +9,24 @@ public class LoginFactoryTest {
     @Test
     public void test_getLoggedInUser() {
 
-        Assert.assertEquals(null, LoginFactory.getLoggedInUser());
+        Assert.assertNull(LoginFactory.getLoggedInUser());
         LoginFactory.setLoggedInUser("TestUser");
         Assert.assertEquals("TestUser", LoginFactory.getLoggedInUser());
     }
 
     @Test
     public void test_sqlLogin() {
-        Assert.assertEquals(false, LoginFactory.sqlLogin("sascha1337", "FalschesPasswort"));
-        Assert.assertEquals(true, LoginFactory.sqlLogin("sascha1337", "sascha"));
-        Assert.assertEquals(true, LoginFactory.sqlLogin("max", "testpw"));
+        Assert.assertFalse(LoginFactory.sqlLogin("sascha1337", "FalschesPasswort"));
+        Assert.assertTrue(LoginFactory.sqlLogin("sascha1337", "sascha"));
+        Assert.assertTrue(LoginFactory.sqlLogin("max", "testpw"));
     }
 
     @Test
     public void test_checkLoginInput() {
-        Assert.assertEquals(false, LoginFactory.sqlLogin("kriha", ""));
-        Assert.assertEquals(false, LoginFactory.sqlLogin("", ""));
-        Assert.assertEquals(false, LoginFactory.sqlLogin("", "kr1h4_1234"));
-        Assert.assertEquals(true, LoginFactory.sqlLogin("test123", "test4567"));
-        );
+        Assert.assertFalse(LoginFactory.sqlLogin("kriha", ""));
+        Assert.assertFalse(LoginFactory.sqlLogin("", ""));
+        Assert.assertFalse(LoginFactory.sqlLogin("", "kr1h4_1234"));
+        Assert.assertTrue(LoginFactory.sqlLogin("test123", "test4567"));
     }
 
     }

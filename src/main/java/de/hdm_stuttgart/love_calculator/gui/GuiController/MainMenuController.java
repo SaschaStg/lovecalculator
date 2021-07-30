@@ -17,14 +17,13 @@ public class MainMenuController {
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     @FXML
-    public void startScene() {
+    private void startScene() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
     }
 
 
-
     @FXML
-    public void playClassic() {
+    private void playClassic() {
         FxmlGuiDriver.setTitle("Classic Mode");
         //no using of .setOnAction because it causes the "button only works on second click" bug (at least with our implementation)
         FxmlGuiDriver.setScene(new ClassicMode());
@@ -33,26 +32,26 @@ public class MainMenuController {
 
 
     @FXML
-    public void playAdvanced() {
+    private void playAdvanced() {
         //no using of .setOnAction because it causes the "button only works on second click" bug (at least with our implementation)
-            try {
-                    FxmlGuiDriver.setScene(new AdvancedMode());
-                LOGGER.info("Switched scene to Advanced Mode");
-            } catch (Exception exception) {
-                LOGGER.info("Error at switching Scene to Advanced Mode:");
-                exception.printStackTrace();
-            }
+        try {
+            FxmlGuiDriver.setScene(new AdvancedMode());
+            LOGGER.info("Switched scene to Advanced Mode");
+        } catch (Exception exception) {
+            LOGGER.info("Error at switching Scene to Advanced Mode:");
+            exception.printStackTrace();
+        }
     }
 
     @FXML
-    public void playScene() {
+    private void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
         FxmlGuiDriver.setScene("/fxml/playScene.fxml");
         LOGGER.info("Switched scene to playScene");
     }
 
     @FXML
-    public void profileScene() {
+    private void profileScene() {
         if (LoginFactory.getLoggedInUser() != null) {
             FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
         } else {
@@ -61,32 +60,26 @@ public class MainMenuController {
     }
 
     @FXML
-    public void loginScene() {
+    private void loginScene() {
         FxmlGuiDriver.setScene("/fxml/loginScene.fxml");
         LOGGER.info("Switched scene to loginScene");
     }
 
     @FXML
-    public void registerScene() {
+    private void registerScene() {
         FxmlGuiDriver.setScene("/fxml/registerScene.fxml");
         LOGGER.info("Switched scene to registerScene");
     }
 
     @FXML
-    public void onLogin() {
+    private void onLogin() {
         LoginFactory.checkLogin(userNameTextField.getText(), passwordTextField.getText());
     }
 
     @FXML
-    public void onRegister(){
-
-            RegisterFactory.register(userNameTextField.getText(), passwordTextField.getText(), vornameTextField.getText(), nachnameTextField.getText());
-
+    private void onRegister() {
+        RegisterFactory.register(userNameTextField.getText(), passwordTextField.getText(), vornameTextField.getText(), nachnameTextField.getText());
     }
-
-
-
-
 
 
 }

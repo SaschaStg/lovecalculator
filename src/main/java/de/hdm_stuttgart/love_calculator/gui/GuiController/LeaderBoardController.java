@@ -45,7 +45,7 @@ public class LeaderBoardController implements Navigatable {
             int limit5 = 0;
             Map<Integer, String> top5Map = new HashMap<>();
             LinkedHashMap<Integer, String> top5MapSorted = new LinkedHashMap<>();
-            while(top5.next() && limit5 < 5){
+            while (top5.next() && limit5 < 5) {
 
                 top5Map.put(top5.getInt(1), top5.getString(2));
                 limit5++;
@@ -60,9 +60,9 @@ public class LeaderBoardController implements Navigatable {
             //Getting Set of keys from HashMap
             Set<Integer> keySet = top5MapSorted.keySet();
             //Creating an ArrayList of keys by passing the keySet
-            ArrayList<Integer> top5UserValues = new ArrayList<Integer>(keySet);
+            ArrayList<Integer> top5UserValues = new ArrayList<>(keySet);
             Collection<String> values = top5MapSorted.values();
-            ArrayList<String> top5Users = new ArrayList<String>(values);
+            ArrayList<String> top5Users = new ArrayList<>(values);
 
 
             gamecount1Label.setText(String.valueOf(top5UserValues.get(0)));

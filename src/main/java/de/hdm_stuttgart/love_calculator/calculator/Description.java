@@ -2,6 +2,8 @@ package de.hdm_stuttgart.love_calculator.calculator;
 
 import de.hdm_stuttgart.love_calculator.game.Session;
 
+import de.hdm_stuttgart.love_calculator.game.Session;
+
 public class Description {
 
     public static String generateDescription(Session sessionDescription, int finalPercentage) {

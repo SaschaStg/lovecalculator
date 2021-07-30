@@ -3,8 +3,6 @@ package de.hdm_stuttgart.love_calculator.gui.GuiController;
 import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
-import javafx.scene.AmbientLight;
-import javafx.scene.control.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +20,7 @@ public class RegisterFactory {
 
         if (validRegister(username, password, vorname, nachname)) {
 
-            if(sqlRegister(username, password, vorname, nachname)) {
+            if (sqlRegister(username, password, vorname, nachname)) {
                 AlertDialogue.showInfoAlert("Registrierung erfolgreich!", "Du kannst dich jetzt einloggen!");
             } else {
                 AlertDialogue.showInfoAlert("Fehler!", "Dieser Benutzer exisitert bereits!");
@@ -82,9 +80,7 @@ public class RegisterFactory {
                 List<String> loggerList =
                         Arrays.asList(username, password, vorname, nachname, randomPictureString);
 
-                loggerList.forEach(s -> {
-                    LOGGER.info("Created " + s + " in database.");
-                });
+                loggerList.forEach(s -> LOGGER.info("Created " + s + " in database."));
 
                 int rs_insert = prepareInsertStatement.executeUpdate();
             }

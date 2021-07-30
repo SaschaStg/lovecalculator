@@ -28,9 +28,8 @@ public class NameCalculation {
         int asciiSumUser1 = 0;
         int asciiSumUser2 = 0;
         int sumLove = 15;
-        int bothNamesSum = 0;
-        int sumOfAllDigits = 0;
-
+        int bothNamesSum;
+        int sumOfAllDigits;
 
         for(int i = 0; i < nameUser1.length(); i++){
 

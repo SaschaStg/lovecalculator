@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.love_calculator.sql;
 
-import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
 import de.hdm_stuttgart.love_calculator.game.Session;
 import de.hdm_stuttgart.love_calculator.gui.GuiController.LoginFactory;
 import de.hdm_stuttgart.love_calculator.gui.GuiController.QuestionsFactory;
@@ -9,14 +8,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
-public class ResultUpdater{
+public class ResultUpdater {
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     public static void updateResult(Session session, int highestMatchParameter) {
 
-        if(LoginFactory.getLoggedInUser() != null) {
-
+        if (LoginFactory.getLoggedInUser() != null) {
 
 
             try {
@@ -44,14 +42,13 @@ public class ResultUpdater{
 
                 ResultSet percentageResult = prepareCheckStatement.executeQuery();
 
-                if(percentageResult.next()){
+                if (percentageResult.next()) {
 
                     int highestMatch = percentageResult.getInt(6);
-                    int currentHighestMatch = highestMatchParameter;
 
 
-                    if(currentHighestMatch > highestMatch){
-                        LOGGER.info("User " + LoginFactory.getLoggedInUser() + " got a new highest match: " + currentHighestMatch);
+                    if (highestMatchParameter > highestMatch) {
+                        LOGGER.info("User " + LoginFactory.getLoggedInUser() + " got a new highest match: " + highestMatchParameter);
 
                         String setHighestmatch = "UPDATE userdata SET highestmatch = ?, highestmatchNumber = ? WHERE username = ?";
 
@@ -59,7 +56,7 @@ public class ResultUpdater{
                                 con.prepareStatement(setHighestmatch);
 
                         prepareUpdateStatement.setString(1, session.getUserAnswer(false, 0).get(0));
-                        prepareUpdateStatement.setInt(2, currentHighestMatch);
+                        prepareUpdateStatement.setInt(2, highestMatchParameter);
                         prepareUpdateStatement.setString(3, LoginFactory.getLoggedInUser());
 
 
@@ -67,9 +64,6 @@ public class ResultUpdater{
                     }
 
                 }
-
-
-
 
 
                 con.close();

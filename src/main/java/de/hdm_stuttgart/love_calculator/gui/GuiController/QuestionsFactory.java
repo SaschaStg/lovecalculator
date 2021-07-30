@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class QuestionsFactory {
@@ -27,7 +28,7 @@ public class QuestionsFactory {
 
     public static void generateQuestionPane(Session session, StackPane pane) {
         //style sheet is added to pane
-        pane.getParent().getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+        pane.getParent().getStylesheets().add(Objects.requireNonNull(FxmlGuiDriver.class.getResource("/styles/styles.css")).toExternalForm());
         LOGGER.info("Loaded styles.css");
 
         //Generate Progress Header on top with icons
@@ -227,7 +228,7 @@ public class QuestionsFactory {
     //Generates icon images header on question stackpane. also generates progress bar on top of the icons.
     private static void setProgress(ImageView view, String path, ProgressBar progressBar, double progress, Session session) {
 
-        view.setImage(new Image(FxmlGuiDriver.class.getResource(path).toExternalForm()));
+        view.setImage(new Image(Objects.requireNonNull(FxmlGuiDriver.class.getResource(path)).toExternalForm()));
 
         Timeline timeline = new Timeline();
 

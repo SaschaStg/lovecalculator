@@ -19,12 +19,12 @@ public class RegisterFactoryTest {
     @Test
     public void test_validRegister() {
 
-        Assert.assertEquals(true, RegisterFactory.validRegister("TestName", "S4p3rS1ch3r", "Max", "Mustermann"));
+        Assert.assertTrue(RegisterFactory.validRegister("TestName", "S4p3rS1ch3r", "Max", "Mustermann"));
 
-        Assert.assertEquals(false, RegisterFactory.validRegister("Test", "", "", ""));
-        Assert.assertEquals(false, RegisterFactory.validRegister("a", "1234", "", ""));
-        Assert.assertEquals(false, RegisterFactory.validRegister("a", "", "Sascha", ""));
-        Assert.assertEquals(false, RegisterFactory.validRegister("a", "", "", "Müller"));
+        Assert.assertFalse(RegisterFactory.validRegister("Test", "", "", ""));
+        Assert.assertFalse(RegisterFactory.validRegister("a", "1234", "", ""));
+        Assert.assertFalse(RegisterFactory.validRegister("a", "", "Sascha", ""));
+        Assert.assertFalse(RegisterFactory.validRegister("a", "", "", "Müller"));
 
     }
 

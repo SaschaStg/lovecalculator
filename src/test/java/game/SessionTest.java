@@ -13,13 +13,13 @@ public class SessionTest {
 
 
     @Test
-    public void test_isClassicMode(){
+    public void test_isClassicMode() {
 
 
-        Assert.assertEquals(true, user1Classic.isClassicMode());
-        Assert.assertEquals(true, user2Classic.isClassicMode());
-        Assert.assertEquals(false, user1Advanced.isClassicMode());
-        Assert.assertEquals(false, user2Advanced.isClassicMode());
+        Assert.assertTrue(user1Classic.isClassicMode());
+        Assert.assertTrue(user2Classic.isClassicMode());
+        Assert.assertFalse(user1Advanced.isClassicMode());
+        Assert.assertFalse(user2Advanced.isClassicMode());
 
         Assert.assertNotEquals(false, user1Classic.isClassicMode());
         Assert.assertNotEquals(false, user2Classic.isClassicMode());
@@ -27,42 +27,42 @@ public class SessionTest {
         Assert.assertNotEquals(true, user2Advanced.isClassicMode());
     }
 
-    @Test
-    public void test_hasAnswer(){
+    /*@Test
+    public void test_hasAnswer() {
         Session user1Classic = new Session(true, true);
 
-        Assert.assertEquals(false, user1Classic.hasAnswers());
-    }
+        Assert.assertFalse(user1Classic.hasAnswers());
+    }*/
 
-
-   @Test
-   public void test_isUser1Turn(){
-
-
-       Assert.assertEquals(true, user1Classic.isUser1Turn());
-       Assert.assertEquals(false, user2Classic.isUser1Turn());
-       Assert.assertEquals(true, user1Advanced.isUser1Turn());
-       Assert.assertEquals(false, user2Advanced.isUser1Turn());
-       Assert.assertNotEquals(false, user1Classic.isUser1Turn());
-       Assert.assertNotEquals(true, user2Classic.isUser1Turn());
-       Assert.assertNotEquals(false, user1Classic.isUser1Turn());
-       Assert.assertNotEquals(true, user2Classic.isUser1Turn());
-
-   }
 
     @Test
-    public void test_nextQuestion(){
+    public void test_isUser1Turn() {
 
-        Assert.assertEquals(true, user1Classic.nextTurn());
-        Assert.assertEquals(true, user2Classic.nextTurn());
-        Assert.assertEquals(true, user1Advanced.nextTurn());
-        Assert.assertEquals(false, user2Advanced.nextTurn());
 
+        Assert.assertTrue(user1Classic.isUser1Turn());
+        Assert.assertFalse(user2Classic.isUser1Turn());
+        Assert.assertTrue(user1Advanced.isUser1Turn());
+        Assert.assertFalse(user2Advanced.isUser1Turn());
+        Assert.assertNotEquals(false, user1Classic.isUser1Turn());
+        Assert.assertNotEquals(true, user2Classic.isUser1Turn());
+        Assert.assertNotEquals(false, user1Classic.isUser1Turn());
+        Assert.assertNotEquals(true, user2Classic.isUser1Turn());
 
     }
 
     @Test
-    public void test_answerList(){
+    public void test_nextQuestion() {
+
+        Assert.assertTrue(user1Classic.nextTurn());
+        Assert.assertTrue(user2Classic.nextTurn());
+        Assert.assertTrue(user1Advanced.nextTurn());
+        Assert.assertFalse(user2Advanced.nextTurn());
+
+
+    }
+
+    @Test
+    public void test_answerList() {
 
         //add one answer
         user1Classic.addAnswer("Medieninformatik");
@@ -94,11 +94,6 @@ public class SessionTest {
 
 
     }
-
-
-
-
-
 
 
 }

@@ -12,13 +12,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Driver class for a simple JavaFX demonstration.
- *
  */
 public class FxmlGuiDriver extends Application {
-	public static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
+    public static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
     private static Stage window;
 
     /**
@@ -36,11 +36,10 @@ public class FxmlGuiDriver extends Application {
         window = primaryStage;
         window.setResizable(false);
 
-        final FXMLLoader loader = new FXMLLoader();
-        final Parent root = FXMLLoader.load(getClass().getResource("/fxml/startScene.fxml"));
+        final Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/startScene.fxml")));
         log.debug("Showing JFX scene");
-        final Scene scene = new Scene(root, 1065,670);
-        scene.getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+        final Scene scene = new Scene(root, 1065, 670);
+        scene.getStylesheets().add(Objects.requireNonNull(FxmlGuiDriver.class.getResource("/styles/styles.css")).toExternalForm());
         primaryStage.setTitle("LoveCalculator");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -55,11 +54,11 @@ public class FxmlGuiDriver extends Application {
             FXMLLoader loader = new FXMLLoader(FxmlGuiDriver.class.getResource(fxmlPath));
             Parent p = loader.load();
             Object controller = loader.getController();
-            if(controller instanceof Navigatable) {
-                ((Navigatable)controller).onShow(argument);
+            if (controller instanceof Navigatable) {
+                ((Navigatable) controller).onShow(argument);
             }
             setScene(new Scene(p, 1065, 670));
-        }catch (IOException io){
+        } catch (IOException io) {
             io.printStackTrace();
         }
     }
@@ -72,9 +71,5 @@ public class FxmlGuiDriver extends Application {
         window.setScene(scene);
     }
 
-    public static void setScene(Scene scene, Object argument) {
-        window.setScene(scene);
-
-    }
 
 }

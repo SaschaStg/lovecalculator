@@ -5,9 +5,7 @@ import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
 import java.util.Optional;
@@ -70,7 +68,6 @@ public class ClassicMode extends Scene {
 
         mainPane.getChildren().addAll(next, back);
     }
-
 
 
     private void showResults() {

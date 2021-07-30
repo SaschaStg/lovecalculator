@@ -5,7 +5,6 @@ import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
 import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
@@ -24,7 +23,7 @@ public class AdvancedMode extends Scene {
 
         //Super Group
         super(new Group());
-        Group parent = (Group)getRoot();
+        Group parent = (Group) getRoot();
 
         //overloaded constructor with classic mode = true and user1 = true
         session = new Session(false);

@@ -17,7 +17,7 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class ResultsPageAdvancedController implements Navigatable {
+public class resultsPageAdvancedController implements Navigatable {
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
@@ -50,28 +50,22 @@ public class ResultsPageAdvancedController implements Navigatable {
 
     private int countToPercentage = 0;
 
-    private Session session;
-
     Timeline timeline = new Timeline();
 
     @Override
     public void onShow(Object argument) {
 
         if (argument instanceof Session) {
-            this.session = (Session) argument;
+            Session session = (Session) argument;
 
             //BERECHNUNG
 
 
-
-
-
-
             Calculator studiumCalculation1 = new Calculator(session, 1);
             Calculator studiumCalculation2 = new Calculator(session, 2);
-            Calculator zodiacCalculator = new Calculator(session,3);
-            Calculator socialCalculator1 = new Calculator(session,4);
-            Calculator socialCalculator2 = new Calculator(session,5);
+            Calculator zodiacCalculator = new Calculator(session, 3);
+            Calculator socialCalculator1 = new Calculator(session, 4);
+            Calculator socialCalculator2 = new Calculator(session, 5);
 
 
             studiumCalculation1.start();
@@ -90,7 +84,6 @@ public class ResultsPageAdvancedController implements Navigatable {
             }
 
 
-
             int finalStudiumResult = (studiumCalculation1.calculationResult + studiumCalculation2.calculationResult) / 2;
             int finalZodiacResult = zodiacCalculator.calculationResult;
             int finalSocialResult = (socialCalculator1.calculationResult + socialCalculator2.calculationResult) / 2;
@@ -103,9 +96,6 @@ public class ResultsPageAdvancedController implements Navigatable {
             generatePieChar(studiumRing, finalStudiumResult, studiumRingLabel);
             generatePieChar(zodiacRing, finalZodiacResult, zodiacRingLabel);
             generatePieChar(socialRing, finalSocialResult, socialRingLabel);
-
-
-
 
 
             int finalNameResult = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
@@ -132,7 +122,7 @@ public class ResultsPageAdvancedController implements Navigatable {
 
         pi.setProgress(percentage / 100);
 
-        label.setText((int)percentage + "%");
+        label.setText((int) percentage + "%");
     }
 
     private void generatePercentage(int percentage) {
@@ -175,13 +165,13 @@ public class ResultsPageAdvancedController implements Navigatable {
             percentageLabel.getStyleClass().add("mouseFontPercentage");
         } else {
             timeline.stop();
-            descriptionLabel.setText(Description.generateDescription(session, percentage));
+            descriptionLabel.setText(Description.generateDescription(percentage));
             descriptionLabel.getStyleClass().add("creativeText");
         }
     }
 
     @FXML
-    private void backToMainMenu(){
+    private void backToMainMenu() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
     }
 
