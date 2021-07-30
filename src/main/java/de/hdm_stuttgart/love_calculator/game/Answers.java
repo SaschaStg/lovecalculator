@@ -16,21 +16,11 @@ public class Answers {
             this.answerOptions.addAll(Arrays.asList(moreAnswers));
     }
 
-    public void getAnswers(){
-        for (int i = 0; i < answerOptions.size(); i++){
-            System.out.println(answerOptions.get(i));
-        }
-    }
-
     public int getAnswersCount() {
         return answerOptions.size();
     }
 
-    public String getAnswer(int answerIndex){
+    public String getAnswer(int answerIndex) {
         return answerOptions.get(answerIndex);
     }
-
-
-
-
 }

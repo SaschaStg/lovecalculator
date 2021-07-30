@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import java.util.Optional;
 
 public class ClassicMode extends Scene {
+
     //Button
     private final Button next;
     private final Button back;

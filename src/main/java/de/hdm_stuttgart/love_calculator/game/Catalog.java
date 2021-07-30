@@ -21,8 +21,6 @@ public class Catalog {
      */
     private final Map<Question, Answers> questions = new HashMap<>();
 
-
-
     public int getQuestionsCount() {
         return questions.size();
     }
@@ -56,11 +54,11 @@ public class Catalog {
             }
     }
 
-    private static Path getPath(String resource) {
-        return Paths.get(URI.create(Question.class.getClassLoader().getResource(resource).toExternalForm()));
+    private Path getPath(String resource) {
+        return Paths.get(URI.create(Objects.requireNonNull(Question.class.getClassLoader().getResource(resource)).toExternalForm()));
     }
 
-    private static Question getQuestion(String questionCsvLine, int index) {
+    private Question getQuestion(String questionCsvLine, int index) {
         String[] content = questionCsvLine.split(";");
 
         // Store split values in variables and convert to correct types
@@ -73,7 +71,7 @@ public class Catalog {
 
 
 
-    private static Answers getAnswers(String answersCsvLine) {
+    private Answers getAnswers(String answersCsvLine) {
         String[] content = answersCsvLine.split(";");
 
         // Store split values in variables and convert to correct types
@@ -88,8 +86,3 @@ public class Catalog {
         return new Answers(inputType, firstAnswer, moreAnswers);
     }
 }
-
-
-
-
-

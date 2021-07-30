@@ -12,10 +12,7 @@ public class NameCalculation {
         return sum;
     }
 
-
-
     public static int calculate(String nameUser1, String nameUser2){
-
 
         nameUser1 = nameUser1.toLowerCase();
         nameUser2 = nameUser2.toLowerCase();
@@ -32,34 +29,20 @@ public class NameCalculation {
         int sumOfAllDigits;
 
         for(int i = 0; i < nameUser1.length(); i++){
-
             asciiSumUser1 += nameUser1.charAt(i);
         }
 
         for(int i = 0; i < nameUser2.length(); i++){
-
             asciiSumUser2 += nameUser2.charAt(i);
         }
 
-
         bothNamesSum = asciiSumUser1 + asciiSumUser2;
-
         sumOfAllDigits = findSum(bothNamesSum);
-
 
         if(sumOfAllDigits > sumLove){
             sumOfAllDigits = sumLove - (sumOfAllDigits - sumLove);
         }
 
         return (sumOfAllDigits * 100 /sumLove);
-
-
-
-
-
     }
-
-
-
-
 }

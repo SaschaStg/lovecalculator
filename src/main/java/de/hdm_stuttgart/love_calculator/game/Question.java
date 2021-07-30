@@ -6,16 +6,9 @@ public class Question {
     public final String questionContent;
     public final String questionContentUser2;
 
-
     public Question(int index, String content, String content2) {
         this.index = index;
         this.questionContent = content;
         this.questionContentUser2 = content2;
     }
-
-
-
-
-
-
 }

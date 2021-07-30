@@ -1,18 +1,8 @@
 package gui;
 
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.gui.GuiController.LoginFactory;
 import de.hdm_stuttgart.love_calculator.gui.GuiController.RegisterFactory;
-import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import org.junit.Assert;
 import org.junit.Test;
-import javafx.fxml.FXML;
-
-import java.sql.*;
-import java.util.Arrays;
-import java.util.List;
 
 public class RegisterFactoryTest {
 
@@ -30,6 +20,8 @@ public class RegisterFactoryTest {
 
     @Test
     public void test_sqlRegister() {
-        Assert.assertEquals(true, RegisterFactory.validRegister("ExistiertBereits", "S4p3rS1ch3r", "Max", "Mustermann"));
+        Assert.assertFalse(RegisterFactory.sqlRegister("TestName123", "S4p3rS1ch3r", "Max", "Mustermann"));
+        Assert.assertFalse(RegisterFactory.sqlRegister("sascha1337", "pw123123", "Sascha", "Müller"));
+
     }
 }

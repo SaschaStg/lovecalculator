@@ -97,7 +97,7 @@ public class LoggedInController implements Navigatable {
     }
 
     @FXML
-    public void profileScene() {
+    private void profileScene() {
         if (LoginFactory.getLoggedInUser() != null) {
             FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
             LOGGER.info("User " + LoginFactory.getLoggedInUser() + " is logged in. Showing loggedInScene");
@@ -108,7 +108,7 @@ public class LoggedInController implements Navigatable {
     }
 
     @FXML
-    public void playScene() {
+    private void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
         FxmlGuiDriver.setScene("/fxml/playScene.fxml");
         LOGGER.info("Switched scene to playScene");
@@ -121,7 +121,7 @@ public class LoggedInController implements Navigatable {
     }
 
     @FXML
-    public void startScene() {
+    private void startScene() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
         LOGGER.info("Switched scene to startScene");
     }
