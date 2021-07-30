@@ -5,28 +5,24 @@ import de.hdm_stuttgart.love_calculator.game.Catalog;
 import de.hdm_stuttgart.love_calculator.game.Question;
 import de.hdm_stuttgart.love_calculator.game.Session;
 
-public class Calculator {
+public class Calculator extends Thread{
+
+    Session session;
+    int questionIndex;
+
+    public int calculationResult;
 
 
+    public Calculator(Session session, int questionIndex){
+        this.session = session;
+        this.questionIndex = questionIndex;
 
-    public static int findIndexOfAnswer(Session session, int questionIndex, boolean isUser1) {
-
-        Question question = Catalog.INSTANCE.getQuestion(questionIndex);
-        Answers answers = Catalog.INSTANCE.getAnswers(question);
-
-
-        for (int i = 0; i < answers.getAnswersCount(); i++) {
-
-            if (session.getUserAnswer(isUser1, questionIndex).get(0).equals(answers.getAnswer(i))) {
-                return i;
-            }
-        }
-        return 0;
     }
 
+    public void run(){
 
 
-    public static int calculate(Session session, int questionIndex) {
+        System.out.println("Started Thread");
 
         int indexUser1 = findIndexOfAnswer(session, questionIndex, true);
         int indexUser2 = findIndexOfAnswer(session, questionIndex, false);
@@ -44,6 +40,25 @@ public class Calculator {
         double divideByAnswerCount = (double)100 / answers.getAnswersCount();
 
         sum = sum * divideByAnswerCount;
-        return 100 - (int)sum;
+        calculationResult = 100 - (int)sum;
+        System.out.println(calculationResult);
+
     }
+
+
+    public static int findIndexOfAnswer(Session session, int questionIndex, boolean isUser1) {
+
+        Question question = Catalog.INSTANCE.getQuestion(questionIndex);
+        Answers answers = Catalog.INSTANCE.getAnswers(question);
+
+
+        for (int i = 0; i < answers.getAnswersCount(); i++) {
+
+            if (session.getUserAnswer(isUser1, questionIndex).get(0).equals(answers.getAnswer(i))) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
 }

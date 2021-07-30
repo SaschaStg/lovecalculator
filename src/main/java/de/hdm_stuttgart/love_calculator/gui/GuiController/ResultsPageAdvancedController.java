@@ -66,19 +66,57 @@ public class ResultsPageAdvancedController implements Navigatable {
 
             //BERECHNUNG
 
-            int nameCalculation = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
-            generatePieChar(nameRing, nameCalculation, nameRingLabel);
 
-            int studiumCalculation = ((Calculator.calculate(session, 1) + Calculator.calculate(session, 2)) / 2);
-            generatePieChar(studiumRing, studiumCalculation, studiumRingLabel);
 
-            int zodiacCalculation = (Calculator.calculate(session, 3));
-            generatePieChar(zodiacRing, zodiacCalculation, zodiacRingLabel);
 
-            int socialCalculation = ((Calculator.calculate(session, 4) + Calculator.calculate(session, 5)) / 2);
-            generatePieChar(socialRing, socialCalculation, socialRingLabel);
 
-            int finalPercentage = (nameCalculation + studiumCalculation + zodiacCalculation + socialCalculation) / 4;
+
+            Calculator studiumCalculation1 = new Calculator(session, 1);
+            Calculator studiumCalculation2 = new Calculator(session, 2);
+            Calculator zodiacCalculator = new Calculator(session,3);
+            Calculator socialCalculator1 = new Calculator(session,4);
+            Calculator socialCalculator2 = new Calculator(session,5);
+
+
+            studiumCalculation1.start();
+            studiumCalculation2.start();
+            zodiacCalculator.start();
+            socialCalculator1.start();
+            socialCalculator2.start();
+            try {
+                studiumCalculation1.join();
+                studiumCalculation2.join();
+                zodiacCalculator.join();
+                socialCalculator1.join();
+                socialCalculator2.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+
+            int finalStudiumResult = (studiumCalculation1.calculationResult + studiumCalculation2.calculationResult) / 2;
+            int finalZodiacResult = zodiacCalculator.calculationResult;
+            int finalSocialResult = (socialCalculator1.calculationResult + socialCalculator2.calculationResult) / 2;
+
+            LOGGER.info("Final Percentage for Studium: " + finalStudiumResult + "%");
+            LOGGER.info("Final Percentage for Zodiac: " + finalZodiacResult + "%");
+            LOGGER.info("Final Percentage for Social: " + finalSocialResult + "%");
+
+
+            generatePieChar(studiumRing, finalStudiumResult, studiumRingLabel);
+            generatePieChar(zodiacRing, finalZodiacResult, zodiacRingLabel);
+            generatePieChar(socialRing, finalSocialResult, socialRingLabel);
+
+
+
+
+
+            int finalNameResult = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
+            generatePieChar(nameRing, finalNameResult, nameRingLabel);
+
+
+            int finalPercentage = (finalNameResult + finalStudiumResult + finalZodiacResult + finalSocialResult) / 4;
 
             heading.setText("ERGEBNIS");
             heading.getStyleClass().add("mouseFont");
