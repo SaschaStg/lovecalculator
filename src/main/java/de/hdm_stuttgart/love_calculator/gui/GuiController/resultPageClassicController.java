@@ -65,8 +65,20 @@ public class resultPageClassicController implements Navigatable {
             this.session = (Session) argument;
 
             int namePercentage = (NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0)) * 2);
-            int studiumPercentage = Calculator.calculate(session, 1);
-            int finalPercentage = (namePercentage + studiumPercentage) / 3;
+
+            Calculator studiumCalculation1 = new Calculator(session, 1);
+
+            studiumCalculation1.start();
+
+            try {
+                studiumCalculation1.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+            int finalStudiumResult = studiumCalculation1.calculationResult;
+            int finalPercentage = (namePercentage + finalStudiumResult) / 3;
 
             ResultUpdater.updateResult(session, finalPercentage);
 
@@ -82,7 +94,7 @@ public class resultPageClassicController implements Navigatable {
             generatePercentage(finalPercentage);
 
             LOGGER.info("Name percentage is: " + namePercentage/2 + "%");
-            LOGGER.info("Studium percentage is: " + studiumPercentage + "%");
+            LOGGER.info("Studium percentage is: " + finalStudiumResult + "%");
             LOGGER.info("Final percentage is: " + finalPercentage + "%");
 
         }

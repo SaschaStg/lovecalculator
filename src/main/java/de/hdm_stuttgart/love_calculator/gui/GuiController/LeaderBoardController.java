@@ -55,7 +55,7 @@ public class LeaderBoardController implements Navigatable {
                 limit5++;
 
             }
-
+            //sorting top 5 users
             top5Map.entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
                     .forEachOrdered(x -> top5MapSorted.put(x.getKey(), x.getValue()));
 
@@ -83,50 +83,6 @@ public class LeaderBoardController implements Navigatable {
 
             gamecount5Label.setText(String.valueOf(top5UserValues.get(4)));
             username5Label.setText(top5Users.get(4));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             con.close();
 
