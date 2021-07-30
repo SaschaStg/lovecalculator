@@ -51,8 +51,15 @@
                                 <Font size="18.0" />
                             </font>
                         </Button>
-                  <Label layoutX="38.0" layoutY="574.0" prefHeight="29.0" prefWidth="81.0" text="ss534 ss532" />
-                  <Label layoutX="36.0" layoutY="599.0" prefHeight="22.0" prefWidth="81.0" text="pk090 vv014" />
+                  <Label layoutX="17.0" layoutY="624.0" prefHeight="29.0" prefWidth="123.0" text="ss534, ss532, pk090, vv014" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+                  <Label layoutX="27.0" layoutY="603.0" prefHeight="29.0" prefWidth="103.0" text="LoveCalculator 2021 ©" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                     </children>
                 </AnchorPane>
             </items>

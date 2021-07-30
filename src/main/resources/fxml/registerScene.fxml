@@ -5,7 +5,6 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,8 +12,8 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
     <children>
-        <Label fx:id="userNameLabel" layoutX="359.0" layoutY="216.0" prefHeight="45.0" prefWidth="197.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Benutzername" />
-        <Label fx:id="passwordLabel" layoutX="430.0" layoutY="313.0" prefHeight="39.0" prefWidth="131.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Passwort" />
+        <Label fx:id="userNameLabel" layoutX="359.0" layoutY="216.0" prefHeight="45.0" prefWidth="238.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Benutzername" />
+        <Label fx:id="passwordLabel" layoutX="430.0" layoutY="313.0" prefHeight="39.0" prefWidth="168.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Passwort" />
         <TextField fx:id="userNameTextField" layoutX="600.0" layoutY="218.0" prefHeight="40.0" prefWidth="260.0" styleClass="text-field" stylesheets="@../styles/styles.css" />
         <Label fx:id="registerLabel" layoutX="345.0" layoutY="45.0" styleClass="classicModusSubMenuHeader" stylesheets="@../styles/styles.css" text="REGISTRIERUNG" textFill="#d97891">
          <font>
@@ -40,7 +39,6 @@
                                 <Font size="18.0" />
                             </font>
                         </Button>
-                        <ToggleButton layoutX="25.0" layoutY="576.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="103.0" text="Darkmode" />
                         <Button fx:id="playButton" contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
                             <graphic>
                                 <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
@@ -69,10 +67,20 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-      <Label fx:id="vornameLabel" layoutX="427.0" layoutY="405.0" prefHeight="45.0" prefWidth="123.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname" />
+      <Label fx:id="vornameLabel" layoutX="427.0" layoutY="405.0" prefHeight="45.0" prefWidth="168.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname" />
       <TextField fx:id="vornameTextField" layoutX="600.0" layoutY="409.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
-      <Label fx:id="nachnameLabel" layoutX="408.0" layoutY="503.0" prefHeight="45.0" prefWidth="148.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Nachname" />
+      <Label fx:id="nachnameLabel" layoutX="408.0" layoutY="503.0" prefHeight="45.0" prefWidth="186.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Nachname" />
       <TextField fx:id="nachnameTextField" layoutX="600.0" layoutY="506.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
       <PasswordField fx:id="passwordTextField" layoutX="600.0" layoutY="313.0" prefHeight="40.0" prefWidth="260.0" stylesheets="@../styles/styles.css" />
+      <Label layoutX="17.0" layoutY="624.0" prefHeight="29.0" prefWidth="123.0" text="ss534, ss532, pk090, vv014" textAlignment="CENTER">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="603.0" prefHeight="29.0" prefWidth="103.0" text="LoveCalculator 2021 ©" textAlignment="CENTER">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
