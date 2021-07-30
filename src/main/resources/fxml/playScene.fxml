@@ -63,7 +63,7 @@
                   <Image url="@../images/lc-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="ClassicButton" alignment="BASELINE_LEFT" layoutX="105.0" layoutY="252.0" mnemonicParsing="false" onAction="#playClassic" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="CLASSIC" textFill="#3c3957">
+            <Button fx:id="ClassicButton" alignment="CENTER" layoutX="105.0" layoutY="252.0" mnemonicParsing="false" onAction="#playClassic" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="CLASSIC" textFill="#3c3957">
                <graphic>
                   <ImageView fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="12.0">
                      <image>
@@ -75,13 +75,13 @@
                   <Font name="Mouse Memoirs" size="13.0" />
                </font>
                <padding>
-                  <Insets left="80.0" top="-18.0" />
+                  <Insets top="-18.0" />
                </padding>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="advancedButton" alignment="BASELINE_LEFT" layoutX="109.0" layoutY="446.0" mnemonicParsing="false" onAction="#playAdvanced" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ADVANCED" textFill="#3c3957">
+            <Button fx:id="advancedButton" alignment="CENTER" layoutX="109.0" layoutY="446.0" mnemonicParsing="false" onAction="#playAdvanced" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ADVANCED" textFill="#3c3957">
                <graphic>
                   <ImageView fitHeight="103.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="12.0">
                      <image>
@@ -90,7 +90,7 @@
                   </ImageView>
                </graphic>
                <padding>
-                  <Insets left="80.0" top="-18.0" />
+                  <Insets top="-18.0" />
                </padding>
             </Button>
          </children>
