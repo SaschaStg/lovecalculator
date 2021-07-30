@@ -31,9 +31,7 @@ public class SessionTest {
     public void test_hasAnswer(){
         Session user1Classic = new Session(true, true);
 
-        //answersUser1.get(index)
-
-        System.out.println(user1Classic.hasAnswers());
+        Assert.assertEquals(false, user1Classic.hasAnswers());
     }
 
 

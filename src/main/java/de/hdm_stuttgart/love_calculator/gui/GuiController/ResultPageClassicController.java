@@ -16,7 +16,7 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class resultPageClassicController implements Navigatable {
+public class ResultPageClassicController implements Navigatable {
 
     @FXML private Label percentageLabel;
     @FXML private Label userNamesLabel;

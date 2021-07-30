@@ -50,6 +50,13 @@ public class Session {
     }
 
     public boolean hasAnswers() {
+        
+        if(answersUser1 == null){
+            return false;
+        }else if(answersUser2.get(index) == null){
+            return false;
+        }
+
         if (isUser1) {
             return answersUser1.get(index).size() > 0;
         } else {
