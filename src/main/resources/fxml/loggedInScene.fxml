@@ -65,21 +65,21 @@
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="114.0" layoutX="766.0" layoutY="217.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="243.0" />
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="114.0" layoutX="766.0" layoutY="69.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="243.0" />
       <ImageView fx:id="profilePicture" fitHeight="300.0" fitWidth="300.0" layoutX="304.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="userInformation" layoutX="313.0" layoutY="477.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname nachname" />
-      <Label fx:id="username" layoutX="404.0" layoutY="517.0" stylesheets="@../styles/styles.css" text="username" textFill="#d97791">
+      <Label fx:id="userInformation" layoutX="316.0" layoutY="477.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname nachname" textAlignment="CENTER" />
+      <Label fx:id="username" layoutX="410.0" layoutY="517.0" stylesheets="@../styles/styles.css" text="username" textAlignment="CENTER" textFill="#d97791">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="bisherGespielt" layoutX="799.0" layoutY="98.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="bisher gespielt:" />
-      <Label fx:id="counter" layoutX="858.0" layoutY="137.0" styleClass="text" stylesheets="@../styles/styles.css" text="Anzahl" textFill="#d97791">
+      <Label fx:id="bisherGespielt" layoutX="805.0" layoutY="98.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Bisher gespielt:" />
+      <Label fx:id="counter" layoutX="858.0" layoutY="137.0" styleClass="text" stylesheets="@../styles/styles.css" text="Anzahl" textAlignment="CENTER" textFill="#d97791">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="highestMatch" layoutX="799.0" layoutY="231.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 1 Ergebnis:" />
-      <Label fx:id="highestMatchNumber" layoutX="855.0" layoutY="276.0" styleClass="text" stylesheets="@../styles/styles.css" text="Ergebnis" textFill="#d97791">
+      <Label fx:id="highestMatch" layoutX="815.0" layoutY="231.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Bestes Match:" />
+      <Label fx:id="highestMatchNumber" layoutX="855.0" layoutY="276.0" styleClass="text" stylesheets="@../styles/styles.css" text="Ergebnis" textAlignment="CENTER" textFill="#d97791">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button fx:id="leaderBoard" layoutX="806.0" layoutY="404.0" mnemonicParsing="false" onAction="#openLeaderBoard" prefHeight="57.0" prefWidth="161.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Rangliste" />
+      <Button fx:id="leaderBoard" layoutX="810.0" layoutY="404.0" mnemonicParsing="false" onAction="#openLeaderBoard" prefHeight="57.0" prefWidth="161.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Rangliste" />
     </children>
 </AnchorPane>

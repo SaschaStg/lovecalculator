@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.LeaderBoardController">
@@ -56,33 +57,30 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-        <ImageView fitHeight="68.0" fitWidth="692.0" layoutX="270.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Rectangle%207.png" />
-         </image></ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="235.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
-        <Label fx:id="platz1Label" layoutX="342.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 1" />
-      <Label fx:id="platz2Label" layoutX="342.0" layoutY="339.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 2" />
-      <Label fx:id="platz3Label" layoutX="342.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 3" />
-      <Label fx:id="platz4Label" layoutX="342.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 4" />
-      <Label fx:id="platz5Label" layoutX="342.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 5" />
-      <Label fx:id="username1Label" layoutX="568.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name1" />
-      <Label fx:id="username2Label" layoutX="568.0" layoutY="339.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name2" />
-      <Label fx:id="username3Label" layoutX="568.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name3" />
-      <Label fx:id="username4Label" layoutX="568.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name4" />
-      <Label fx:id="username5Label" layoutX="568.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name5" />
-      <Label fx:id="gamecount1Label" layoutX="770.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount1" />
-      <Label fx:id="gamecount2Label" layoutX="770.0" layoutY="339.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount2" />
-      <Label fx:id="gamecount3Label" layoutX="770.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount3" />
-      <Label fx:id="gamecount4Label" layoutX="770.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount4" />
-      <Label fx:id="gamecount5Label" layoutX="770.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount5" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#f0f0f0" height="71.0" layoutX="214.0" layoutY="177.0" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" strokeWidth="0.0" width="772.0" />
+        <Label fx:id="platz1Label" layoutX="302.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 1" textAlignment="CENTER" />
+      <Label fx:id="platz2Label" layoutX="302.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 2" textAlignment="CENTER" />
+      <Label fx:id="platz3Label" layoutX="302.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 3" textAlignment="CENTER" />
+      <Label fx:id="platz4Label" layoutX="302.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 4" textAlignment="CENTER" />
+      <Label fx:id="platz5Label" layoutX="302.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 5" textAlignment="CENTER" />
+      <Label fx:id="username1Label" layoutX="568.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name1" textAlignment="CENTER" />
+      <Label fx:id="username2Label" layoutX="568.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name2" textAlignment="CENTER" />
+      <Label fx:id="username3Label" layoutX="568.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name3" textAlignment="CENTER" />
+      <Label fx:id="username4Label" layoutX="568.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name4" textAlignment="CENTER" />
+      <Label fx:id="username5Label" layoutX="568.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name5" textAlignment="CENTER" />
+      <Label fx:id="gamecount1Label" layoutX="784.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount1" textAlignment="CENTER" />
+      <Label fx:id="gamecount2Label" layoutX="784.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount2" textAlignment="CENTER" />
+      <Label fx:id="gamecount3Label" layoutX="784.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount3" textAlignment="CENTER" />
+      <Label fx:id="gamecount4Label" layoutX="784.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount4" textAlignment="CENTER" />
+      <Label fx:id="gamecount5Label" layoutX="784.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount5" textAlignment="CENTER" />
       <Label layoutX="443.0" layoutY="14.0" styleClass="classicModusSubMenuHeader" stylesheets="@../styles/styles.css" text="RANGLISTE" textFill="#d97791">
          <font>
             <Font size="110.0" />
          </font>
       </Label>
-      <Label layoutX="342.0" layoutY="195.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Platz" />
-      <Label layoutX="563.0" layoutY="195.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Name" />
-      <Label layoutX="773.0" layoutY="195.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Ergebnis" />
+      <Label layoutX="302.0" layoutY="193.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Platz" textFill="#3d3859" />
+      <Label layoutX="563.0" layoutY="193.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Name" textFill="#3d3859" />
+      <Label layoutX="753.0" layoutY="193.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Bisher gespielt" textFill="#3d3859" />
     </children>
 </AnchorPane>
