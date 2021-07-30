@@ -56,21 +56,33 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="353.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
-        <Label fx:id="platz1Label" layoutX="284.0" layoutY="105.0" text="Platz 1" />
-      <Label fx:id="platz2Label" layoutX="284.0" layoutY="165.0" text="Platz 2" />
-      <Label fx:id="platz3Label" layoutX="284.0" layoutY="222.0" text="Platz 3" />
-      <Label fx:id="platz4Label" layoutX="284.0" layoutY="281.0" text="Platz 4" />
-      <Label fx:id="platz5Label" layoutX="284.0" layoutY="347.0" text="Platz 5" />
-      <Label fx:id="username1Label" layoutX="374.0" layoutY="108.0" text="Name1" />
-      <Label fx:id="username2Label" layoutX="374.0" layoutY="168.0" text="Name2" />
-      <Label fx:id="username3Label" layoutX="374.0" layoutY="225.0" text="Name3" />
-      <Label fx:id="username4Label" layoutX="374.0" layoutY="284.0" text="Name4" />
-      <Label fx:id="username5Label" layoutX="374.0" layoutY="350.0" text="Name5" />
-      <Label fx:id="gamecount1Label" layoutX="491.0" layoutY="111.0" text="gamecount1" />
-      <Label fx:id="gamecount2Label" layoutX="491.0" layoutY="171.0" text="gamecount2" />
-      <Label fx:id="gamecount3Label" layoutX="491.0" layoutY="228.0" text="gamecount3" />
-      <Label fx:id="gamecount4Label" layoutX="491.0" layoutY="287.0" text="gamecount4" />
-      <Label fx:id="gamecount5Label" layoutX="491.0" layoutY="353.0" text="gamecount5" />
+        <ImageView fitHeight="68.0" fitWidth="692.0" layoutX="270.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Rectangle%207.png" />
+         </image></ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="235.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="platz1Label" layoutX="342.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 1" />
+      <Label fx:id="platz2Label" layoutX="342.0" layoutY="339.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 2" />
+      <Label fx:id="platz3Label" layoutX="342.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 3" />
+      <Label fx:id="platz4Label" layoutX="342.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 4" />
+      <Label fx:id="platz5Label" layoutX="342.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 5" />
+      <Label fx:id="username1Label" layoutX="568.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name1" />
+      <Label fx:id="username2Label" layoutX="568.0" layoutY="339.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name2" />
+      <Label fx:id="username3Label" layoutX="568.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name3" />
+      <Label fx:id="username4Label" layoutX="568.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name4" />
+      <Label fx:id="username5Label" layoutX="568.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name5" />
+      <Label fx:id="gamecount1Label" layoutX="770.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount1" />
+      <Label fx:id="gamecount2Label" layoutX="770.0" layoutY="339.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount2" />
+      <Label fx:id="gamecount3Label" layoutX="770.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount3" />
+      <Label fx:id="gamecount4Label" layoutX="770.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount4" />
+      <Label fx:id="gamecount5Label" layoutX="770.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount5" />
+      <Label layoutX="443.0" layoutY="14.0" styleClass="classicModusSubMenuHeader" stylesheets="@../styles/styles.css" text="RANGLISTE" textFill="#d97791">
+         <font>
+            <Font size="110.0" />
+         </font>
+      </Label>
+      <Label layoutX="342.0" layoutY="195.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Platz" />
+      <Label layoutX="563.0" layoutY="195.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Name" />
+      <Label layoutX="773.0" layoutY="195.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Ergebnis" />
     </children>
 </AnchorPane>

@@ -45,15 +45,10 @@ public class resultPageClassicController implements Navigatable {
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
-    /*@FXML
-    public void showName() {
-        //userNamesLabel.setText("Hallo");
-        System.out.println("It works! showName active");
-    }*/
 
     @FXML
     public void backToMainMenu() {
-        //userNamesLabel.setText("Hallo");
+
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
     }
 

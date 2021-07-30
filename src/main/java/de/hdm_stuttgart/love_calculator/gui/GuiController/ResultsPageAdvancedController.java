@@ -112,8 +112,8 @@ public class ResultsPageAdvancedController implements Navigatable {
 
 
 
-           int finalNameResult = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
-               generatePieChar(nameRing, finalNameResult, nameRingLabel);
+            int finalNameResult = NameCalculation.calculate(session.getUserAnswer(true, 0).get(0), session.getUserAnswer(false, 0).get(0));
+            generatePieChar(nameRing, finalNameResult, nameRingLabel);
 
 
             int finalPercentage = (finalNameResult + finalStudiumResult + finalZodiacResult + finalSocialResult) / 4;

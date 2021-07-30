@@ -46,7 +46,7 @@ public class Calculator extends Thread{
     }
 
 
-        public static int findIndexOfAnswer(Session session, int questionIndex, boolean isUser1) {
+    public static int findIndexOfAnswer(Session session, int questionIndex, boolean isUser1) {
 
         Question question = Catalog.INSTANCE.getQuestion(questionIndex);
         Answers answers = Catalog.INSTANCE.getAnswers(question);
