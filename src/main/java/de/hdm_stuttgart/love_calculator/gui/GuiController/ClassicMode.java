@@ -34,18 +34,18 @@ public class ClassicMode extends Scene {
         parent.getChildren().add(mainPane);
 
         back = new Button();
-        back.getStyleClass().add("nextButton");
+        back.getStyleClass().add("btn-small");
         back.setText("Zurück zum Menü");
-        back.setTranslateY(300);
-        back.setTranslateX(-400);
+        back.setTranslateY(270);
+        back.setTranslateX(-380);
 
         back.setOnAction(e -> session.backToMenu());
 
         next = new Button();
-        next.getStyleClass().add("nextButton");
+        next.getStyleClass().add("btn-small");
         next.setText("Weiter");
-        next.setTranslateY(300);
-        next.setTranslateX(400);
+        next.setTranslateY(270);
+        next.setTranslateX(440);
         next.setOnAction(e -> {
             //
             Optional<Boolean> result = QuestionsFactory.tryAdvanceTurn(session, mainPane);
