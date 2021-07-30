@@ -14,6 +14,8 @@ import org.apache.logging.log4j.Logger;
 
 import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class RegisterFactory {
 
@@ -31,18 +33,18 @@ public class RegisterFactory {
 
 
         if (username.isEmpty() || password.isEmpty() || vorname.isEmpty() || nachname.isEmpty()) {
-            LOGGER.error("Not all fields are filled");
+            LOGGER.error("Not all fields are filled.");
 
             return false;
         }
-        LOGGER.info("All inputs available");
+        LOGGER.info("All inputs are filled out.");
 
 
 
         try {
             // Verbindung aufbauen
             Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
-            System.out.println("Verbindung erfolgreich hergestellt");
+            LOGGER.info("Connection to database successful.");
 
 
             String searchInDB = "SELECT * FROM userdata WHERE username = ?;";
@@ -57,7 +59,7 @@ public class RegisterFactory {
 
             if (rs.next()) {
 
-                LOGGER.info("Tried to create an already existing username");
+                LOGGER.info("Tried to create an already existing username (" + username + ")");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Registrierfehler");
                 alert.setHeaderText(null);
@@ -72,18 +74,23 @@ public class RegisterFactory {
                 PreparedStatement prepareInsertStatement =
                         con.prepareStatement(createUser);
 
+                int randomPicture = (int)Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+
                 prepareInsertStatement.setString(1, username);
                 prepareInsertStatement.setString(2, password);
                 prepareInsertStatement.setString(3, vorname);
                 prepareInsertStatement.setString(4, nachname);
-                prepareInsertStatement.setInt(5, (int)Math.floor(Math.random() * (5 - 1 + 1)) + 1);
+                prepareInsertStatement.setInt(5, randomPicture);
 
+                String randomPictureString = String.valueOf(randomPicture);
 
+                List<String> loggerList =
+                        Arrays.asList(username, password, vorname, nachname, randomPictureString);
 
+                loggerList.forEach(s -> {
+                            LOGGER.info("Created " + s + " in database."); });
 
-                int rs_insert = prepareInsertStatement.executeUpdate();
-
-                System.out.println(rs_insert);
+                //int rs_insert = prepareInsertStatement.executeUpdate();
 
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -91,12 +98,7 @@ public class RegisterFactory {
                 alert.setHeaderText(null);
                 alert.setContentText("Registrierung erfolgreich. Du kannst dich jetzt einloggen.");
                 alert.showAndWait();
-
-                LOGGER.info("User created: " + username + " " + password + " " + vorname + " " + nachname);
-
-
             }
-
 
             con.close();
 
@@ -104,11 +106,8 @@ public class RegisterFactory {
 
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
-
-
-        //Username & pw found
 
         return true;
     }

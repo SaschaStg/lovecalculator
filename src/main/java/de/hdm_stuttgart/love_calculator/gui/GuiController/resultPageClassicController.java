@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.love_calculator.gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.calculator.CalculationAnimation;
 import de.hdm_stuttgart.love_calculator.calculator.Calculator;
 import de.hdm_stuttgart.love_calculator.calculator.Description;
 import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
@@ -46,11 +45,11 @@ public class resultPageClassicController implements Navigatable {
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
-    @FXML
+    /*@FXML
     public void showName() {
         //userNamesLabel.setText("Hallo");
         System.out.println("It works! showName active");
-    }
+    }*/
 
     @FXML
     public void backToMainMenu() {

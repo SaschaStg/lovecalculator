@@ -6,8 +6,14 @@ import de.hdm_stuttgart.love_calculator.gui.Navigatable;
 import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.*;
+import java.util.stream.Collectors;
+import static java.util.Map.Entry.*;
+import static java.util.stream.Collectors.toMap;
 
 public class LeaderBoardController implements Navigatable {
 
@@ -23,51 +29,104 @@ public class LeaderBoardController implements Navigatable {
     @FXML private Label gamecount4Label = new Label();
     @FXML private Label gamecount5Label = new Label();
 
+    //create logger for every class
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+
+
     @Override
     public void onShow(Object argument) {
-
-        // Datenbankadresse und Anmeldedaten
-        String url = SqlParameter.URL;
-        String user = SqlParameter.USER;
-        String pass = SqlParameter.PASSW;
 
         System.out.println("SQL for leaderboard started!");
 
 
-
         try {
-            Connection con = DriverManager.getConnection(url, user, pass);
+
+
+            Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
             Statement stm = con.createStatement();
 
-            ResultSet top1 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 1;");
-            if(top1.next()){
-                gamecount1Label.setText(top1.getString(1));
-                username1Label.setText(top1.getString(2));
+            ResultSet top5 = stm.executeQuery("SELECT gamecount, username FROM userdata;");
+            int limit5 = 0;
+            Map<Integer, String> top5Map = new HashMap<>();
+            LinkedHashMap<Integer, String> top5MapSorted = new LinkedHashMap<>();
+            while(top5.next() && limit5 < 5){
+
+                top5Map.put(top5.getInt(1), top5.getString(2));
+                limit5++;
+
             }
 
-            ResultSet top2 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 1,1;");
-            if(top2.next()){
-                gamecount2Label.setText(top2.getString(1));
-                username2Label.setText(top2.getString(2));
-            }
+            top5Map.entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+                    .forEachOrdered(x -> top5MapSorted.put(x.getKey(), x.getValue()));
 
-            ResultSet top3 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 2,1;");
-            if(top3.next()){
-                gamecount3Label.setText(top3.getString(1));
-                username3Label.setText(top3.getString(2));
-            }
+            LOGGER.info("Sorted top 5 list");
 
-            ResultSet top4 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 3,1;");
-            if(top4.next()){
-                gamecount4Label.setText(top4.getString(1));
-                username4Label.setText(top4.getString(2));
-            }
+            //Getting Set of keys from HashMap
+            Set<Integer> keySet = top5MapSorted.keySet();
+            //Creating an ArrayList of keys by passing the keySet
+            ArrayList<Integer> top5UserValues = new ArrayList<Integer>(keySet);
+            Collection<String> values = top5MapSorted.values();
+            ArrayList<String> top5Users = new ArrayList<String>(values);
 
-            ResultSet top5 = stm.executeQuery("SELECT gamecount, username FROM userdata ORDER BY gamecount DESC LIMIT 4,1;");
-            if(top5.next()){
-                gamecount5Label.setText(top5.getString(1));
-                username5Label.setText(top5.getString(2));
-            }
+
+            gamecount1Label.setText(String.valueOf(top5UserValues.get(0)));
+            username1Label.setText(top5Users.get(0));
+
+            gamecount2Label.setText(String.valueOf(top5UserValues.get(1)));
+            username2Label.setText(top5Users.get(1));
+
+            gamecount3Label.setText(String.valueOf(top5UserValues.get(2)));
+            username3Label.setText(top5Users.get(2));
+
+            gamecount4Label.setText(String.valueOf(top5UserValues.get(3)));
+            username4Label.setText(top5Users.get(3));
+
+            gamecount5Label.setText(String.valueOf(top5UserValues.get(4)));
+            username5Label.setText(top5Users.get(4));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             con.close();
 

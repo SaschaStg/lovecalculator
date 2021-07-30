@@ -45,7 +45,7 @@ public class FxmlGuiDriver extends Application {
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(root, 1065,670);
         scene.getStylesheets().add(FxmlGuiDriver.class.getResource("/styles/styles.css").toExternalForm());
-        primaryStage.setTitle("FXML Welcome");
+        primaryStage.setTitle("LoveCalculator");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
