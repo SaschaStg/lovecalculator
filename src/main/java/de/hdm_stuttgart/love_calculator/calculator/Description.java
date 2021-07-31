@@ -2,8 +2,16 @@ package de.hdm_stuttgart.love_calculator.calculator;
 
 import de.hdm_stuttgart.love_calculator.game.Session;
 
+/**
+ * Provides description texts
+ */
 public class Description {
 
+    /**
+     * Describes the compatibility of two players
+     * @param percentage based on this integer, the description gets chosen
+     * @return the description as a string
+     */
     public static String generateDescription(int percentage) {
         if (percentage <= 4) {
             return "Schon mal überlegt enthalten zu leben?";

@@ -1,8 +1,15 @@
 package de.hdm_stuttgart.love_calculator.calculator;
 
+/**
+ * Provides the calculation logic of two names
+ */
 public class NameCalculation {
 
-
+    /**
+     * Finds the sum of an integer, in our case the sum of both names combined
+     * @param no integer which sum we need
+     * @return the sum as an integer
+     */
     private static int findSum(int no) {
         int sum = 0;
         while (no > 0) {
@@ -12,6 +19,12 @@ public class NameCalculation {
         return sum;
     }
 
+    /**
+     * Calculates the compatibility of the two players names
+     * @param nameUser1 name of user one
+     * @param nameUser2 name of user two
+     * @return compatibility as an integer
+     */
     public static int calculate(String nameUser1, String nameUser2){
 
         nameUser1 = nameUser1.toLowerCase();

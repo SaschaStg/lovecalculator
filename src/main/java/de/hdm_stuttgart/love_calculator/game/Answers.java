@@ -3,10 +3,15 @@ package de.hdm_stuttgart.love_calculator.game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Provides the answers
+ */
 public class Answers {
     // Input-Type: checkbox / radiobutton / textfield / slider
     public final String inputType;
+    /**
+     * Stores the answer options
+     */
     private final List<String> answerOptions = new ArrayList<>();
 
     public Answers(String inputType, final String answer, String[] moreAnswers){

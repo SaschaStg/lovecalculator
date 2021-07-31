@@ -67,8 +67,6 @@ public class QuestionsFactory {
             case TEXTFIELD:
                 generateTextField(session, pane);
                 break;
-            case SLIDER:
-                break;
             default:
                 LOGGER.error("Error: Input type is invalid! (" + input + ")");
 

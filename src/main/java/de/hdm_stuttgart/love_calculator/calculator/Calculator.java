@@ -5,20 +5,37 @@ import de.hdm_stuttgart.love_calculator.game.Catalog;
 import de.hdm_stuttgart.love_calculator.game.Question;
 import de.hdm_stuttgart.love_calculator.game.Session;
 
+/**
+ * Class providing the calculation logic with thread support
+ */
 public class Calculator extends Thread{
-
+    /**
+     * Provides the session
+     */
     Session session;
+    /**
+     * The current question index
+     */
     int questionIndex;
-
+    /**
+     * Carries the calculation result
+     */
     public int calculationResult;
 
-
+    /**
+     * Constructor which creates an Calculator object
+     * @param session the current session
+     * @param questionIndex the current question index
+     */
     public Calculator(Session session, int questionIndex){
         this.session = session;
         this.questionIndex = questionIndex;
 
     }
 
+    /**
+     * Calculates the compatibility of two players, based on their input
+     */
     public void run(){
 
 
@@ -46,6 +63,13 @@ public class Calculator extends Thread{
     }
 
 
+    /**
+     * searches the index of an answer based on the following parameter
+     * @param session current session
+     * @param questionIndex current question index
+     * @param isUser1 boolean which shows if user one is active or not
+     * @return answer index as an integer
+     */
     public static int findIndexOfAnswer(Session session, int questionIndex, boolean isUser1) {
 
         Question question = Catalog.INSTANCE.getQuestion(questionIndex);
