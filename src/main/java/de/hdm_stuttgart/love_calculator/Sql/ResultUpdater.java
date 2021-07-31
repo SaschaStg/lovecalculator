@@ -10,6 +10,9 @@ import java.sql.*;
 
 public class ResultUpdater {
 
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     public static void updateResult(Session session, int highestMatchParameter) {

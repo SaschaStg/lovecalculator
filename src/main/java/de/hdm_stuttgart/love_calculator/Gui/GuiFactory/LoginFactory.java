@@ -11,11 +11,21 @@ import java.sql.*;
 
 public class LoginFactory {
 
-    //create logger for every class
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
+    /**
+     * String to check if the user is logged in and also get the name of the user
+     */
     private static String loggedInUser;
 
+    /**
+     * Check if the user can login, otherwise show a dialog with the error
+     * @param username the username of the user as a String
+     * @param password the password of the user as a String
+     */
     public static void checkLogin(String username, String password) {
 
         if (checkLoginInput(username, password)) {
@@ -30,14 +40,29 @@ public class LoginFactory {
         }
     }
 
+    /**
+     * Sets the String loggedInUser to the users username
+     * @param setLoggedInUser
+     */
     public static void setLoggedInUser(String setLoggedInUser) {
         loggedInUser = setLoggedInUser;
     }
 
+    /**
+     * Get the logged in users username
+     * @return the username from the user
+     */
     public static String getLoggedInUser() {
         return loggedInUser;
     }
 
+    /**
+     * Checks the login input from the user
+     * otherwise return true
+     * @param username the username of the user as a String
+     * @param password the password of the user as a String
+     * @return return false if the username and / or password field is empty
+     */
     public static boolean checkLoginInput(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
             LOGGER.error("No Username and/or password found.");
@@ -46,6 +71,12 @@ public class LoginFactory {
         return true;
     }
 
+    /**
+     * A database connection to check if the users username and password are correct with the entrys in the database
+     * @param username the username of the user as a String
+     * @param password the password of the user as a String
+     * @return If the input is correct, return true, otherwise return false
+     */
     public static boolean sqlLogin(String username, String password) {
         try {
             // Verbindung aufbauen

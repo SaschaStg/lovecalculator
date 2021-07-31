@@ -20,8 +20,6 @@ import org.apache.logging.log4j.Logger;
 
 public class ResultsPageAdvancedController implements Navigatable {
 
-    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
-
     //@FXML private Button backToMainMenuButton;
     @FXML
     private Label percentageLabel;
@@ -51,8 +49,21 @@ public class ResultsPageAdvancedController implements Navigatable {
 
     private int countToPercentage = 0;
 
+    /**
+     * Logger
+     */
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+
+    /**
+     * Timeline for the percentage counter
+     */
     private Timeline timeline = new Timeline();
 
+    /**
+     * Fires when the scene is opened. Loads all information for the result page in the resultPageAdvanced.fxml labels.
+     * Uses Calculator threads for the percentage number.
+     * @param argument must be a session in order to know what session to work with
+     */
     @Override
     public void onShow(Object argument) {
 
@@ -119,6 +130,12 @@ public class ResultsPageAdvancedController implements Navigatable {
         }
     }
 
+    /**
+     * Generates the "pie char" ProgressIndicator in the resultsPageAdvanced.fxml
+     * @param pi id of the ProgressIndicator
+     * @param percentage the percentage of the final result from this category
+     * @param label id of the label
+     */
     private void generatePieChar(ProgressIndicator pi, double percentage, Label label) {
 
         pi.setProgress(percentage / 100);
@@ -126,12 +143,16 @@ public class ResultsPageAdvancedController implements Navigatable {
         label.setText((int) percentage + "%");
     }
 
-    private void generatePercentage(int percentage) {
+    /**
+     * Generates a visible counter which updates every 70ms up to the final percentage
+     * @param finalPercentage the final percentage to what this method should count
+     */
+    private void generatePercentage(int finalPercentage) {
 
 
         timeline = new Timeline(
                 new KeyFrame(Duration.millis(0),
-                        e -> generateCounter(percentage)),
+                        e -> generateCounter(finalPercentage)),
                 new KeyFrame(Duration.millis(70)));
 
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -139,9 +160,14 @@ public class ResultsPageAdvancedController implements Navigatable {
 
     }
 
-    private void generateCounter(int percentage) {
+    /**
+     * For the last 10% of the final percentage the counter is slowed down to 500ms every number to give a more
+     * intense experience for the user
+     * @param finalPercentage the final percentage to what this method should count
+     */
+    private void generateCounter(int finalPercentage) {
 
-        if (countToPercentage <= percentage - (percentage * 0.1)) {
+        if (countToPercentage <= finalPercentage - (finalPercentage * 0.1)) {
 
 
             percentageLabel.setText(countToPercentage++ + "%");
@@ -151,7 +177,7 @@ public class ResultsPageAdvancedController implements Navigatable {
             timeline.stop();
             timeline = new Timeline(
                     new KeyFrame(Duration.millis(0),
-                            e -> generateCounterSlow(percentage)),
+                            e -> generateCounterSlow(finalPercentage)),
                     new KeyFrame(Duration.millis(500)));
 
             timeline.setCycleCount(Animation.INDEFINITE);
@@ -159,18 +185,26 @@ public class ResultsPageAdvancedController implements Navigatable {
         }
     }
 
-    private void generateCounterSlow(int percentage) {
-        if (countToPercentage <= percentage) {
+    /**
+     * Sets the labels for the counter to the percentage which is calculated in the method generatePercentage
+     * and generateCounter
+     * @param finalPercentage the final percentage to what this method should count
+     */
+    private void generateCounterSlow(int finalPercentage) {
+        if (countToPercentage <= finalPercentage) {
 
             percentageLabel.setText(countToPercentage++ + "%");
             percentageLabel.getStyleClass().add("mouseFontPercentage");
         } else {
             timeline.stop();
-            descriptionLabel.setText(Description.generateDescription(percentage));
+            descriptionLabel.setText(Description.generateDescription(finalPercentage));
             descriptionLabel.getStyleClass().add("creativeText");
         }
     }
 
+    /**
+     * Switches the scene to the startScene.fxml
+     */
     @FXML
     private void backToMainMenu() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");

@@ -18,7 +18,12 @@ import java.util.Objects;
  * Driver class for a simple JavaFX demonstration.
  */
 public class FxmlGuiDriver extends Application {
+
+    /**
+     * Logger
+     */
     public static final Logger LOGGER = LogManager.getLogger(FxmlGuiDriver.class);
+
     private static Stage window;
 
     /**

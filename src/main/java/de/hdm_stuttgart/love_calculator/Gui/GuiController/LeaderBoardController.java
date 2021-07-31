@@ -27,18 +27,21 @@ public class LeaderBoardController implements Navigatable {
     @FXML private Label gamecount4Label = new Label();
     @FXML private Label gamecount5Label = new Label();
 
-    //create logger for every class
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
 
+    /**
+     * Fires when the scene is opened. Loads the top5 players username and gamecount from the database
+     * and writes it in the labels in the leaderBoardScene.fxml
+     * @param argument
+     */
     @Override
     public void onShow(Object argument) {
 
-        System.out.println("SQL for leaderboard started!");
-
-
         try {
-
 
             Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
             Statement stm = con.createStatement();
@@ -89,7 +92,10 @@ public class LeaderBoardController implements Navigatable {
         }
     }
 
-
+    /**
+     * Switches the scene to the loggedInScene.fxml if the player is logged in,
+     * otherwise it switches to the profileScene.fxml
+     */
     @FXML
     public void profileScene() {
         if (LoginFactory.getLoggedInUser() != null) {
@@ -99,12 +105,17 @@ public class LeaderBoardController implements Navigatable {
         }
     }
 
+    /**
+     * Switches the scene to the playScene.fxml
+     */
     @FXML
     public void playScene() {
-        //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
         FxmlGuiDriver.setScene("/fxml/playScene.fxml");
     }
 
+    /**
+     * Switches the scene to the startScene.fxml
+     */
     @FXML
     public void startScene() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");

@@ -16,6 +16,9 @@ public class Session {
     private boolean isUser1;
     private static int index;
 
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     //toggles user1 and classic mode

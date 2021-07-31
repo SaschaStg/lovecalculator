@@ -12,5 +12,7 @@ module gui {
     exports de.hdm_stuttgart.love_calculator.Gui.GuiController;
     exports de.hdm_stuttgart.love_calculator.Gui.GuiFactory;
     opens de.hdm_stuttgart.love_calculator.Gui.GuiFactory to javafx.fxml;
+    exports de.hdm_stuttgart.love_calculator.Gui.GameModes;
+    opens de.hdm_stuttgart.love_calculator.Gui.GameModes to javafx.fxml;
 
 }

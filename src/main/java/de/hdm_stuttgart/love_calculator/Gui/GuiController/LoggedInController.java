@@ -24,8 +24,16 @@ public class LoggedInController implements Navigatable {
     @FXML private Label highestMatchNumber = new Label();
     @FXML private ImageView profilePicture = new ImageView();
 
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
+    /**
+     * Fires when the scene is opened. Loads the username, vorname, nachname, counter, highestMatch and highestMatchNumber
+     * from the database and writes it in the labels in the loggedInScene.fxml
+     * @param argument
+     */
     @Override
     public void onShow(Object argument) {
 
@@ -64,6 +72,9 @@ public class LoggedInController implements Navigatable {
         }
     }
 
+    /**
+     * User logout, sets the String setLoggedInUser in LoginFactory to null and switches to profileScene.fxml
+     */
     @FXML
     private void logout() {
         LOGGER.debug("User " + LoginFactory.getLoggedInUser() + " logged out. Set LoggedInUser to null");
@@ -71,8 +82,10 @@ public class LoggedInController implements Navigatable {
         FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
 
     }
-
-    //Switch case to get the right profile picture out of the database and load it into the profile
+    /**
+     * Get the right profile picture out of the database and load it into the ImageView profilePicture
+     * @param profilePictureIndex the int from the database in picture
+     */
     private void showProfilePicture(int profilePictureIndex) {
 
         switch (profilePictureIndex) {
@@ -96,6 +109,10 @@ public class LoggedInController implements Navigatable {
         LOGGER.debug("Profilepicture loaded for " + LoginFactory.getLoggedInUser());
     }
 
+    /**
+     * Checks if the user is logged in, if so switch the scene to loggedInScene.fxml so that the user does not need
+     * to login again. If user is not logged in show profileScene
+     */
     @FXML
     private void profileScene() {
         if (LoginFactory.getLoggedInUser() != null) {
@@ -107,6 +124,9 @@ public class LoggedInController implements Navigatable {
         }
     }
 
+    /**
+     * Switches the scene to the playScene.fxml
+     */
     @FXML
     private void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
@@ -114,12 +134,18 @@ public class LoggedInController implements Navigatable {
         LOGGER.debug("Switched scene to playScene");
     }
 
+    /**
+     * Switches the scene to the leaderBoardScene to show the leaderboard
+     */
     @FXML
     private void openLeaderBoard() {
         FxmlGuiDriver.setScene("/fxml/leaderBoardScene.fxml");
         LOGGER.debug("Switched scene to leaderBoardScene");
     }
 
+    /**
+     * Switches the scene to the startScene.fxml
+     */
     @FXML
     private void startScene() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");

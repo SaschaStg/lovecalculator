@@ -12,7 +12,9 @@ import java.util.List;
 
 public class RegisterFactory {
 
-    //create logger for every class
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
 
