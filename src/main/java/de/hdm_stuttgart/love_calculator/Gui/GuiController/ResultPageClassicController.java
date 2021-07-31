@@ -17,8 +17,15 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Handles the resultPageClassic.fxml, all labels get filled here with the percentage from the answers
+ */
 public class ResultPageClassicController implements Navigatable {
 
+    /**
+     * Logger
+     */
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
     @FXML
     private Label percentageLabel;
     @FXML
@@ -29,25 +36,19 @@ public class ResultPageClassicController implements Navigatable {
     private Label courseLabel;
     @FXML
     private Label heading;
-
     /**
      * Integer to know how high the counter should go in the generateCounter method
      */
     private int countToPercentage = 0;
-
     /**
      * Timeline for the percentage counter
      */
     private Timeline timeline = new Timeline();
 
     /**
-     * Logger
-     */
-    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
-
-    /**
      * Fires when the scene is opened. Loads all information for the result page in the resultPageClassic.fxml labels.
      * Uses Calculator threads for the percentage number.
+     *
      * @param argument must be a session in order to know what session to work with
      */
     @Override
@@ -95,6 +96,7 @@ public class ResultPageClassicController implements Navigatable {
 
     /**
      * Generates a visible counter which updates every 70ms up to the final percentage
+     *
      * @param finalPercentage the final percentage to what this method should count
      */
     private void generatePercentage(int finalPercentage) {
@@ -112,6 +114,7 @@ public class ResultPageClassicController implements Navigatable {
     /**
      * For the last 10% of the final percentage the counter is slowed down to 500ms every number to give a more
      * intense experience for the user
+     *
      * @param finalPercentage the final percentage to what this method should count
      */
     private void generateCounter(int finalPercentage) {
@@ -137,6 +140,7 @@ public class ResultPageClassicController implements Navigatable {
     /**
      * Sets the labels for the counter to the percentage which is calculated in the method generatePercentage
      * and generateCounter
+     *
      * @param finalPercentage the final percentage to what this method should count
      */
     private void generateCounterSlow(int finalPercentage) {

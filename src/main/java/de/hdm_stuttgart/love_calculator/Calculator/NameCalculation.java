@@ -7,6 +7,7 @@ public class NameCalculation {
 
     /**
      * Finds the sum of an integer, in our case the sum of both names combined
+     *
      * @param no integer which sum we need
      * @return the sum as an integer
      */
@@ -21,17 +22,18 @@ public class NameCalculation {
 
     /**
      * Calculates the compatibility of the two players names
+     *
      * @param nameUser1 name of user one
      * @param nameUser2 name of user two
      * @return compatibility as an integer
      */
-    public static int calculate(String nameUser1, String nameUser2){
+    public static int calculate(String nameUser1, String nameUser2) {
 
         nameUser1 = nameUser1.toLowerCase();
         nameUser2 = nameUser2.toLowerCase();
 
         //little easter egg
-        if(nameUser1.equals("kriha") || nameUser2.equals("kriha")){
+        if (nameUser1.equals("kriha") || nameUser2.equals("kriha")) {
             return 100;
         }
 
@@ -41,21 +43,21 @@ public class NameCalculation {
         int bothNamesSum;
         int sumOfAllDigits;
 
-        for(int i = 0; i < nameUser1.length(); i++){
+        for (int i = 0; i < nameUser1.length(); i++) {
             asciiSumUser1 += nameUser1.charAt(i);
         }
 
-        for(int i = 0; i < nameUser2.length(); i++){
+        for (int i = 0; i < nameUser2.length(); i++) {
             asciiSumUser2 += nameUser2.charAt(i);
         }
 
         bothNamesSum = asciiSumUser1 + asciiSumUser2;
         sumOfAllDigits = findSum(bothNamesSum);
 
-        if(sumOfAllDigits > sumLove){
+        if (sumOfAllDigits > sumLove) {
             sumOfAllDigits = sumLove - (sumOfAllDigits - sumLove);
         }
 
-        return (sumOfAllDigits * 100 /sumLove);
+        return (sumOfAllDigits * 100 / sumLove);
     }
 }

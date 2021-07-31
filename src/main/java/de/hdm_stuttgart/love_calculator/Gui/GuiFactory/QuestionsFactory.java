@@ -22,6 +22,10 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Dynamically generate the GamePane with all the labels, radiobuttons, textfields and buttons and fill
+ * it with the questions and answers
+ */
 public class QuestionsFactory {
 
     /**
@@ -32,8 +36,9 @@ public class QuestionsFactory {
     /**
      * Generates the labels, radiobuttons, textfield from the questions and answers objects.
      * Dynamically loads the question in a label and the answer possibilitys in a textfield or radio button
+     *
      * @param session the session from the game to know what session to work with
-     * @param pane the StackPane that is opened
+     * @param pane    the StackPane that is opened
      */
     public static void generateQuestionPane(Session session, StackPane pane) {
         //style sheet is added to pane
@@ -88,8 +93,9 @@ public class QuestionsFactory {
 
     /**
      * Generates the TextField for the user input and safes that input in the answer object if the user lost focus
+     *
      * @param session the session from the game to know what session to work with
-     * @param pane the StackPane that is opened
+     * @param pane    the StackPane that is opened
      */
     private static void generateTextField(Session session, StackPane pane) {
         TextField field = new TextField();
@@ -113,9 +119,10 @@ public class QuestionsFactory {
 
     /**
      * Dynamically generates the radio buttons for the answer possibilitys and displays them in a flowpane
+     *
      * @param answers the answers for which the radio buttons should be generated
      * @param session the session from the game to know what session to work with
-     * @param pane the StackPane that is opened
+     * @param pane    the StackPane that is opened
      */
     private static void generateRadiobuttons(Answers answers, Session session, StackPane pane) {
 
@@ -148,9 +155,10 @@ public class QuestionsFactory {
 
     /**
      * Dynamically generates the checkboxes for the answer possibilitys and displays them in a flowpane
+     *
      * @param answers the answers for which the checkboxes should be generated
      * @param session the session from the game to know what session to work with
-     * @param pane the StackPane that is opened
+     * @param pane    the StackPane that is opened
      */
     private static void generateCheckboxes(Answers answers, Session session, StackPane pane) {
 
@@ -176,8 +184,9 @@ public class QuestionsFactory {
 
     /**
      * Decide if the next question should be displayed or if all questions are answered then show the result page
+     *
      * @param session the session from the game to know what session to work with
-     * @param pane the StackPane that is opened
+     * @param pane    the StackPane that is opened
      * @return true if game should continue, otherwise show results if false
      */
     // Returns true if
@@ -200,8 +209,9 @@ public class QuestionsFactory {
 
     /**
      * Generates the progressbar and icons on top of the fxml to display the progress of the answered questions
+     *
      * @param session the session from the game to know what session to work with
-     * @param pane the StackPane that is opened
+     * @param pane    the StackPane that is opened
      */
     public static void generateProgressHeader(Session session, StackPane pane) {
 
@@ -262,11 +272,12 @@ public class QuestionsFactory {
 
     /**
      * Creates the progress bar for the generateProgressHeader method and adds an animation to it
-     * @param view the ImageView to display the image in it
-     * @param path the path of the image
+     *
+     * @param view        the ImageView to display the image in it
+     * @param path        the path of the image
      * @param progressBar the progressbar to work with
-     * @param progress the progress of all questions answered as an double, at 100% the result page is shown
-     * @param session the session from the game to know what session to work with
+     * @param progress    the progress of all questions answered as an double, at 100% the result page is shown
+     * @param session     the session from the game to know what session to work with
      */
     private static void setProgress(ImageView view, String path, ProgressBar progressBar, double progress, Session session) {
 

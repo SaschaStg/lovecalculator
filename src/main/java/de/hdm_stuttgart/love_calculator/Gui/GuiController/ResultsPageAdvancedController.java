@@ -18,8 +18,15 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Handles the resultPageAdvanced.fxml, all labels get filled here with the percentage from the answers
+ */
 public class ResultsPageAdvancedController implements Navigatable {
 
+    /**
+     * Logger
+     */
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
     //@FXML private Button backToMainMenuButton;
     @FXML
     private Label percentageLabel;
@@ -37,7 +44,9 @@ public class ResultsPageAdvancedController implements Navigatable {
     private Label socialRingLabel;
     @FXML
     private Label zodiacRingLabel;
-
+    /**
+     * Declares the ProgressIndicator to display round "pie charts"
+     */
     @FXML
     private ProgressIndicator nameRing = new ProgressIndicator();
     @FXML
@@ -46,14 +55,7 @@ public class ResultsPageAdvancedController implements Navigatable {
     private ProgressIndicator studiumRing = new ProgressIndicator();
     @FXML
     private ProgressIndicator zodiacRing = new ProgressIndicator();
-
     private int countToPercentage = 0;
-
-    /**
-     * Logger
-     */
-    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
-
     /**
      * Timeline for the percentage counter
      */
@@ -62,6 +64,7 @@ public class ResultsPageAdvancedController implements Navigatable {
     /**
      * Fires when the scene is opened. Loads all information for the result page in the resultPageAdvanced.fxml labels.
      * Uses Calculator threads for the percentage number.
+     *
      * @param argument must be a session in order to know what session to work with
      */
     @Override
@@ -132,9 +135,10 @@ public class ResultsPageAdvancedController implements Navigatable {
 
     /**
      * Generates the "pie char" ProgressIndicator in the resultsPageAdvanced.fxml
-     * @param pi id of the ProgressIndicator
+     *
+     * @param pi         id of the ProgressIndicator
      * @param percentage the percentage of the final result from this category
-     * @param label id of the label
+     * @param label      id of the label
      */
     private void generatePieChar(ProgressIndicator pi, double percentage, Label label) {
 
@@ -145,6 +149,7 @@ public class ResultsPageAdvancedController implements Navigatable {
 
     /**
      * Generates a visible counter which updates every 70ms up to the final percentage
+     *
      * @param finalPercentage the final percentage to what this method should count
      */
     private void generatePercentage(int finalPercentage) {
@@ -163,6 +168,7 @@ public class ResultsPageAdvancedController implements Navigatable {
     /**
      * For the last 10% of the final percentage the counter is slowed down to 500ms every number to give a more
      * intense experience for the user
+     *
      * @param finalPercentage the final percentage to what this method should count
      */
     private void generateCounter(int finalPercentage) {
@@ -188,6 +194,7 @@ public class ResultsPageAdvancedController implements Navigatable {
     /**
      * Sets the labels for the counter to the percentage which is calculated in the method generatePercentage
      * and generateCounter
+     *
      * @param finalPercentage the final percentage to what this method should count
      */
     private void generateCounterSlow(int finalPercentage) {

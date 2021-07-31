@@ -13,15 +13,18 @@ import org.apache.logging.log4j.Logger;
 
 public class MainMenuController {
 
-    @FXML private TextField userNameTextField = new TextField();
-    @FXML private TextField passwordTextField = new TextField();
-    @FXML private TextField vornameTextField = new TextField();
-    @FXML private TextField nachnameTextField = new TextField();
-
     /**
      * Logger
      */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+    @FXML
+    private TextField userNameTextField = new TextField();
+    @FXML
+    private TextField passwordTextField = new TextField();
+    @FXML
+    private TextField vornameTextField = new TextField();
+    @FXML
+    private TextField nachnameTextField = new TextField();
 
     /**
      * Switches the scene to the startScene.fxml

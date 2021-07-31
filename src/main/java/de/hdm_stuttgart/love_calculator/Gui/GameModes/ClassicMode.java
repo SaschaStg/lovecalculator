@@ -11,6 +11,10 @@ import javafx.scene.layout.StackPane;
 
 import java.util.Optional;
 
+/**
+ * provides the classic mode
+ */
+
 public class ClassicMode extends Scene {
 
     //Button
@@ -78,7 +82,7 @@ public class ClassicMode extends Scene {
     }
 
     /**
-     * Shows the resultPageClassic.fxml
+     * Switches the scene to the resultsPageClassic.fxml
      */
     private void showResults() {
         FxmlGuiDriver.setScene("/fxml/resultsPageClassic.fxml", SESSION);

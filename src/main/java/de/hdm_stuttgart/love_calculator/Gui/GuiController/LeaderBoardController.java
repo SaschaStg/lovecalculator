@@ -15,27 +15,35 @@ import java.util.*;
 
 public class LeaderBoardController implements Navigatable {
 
-    @FXML private Label username1Label = new Label();
-    @FXML private Label username2Label = new Label();
-    @FXML private Label username3Label = new Label();
-    @FXML private Label username4Label = new Label();
-    @FXML private Label username5Label = new Label();
-
-    @FXML private Label gamecount1Label = new Label();
-    @FXML private Label gamecount2Label = new Label();
-    @FXML private Label gamecount3Label = new Label();
-    @FXML private Label gamecount4Label = new Label();
-    @FXML private Label gamecount5Label = new Label();
-
     /**
      * Logger
      */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
-
+    @FXML
+    private Label username1Label = new Label();
+    @FXML
+    private Label username2Label = new Label();
+    @FXML
+    private Label username3Label = new Label();
+    @FXML
+    private Label username4Label = new Label();
+    @FXML
+    private Label username5Label = new Label();
+    @FXML
+    private Label gamecount1Label = new Label();
+    @FXML
+    private Label gamecount2Label = new Label();
+    @FXML
+    private Label gamecount3Label = new Label();
+    @FXML
+    private Label gamecount4Label = new Label();
+    @FXML
+    private Label gamecount5Label = new Label();
 
     /**
      * Fires when the scene is opened. Loads the top5 players username and gamecount from the database
      * and writes it in the labels in the leaderBoardScene.fxml
+     *
      * @param argument
      */
     @Override

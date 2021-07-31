@@ -8,7 +8,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
-
+/**
+ * Methods to login the user with the users input
+ */
 public class LoginFactory {
 
     /**
@@ -23,6 +25,7 @@ public class LoginFactory {
 
     /**
      * Check if the user can login, otherwise show a dialog with the error
+     *
      * @param username the username of the user as a String
      * @param password the password of the user as a String
      */
@@ -41,15 +44,8 @@ public class LoginFactory {
     }
 
     /**
-     * Sets the String loggedInUser to the users username
-     * @param setLoggedInUser
-     */
-    public static void setLoggedInUser(String setLoggedInUser) {
-        loggedInUser = setLoggedInUser;
-    }
-
-    /**
      * Get the logged in users username
+     *
      * @return the username from the user
      */
     public static String getLoggedInUser() {
@@ -57,11 +53,21 @@ public class LoginFactory {
     }
 
     /**
+     * Sets the String loggedInUser to the users username
+     *
+     * @param setLoggedInUser
+     */
+    public static void setLoggedInUser(String setLoggedInUser) {
+        loggedInUser = setLoggedInUser;
+    }
+
+    /**
      * Checks the login input from the user
-     * otherwise return true
+     *
      * @param username the username of the user as a String
      * @param password the password of the user as a String
      * @return return false if the username and / or password field is empty
+     * otherwise, return true
      */
     public static boolean checkLoginInput(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
@@ -73,6 +79,7 @@ public class LoginFactory {
 
     /**
      * A database connection to check if the users username and password are correct with the entrys in the database
+     *
      * @param username the username of the user as a String
      * @param password the password of the user as a String
      * @return If the input is correct, return true, otherwise return false

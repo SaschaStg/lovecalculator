@@ -26,13 +26,68 @@ public class FxmlGuiDriver extends Application {
 
     private static Stage window;
 
+
     /**
-     * @param args unused
+     * @param args
      */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Sets the title of the window
+     *
+     * @param title the title to set for the window
+     */
+    public static void setTitle(String title) {
+        window.setTitle(title);
+    }
+
+    /**
+     * Switches the scene to a new one
+     *
+     * @param fxmlPath the path of the fxml file
+     * @param argument the session from the game that the user is playing
+     */
+    public static void setScene(String fxmlPath, Object argument) {
+        try {
+            FXMLLoader loader = new FXMLLoader(FxmlGuiDriver.class.getResource(fxmlPath));
+            Parent p = loader.load();
+            Object controller = loader.getController();
+            if (controller instanceof Navigatable) {
+                ((Navigatable) controller).onShow(argument);
+            }
+            setScene(new Scene(p, 1065, 670));
+        } catch (IOException io) {
+            io.printStackTrace();
+        }
+    }
+
+    /**
+     * Switches the scene to a new one
+     *
+     * @param fxmlPath the path of the fxml file
+     */
+    public static void setScene(String fxmlPath) {
+        setScene(fxmlPath, null);
+    }
+
+    /**
+     * Switches the scene to a new one
+     *
+     * @param scene the scene that the window should show
+     */
+    public static void setScene(Scene scene) {
+        window.setScene(scene);
+    }
+
+    /**
+     * Starts the LoveCalculator, creates a new Catalog instance, a new window, a new parent, a new scene and
+     * starts it so the user can see the start screen
+     *
+     * @param primaryStage the stage to use
+     * @throws Exception
+     */
     @FXML
     public void start(Stage primaryStage) throws Exception {
         //Read csv's from questions and answers
@@ -48,32 +103,6 @@ public class FxmlGuiDriver extends Application {
         primaryStage.setTitle("LoveCalculator");
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    public static void setTitle(String title) {
-        window.setTitle(title);
-    }
-
-    public static void setScene(String fxmlPath, Object argument) {
-        try {
-            FXMLLoader loader = new FXMLLoader(FxmlGuiDriver.class.getResource(fxmlPath));
-            Parent p = loader.load();
-            Object controller = loader.getController();
-            if (controller instanceof Navigatable) {
-                ((Navigatable) controller).onShow(argument);
-            }
-            setScene(new Scene(p, 1065, 670));
-        } catch (IOException io) {
-            io.printStackTrace();
-        }
-    }
-
-    public static void setScene(String fxmlPath) {
-        setScene(fxmlPath, null);
-    }
-
-    public static void setScene(Scene scene) {
-        window.setScene(scene);
     }
 
 

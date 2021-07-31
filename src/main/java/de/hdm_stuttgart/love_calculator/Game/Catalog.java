@@ -17,7 +17,10 @@ public class Catalog {
     private Catalog() {}
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
-
+    /**
+     * Instance of catalog which is created once
+     */
+    public static Catalog INSTANCE = new Catalog();
     /**
      * Relation (1 zu n) zu Questions - Klasse
      * ArrayList Type Object (alle Objekte die aus der Klasse Questions initialisiert werden)
@@ -56,9 +59,9 @@ public class Catalog {
             } else {
                 throw new InvalidCsvFileSize("QuestionsCsv and AnswersCsv do not have the same size. Shutting down.");
             }
-            } catch(IOException e){
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private Path getPath(String resource) {

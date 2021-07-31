@@ -8,6 +8,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
+/**
+ * Updates the gamecount and highestMatch from the user if the game round has ended and resultScene is shown
+ */
 public class ResultUpdater {
 
     /**
@@ -15,16 +18,21 @@ public class ResultUpdater {
      */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
+    /**
+     * A database connection to increase the users gamecount if the game is finished and also update the
+     * highestMatchParameter if the new one is higher than the last saved one.
+     *
+     * @param session               the session of the game the user is playing
+     * @param highestMatchParameter the new highestMatchParameter from the new result
+     */
     public static void updateResult(Session session, int highestMatchParameter) {
 
         if (LoginFactory.getLoggedInUser() != null) {
 
 
             try {
-                // Verbindung aufbauen
                 Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
-                System.out.println("Verbindung erfolgreich hergestellt");
-
+                LOGGER.info("Connection to database successful.");
 
                 String searchInDB = "UPDATE userdata SET gamecount = gamecount + 1 WHERE username = ?";
 

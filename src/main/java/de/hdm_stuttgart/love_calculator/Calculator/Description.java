@@ -7,6 +7,7 @@ public class Description {
 
     /**
      * Describes the compatibility of two players
+     *
      * @param percentage based on this integer, the description gets chosen
      * @return the description as a string
      */

@@ -10,6 +10,9 @@ import java.sql.*;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Methods to register the users input into the database
+ */
 public class RegisterFactory {
 
     /**
@@ -17,7 +20,14 @@ public class RegisterFactory {
      */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
-
+    /**
+     * Checks if the user can register, otherwise show a dialog with the error
+     *
+     * @param username the username of the user as a String
+     * @param password the password of the user as a String
+     * @param vorname  the first name of the user as a String
+     * @param nachname the last name of the user as a String
+     */
     public static void register(String username, String password, String vorname, String nachname) {
 
         if (validRegister(username, password, vorname, nachname)) {
@@ -33,6 +43,14 @@ public class RegisterFactory {
         }
     }
 
+    /**
+     * Checks the register input from the user
+     *
+     * @param username the username of the user as a String
+     * @param password the password of the user as a String
+     * @return return false if the username and / or password and / or vorname and / or nachname field is empty
+     * otherwise, return true
+     */
     public static boolean validRegister(String username, String password, String vorname, String nachname) {
         if (username.isEmpty() || password.isEmpty() || vorname.isEmpty() || nachname.isEmpty()) {
             LOGGER.debug("Not all fields are filled.");
@@ -41,6 +59,15 @@ public class RegisterFactory {
         return true;
     }
 
+    /**
+     * A database connection to check if the user can register a new account with the given data
+     *
+     * @param username the username of the user as a String
+     * @param password the password of the user as a String
+     * @param vorname  the first name of the user as a String
+     * @param nachname the last name of the user as a String
+     * @return false if the user is already in the database (already registered), otherwise return true
+     */
     public static boolean sqlRegister(String username, String password, String vorname, String nachname) {
         try {
             // Verbindung aufbauen

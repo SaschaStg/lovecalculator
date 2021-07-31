@@ -17,22 +17,28 @@ import java.util.Objects;
 
 public class LoggedInController implements Navigatable {
 
-    @FXML private Label username = new Label();
-    @FXML private Label userInformation = new Label();
-    @FXML private Label counter = new Label();
-    @FXML private Label highestMatch = new Label();
-    @FXML private Label highestMatchNumber = new Label();
-    @FXML private ImageView profilePicture = new ImageView();
-
     /**
      * Logger
      */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+    @FXML
+    private Label username = new Label();
+    @FXML
+    private Label userInformation = new Label();
+    @FXML
+    private Label counter = new Label();
+    @FXML
+    private Label highestMatch = new Label();
+    @FXML
+    private Label highestMatchNumber = new Label();
+    @FXML
+    private ImageView profilePicture = new ImageView();
 
     /**
      * Fires when the scene is opened. Loads the username, vorname, nachname, counter, highestMatch and highestMatchNumber
      * from the database and writes it in the labels in the loggedInScene.fxml
-     * @param argument
+     *
+     * @param argument the session of the game the user is playing, here not needed
      */
     @Override
     public void onShow(Object argument) {
@@ -82,8 +88,10 @@ public class LoggedInController implements Navigatable {
         FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
 
     }
+
     /**
      * Get the right profile picture out of the database and load it into the ImageView profilePicture
+     *
      * @param profilePictureIndex the int from the database in picture
      */
     private void showProfilePicture(int profilePictureIndex) {
@@ -104,7 +112,8 @@ public class LoggedInController implements Navigatable {
             case 5:
                 profilePicture.setImage(new Image(Objects.requireNonNull(FxmlGuiDriver.class.getResource("/images/harold.jpg")).toExternalForm()));
                 break;
-            default: LOGGER.error("No profile picture found!");
+            default:
+                LOGGER.error("No profile picture found!");
         }
         LOGGER.debug("Profilepicture loaded for " + LoginFactory.getLoggedInUser());
     }
