@@ -12,35 +12,69 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Catalog {
-    public static Catalog INSTANCE = new Catalog();
-    private Catalog() {}
 
+/**
+ * Initializes question objects and answer objects
+ * Acts as a connector between the answer objects and question objects and provides basic methods to handle them
+ * 1 to n relation to question class
+ */
+public class Catalog {
+
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
     /**
      * Instance of catalog which is created once
      */
     public static Catalog INSTANCE = new Catalog();
     /**
-     * Relation (1 zu n) zu Questions - Klasse
-     * ArrayList Type Object (alle Objekte die aus der Klasse Questions initialisiert werden)
-     * Methoden addCatalog und deleteCatalog
-     * Alles auf privat setzen
+     * HashMap which connects the question objects to the answer objects
+     * A right order in the CSV file is required
      */
     private final Map<Question, Answers> QUESTIONS = new HashMap<>();
 
+    /**
+     * empty constructor
+     */
+    private Catalog() {
+    }
+
+    /**
+     * Provides the amount of questions
+     *
+     * @return size of question HashMap
+     */
     public int getQuestionsCount() {
         return QUESTIONS.size();
     }
 
+    /**
+     * Provides a question object based on a given index
+     *
+     * @param index index of needed question object
+     * @return question object
+     */
     public Question getQuestion(int index) {
         return QUESTIONS.keySet().stream().filter(q -> q.INDEX == index).findFirst().get();
     }
 
+    /**
+     * Provides an answer object based on a given question object
+     *
+     * @param question question object of which the answers are needed
+     * @return answer object
+     */
     public Answers getAnswers(Question question) {
         return QUESTIONS.get(question);
     }
 
+    /**
+     * Ininitializes questions and answers objects by reading them out of CSV files
+     *
+     * @throws InvalidCsvFileSize is thrown when there is an unequal amount of lines in the question CSV file and answer CSV file
+     *                            every question object needs one answer object
+     */
     public void initialize() throws InvalidCsvFileSize {
         try {
             List<String> questionsCsv = Files.readAllLines(getPath("questions.csv"));
@@ -64,10 +98,23 @@ public class Catalog {
         }
     }
 
+    /**
+     * Converts a resource string to a path object
+     *
+     * @param resource resource as a string
+     * @return path object
+     */
     private Path getPath(String resource) {
         return Paths.get(URI.create(Objects.requireNonNull(Question.class.getClassLoader().getResource(resource)).toExternalForm()));
     }
 
+    /**
+     * Builds a question object based on the raw string of the question CSV file
+     *
+     * @param questionCsvLine raw string from question CSV file
+     * @param index           index of question
+     * @return question object
+     */
     private Question getQuestion(String questionCsvLine, int index) {
         String[] content = questionCsvLine.split(";");
 
@@ -80,7 +127,12 @@ public class Catalog {
     }
 
 
-
+    /**
+     * Buildsan answer object based on the raw string of the answer CSV file
+     *
+     * @param answersCsvLine raw string from answer CSV file
+     * @return answer object
+     */
     private Answers getAnswers(String answersCsvLine) {
         String[] content = answersCsvLine.split(";");
 

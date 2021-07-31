@@ -1,5 +1,8 @@
 package de.hdm_stuttgart.love_calculator.Gui;
 
+/**
+ * Provides the Navigatable interface
+ */
 public interface Navigatable {
 
     /**

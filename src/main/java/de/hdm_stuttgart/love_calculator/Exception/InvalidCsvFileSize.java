@@ -8,7 +8,8 @@ public class InvalidCsvFileSize extends Exception {
 
     /**
      * Displays exception message
-     * @param message message which describes the exception
+     *
+     * @param message describes why exception occurred
      */
     public InvalidCsvFileSize(String message) {
         super(message);

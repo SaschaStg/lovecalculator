@@ -11,6 +11,10 @@ import javafx.scene.layout.StackPane;
 
 import java.util.Optional;
 
+
+/**
+ * Provides the advanced mode
+ */
 public class AdvancedMode extends Scene {
 
     //Button

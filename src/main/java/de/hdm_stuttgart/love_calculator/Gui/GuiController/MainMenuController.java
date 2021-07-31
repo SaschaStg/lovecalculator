@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Handles menu which contains start, play, profile also handles register, play advanced, play classic and login
+ */
 public class MainMenuController {
 
     /**

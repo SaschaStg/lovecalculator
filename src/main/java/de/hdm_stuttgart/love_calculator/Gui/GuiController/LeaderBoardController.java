@@ -13,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Handles the leaderBoardScene.fxml
+ */
 public class LeaderBoardController implements Navigatable {
 
     /**

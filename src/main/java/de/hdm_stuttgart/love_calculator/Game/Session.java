@@ -8,20 +8,43 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Provides a game session
+ */
 public class Session {
-    private final boolean CLASSICMODE;
-    private final List<List<String>> ANSWERSUSER1 = new ArrayList<>();
-    private final List<List<String>> ANSWERSUSER2 = new ArrayList<>();
-
-    private boolean isUser1;
-    private static int index;
 
     /**
      * Logger
      */
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+    /**
+     * Current (current in a game session) index of questions
+     */
+    private static int index;
+    /**
+     * Boolean which stores whether classic mode is active or not
+     */
+    private final boolean CLASSICMODE;
+    /**
+     * List of answers, user one gave
+     */
+    private final List<List<String>> ANSWERSUSER1 = new ArrayList<>();
+    /**
+     * List of answers, user two gave
+     */
+    private final List<List<String>> ANSWERSUSER2 = new ArrayList<>();
+    /**
+     * Boolean which stores whether user one is active or not
+     */
+    private boolean isUser1;
 
-    //toggles user1 and classic mode
+    /**
+     * Constructor of session object
+     * Toggles user one/two and classsic/advanced mode
+     *
+     * @param user1Starts indicates whether user one or two starts
+     * @param CLASSICMODE indicates whether classic or advanced mode is selected
+     */
     public Session(boolean user1Starts, boolean CLASSICMODE) {
         isUser1 = user1Starts;
         this.CLASSICMODE = CLASSICMODE;
@@ -35,16 +58,32 @@ public class Session {
         }
     }
 
-    //overloads constructor and sets user1 always true
+
+    /**
+     * Overloads constructor and sets user one always true
+     *
+     * @param classic
+     */
     public Session(boolean classic) {
         this(true, classic);
     }
 
-    //is classic mode active? return state
+    /**
+     * Checks if classic mode is active
+     *
+     * @return current state whether classic mode is active or not
+     */
     public boolean isCLASSICMODE() {
         return CLASSICMODE;
     }
 
+    /**
+     * Provides the given answers of a user to a question
+     *
+     * @param user1         indicates whether user one or two is meant
+     * @param questionIndex indicates which question is meant
+     * @return given answers of a user as a list
+     */
     public List<String> getUserAnswer(boolean user1, int questionIndex) {
         if (user1) {
             return ANSWERSUSER1.get(questionIndex);
@@ -52,6 +91,11 @@ public class Session {
         return ANSWERSUSER2.get(questionIndex);
     }
 
+    /**
+     * Checks whether a user gave answers or not
+     *
+     * @return true or fals (has given answers or not)
+     */
     public boolean hasAnswers() {
 
         if (ANSWERSUSER1 == null) {
@@ -67,11 +111,20 @@ public class Session {
         }
     }
 
-    //returns whether its user 1s turn
+    /**
+     * Checks if it's user ones turn
+     *
+     * @return whether it's user ones turn or not
+     */
     public boolean isUser1Turn() {
         return isUser1;
     }
 
+    /**
+     * Provides the current question index
+     *
+     * @return question index as an integer
+     */
     public int getCurrentQuestionIndex() {
         return index;
     }
@@ -95,6 +148,10 @@ public class Session {
     }
 
 
+    /**
+     * Switches the scene back to the menu scene while clearing every game input
+     * "User canceled game, go back to start scene"
+     */
     public void backToMenu() {
         index = 0;
         ANSWERSUSER1.clear();
@@ -104,7 +161,11 @@ public class Session {
         LOGGER.info("User canceled game, going back to startScene");
     }
 
-    //handles whether a next question should be displayed or if it's the end of the game
+    /**
+     * Handles whether a next question should be displayed or if it's the end of the game
+     *
+     * @return state of next question
+     */
     private boolean nextQuestion() {
 
         //question index is incremented by one
@@ -122,12 +183,18 @@ public class Session {
         return result;
     }
 
-    //switches users
+    /**
+     * Switches users
+     */
     private void nextUser() {
         isUser1 = !isUser1;
     }
 
-    //fills the empty arraylist, created in Session constructor
+    /**
+     * Fills the empty array list, created in Session constructor, with chosen answers depending on the user
+     *
+     * @param answer chosen answer as a string
+     */
     public void addAnswer(String answer) {
 
         if (ANSWERSUSER1.size() == 0 || ANSWERSUSER2.size() == 0) {
@@ -142,7 +209,11 @@ public class Session {
         }
     }
 
-    //in case user un ticks answer option
+    /**
+     * Handles the case when a user un ticks an answer
+     *
+     * @param answer answer to be removed as a string
+     */
     public void removeAnswer(String answer) {
         if (isUser1) {
             ANSWERSUSER1.get(index).remove(answer);
@@ -151,7 +222,9 @@ public class Session {
         }
     }
 
-    //clears answers
+    /**
+     * Clears answers (deletes every chosen answer)
+     */
     public void clearAnswers() {
         if (isUser1) {
             ANSWERSUSER1.get(index).clear();
@@ -161,6 +234,11 @@ public class Session {
     }
 
 
+    /**
+     * Provides the amount of answers, a user has given
+     *
+     * @return size of answers in answeruser list depending on active user
+     */
     public int getSizeOfAnswers() {
         if (isUser1) {
             return ANSWERSUSER1.get(index).size();
@@ -169,7 +247,11 @@ public class Session {
         }
     }
 
-
+    /**
+     * Provides the current index
+     *
+     * @return index as an integer
+     */
     public int getCurrentIndex() {
         return index;
     }

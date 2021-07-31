@@ -23,8 +23,9 @@ public class Calculator extends Thread {
     int questionIndex;
 
     /**
-     * Constructor which creates an Calculator object
-     * @param session the current session
+     * Constructor of an Calculator object
+     *
+     * @param session       the current session
      * @param questionIndex the current question index
      */
     public Calculator(Session session, int questionIndex) {

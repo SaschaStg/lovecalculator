@@ -15,6 +15,10 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 import java.util.Objects;
 
+/**
+ * Handles the loggedInScene.fxml
+ * Implements navigatable
+ */
 public class LoggedInController implements Navigatable {
 
     /**
