@@ -10,7 +10,7 @@ Um Fragen und alte Sucherergebnisse festzuhalten, kann der User sich ein Profil 
 <b>Die Main-Methode befindet sich in der FxmlGuiDriver Klasse.</b>
 
 <h1>Vor der Nutzung - Bitte beachten!</h1>
-Um den LoverCalculator richtig nutzen zu können, muss vorher die Datenbank Verbindung hergestellt werden.<br>
+Um den LoveCalculator richtig nutzen zu können, muss vorher die Datenbank Verbindung hergestellt werden.<br>
 Wenn die folgende Jar-Datei nicht hinzugefügt ist, kann man sich nicht einloggen oder registrieren.
 
 Bitte folgende Schritte ausführen, um den LoveCalculator richtig nutzen zu können:
