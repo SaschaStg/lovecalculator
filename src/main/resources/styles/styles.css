@@ -172,6 +172,12 @@
     -fx-font-family: "Mouse Memoirs";
 }
 
+.resultCounter {
+    -fx-font-color: #3C3957;
+    -fx-font-family: "Mouse Memoirs";
+    -fx-font-size: 72px;
+}
+
 
 .userNameLabel {
 
@@ -197,4 +203,9 @@
 
 .progress-indicator .percentage {
     -fx-fill:null;
+}
+
+.img-profile{
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
 }

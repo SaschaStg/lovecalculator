@@ -76,11 +76,11 @@
       <Label fx:id="username3Label" layoutX="568.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name3" textAlignment="CENTER" />
       <Label fx:id="username4Label" layoutX="568.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name4" textAlignment="CENTER" />
       <Label fx:id="username5Label" layoutX="568.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name5" textAlignment="CENTER" />
-      <Label fx:id="gamecount1Label" layoutX="784.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount1" textAlignment="CENTER" />
-      <Label fx:id="gamecount2Label" layoutX="784.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount2" textAlignment="CENTER" />
-      <Label fx:id="gamecount3Label" layoutX="784.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount3" textAlignment="CENTER" />
-      <Label fx:id="gamecount4Label" layoutX="784.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount4" textAlignment="CENTER" />
-      <Label fx:id="gamecount5Label" layoutX="784.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount5" textAlignment="CENTER" />
+      <Label fx:id="gamecount1Label" layoutX="848.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount1" />
+      <Label fx:id="gamecount2Label" layoutX="848.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount2" />
+      <Label fx:id="gamecount3Label" layoutX="848.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount3" />
+      <Label fx:id="gamecount4Label" layoutX="848.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount4" />
+      <Label fx:id="gamecount5Label" layoutX="848.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="gamecount5" />
       <Label layoutX="443.0" layoutY="14.0" styleClass="classicModusSubMenuHeader" stylesheets="@../styles/styles.css" text="RANGLISTE" textFill="#d97791">
          <font>
             <Font size="110.0" />
