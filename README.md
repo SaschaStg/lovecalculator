@@ -10,17 +10,17 @@ Um Fragen und alte Sucherergebnisse festzuhalten, kann der User sich ein Profil 
 <b>Die Main-Methode befindet sich in der FxmlGuiDriver Klasse.</b>
 
 <h1>Vor der Nutzung - Bitte beachten!</h1>
-Um den LoverCaclulator richtig nutzen zu können, muss vorher die Datenbank Verbindung hergestellt werden.
+Um den LoverCaclulator richtig nutzen zu können, muss vorher die Datenbank Verbindung hergestellt werden.<br>
 Wenn die folgende Jar-Datei nicht hinzugefügt ist, kann man sich nicht einloggen oder registrieren.
 
-Bitte führen Sie folgende Schritte aus, um den LoveCalculator richtig nutzen zu können:
+Bitte folgende Schritte ausführen, um den LoveCalculator richtig nutzen zu können:
 <ol>
 <li> Es wird davon ausgegangen das das Projekt bereits vom GIT gepullt worden ist.</li>
-<li> Im Tab "File" (Oben im Menü) auf "Project Structure".</li>
-<li> Unter "Project Settings" auf "Libraries".</li>
-<li> Oben auf das "+" klicken und "Java" auswählen.</li>
-<li> Die Datei "mysql-connector-java-8.0.26.jar" öffnen und mit "OK" bestätigen.</li>
-<li> Den Vorgang zuerst mit "Apply" und dann "OK" abschließen.</li>
+<li> Im Tab <b>"File"</b> (Oben im Menü) auf <b>"Project Structure"</b>.</li>
+<li> Unter <b>"Project Settings"</b> auf <b>"Libraries"</b>.</li>
+<li> Oben auf das <b>"+"</b> klicken und <b>"Java"</b> auswählen.</li>
+<li> Die Datei <b>"mysql-connector-java-8.0.26.jar"</b> öffnen und mit <b>"OK"</b> bestätigen.</li>
+<li> Den Vorgang zuerst mit <b>"Apply"</b> und dann <b>"OK"</b> abschließen.</li>
 </ol>
 
 Nun steht der Nutzung der Anwendung nichts mehr im Wege, viel Spaß!
