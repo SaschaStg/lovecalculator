@@ -26,7 +26,6 @@ public class LoginFactoryTest {
         Assert.assertFalse(LoginFactory.sqlLogin("kriha", ""));
         Assert.assertFalse(LoginFactory.sqlLogin("", ""));
         Assert.assertFalse(LoginFactory.sqlLogin("", "kr1h4_1234"));
-        Assert.assertTrue(LoginFactory.sqlLogin("test123", "test4567"));
     }
 
     }
