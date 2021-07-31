@@ -1,6 +1,4 @@
-package de.hdm_stuttgart.love_calculator.calculator;
-
-import de.hdm_stuttgart.love_calculator.game.Session;
+package de.hdm_stuttgart.love_calculator.Calculator;
 
 /**
  * Provides description texts

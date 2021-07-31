@@ -1,8 +1,8 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiFactory;
 
-import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
+import de.hdm_stuttgart.love_calculator.Gui.AlertDialogue;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Sql.SqlParameter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,7 +50,7 @@ public class LoginFactory {
         try {
             // Verbindung aufbauen
             Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
-            LOGGER.info("Connection to database successful.");
+            LOGGER.debug("Connection to database successful.");
 
             String searchInDB = "SELECT * FROM userdata WHERE username = ? and password = ?;";
 
@@ -67,11 +67,11 @@ public class LoginFactory {
                 //Safe Username in String
                 setLoggedInUser(rs.getString(2));
 
-                LOGGER.info("User " + username + " is now logged in.");
+                LOGGER.debug("User " + username + " is now logged in.");
                 con.close();
                 return true;
             } else {
-                LOGGER.info("User entered a wrong username or password.");
+                LOGGER.debug("User entered a wrong username or password.");
             }
 
 
@@ -80,7 +80,7 @@ public class LoginFactory {
             return false;
 
         } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.fatal(e.getMessage());
         }
         return false;
     }

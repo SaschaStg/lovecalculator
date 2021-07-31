@@ -1,6 +1,9 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.LoginFactory;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.RegisterFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;

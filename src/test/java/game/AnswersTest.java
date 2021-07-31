@@ -1,12 +1,8 @@
 package game;
 
-import de.hdm_stuttgart.love_calculator.game.Answers;
-import de.hdm_stuttgart.love_calculator.game.Catalog;
+import de.hdm_stuttgart.love_calculator.Game.Answers;
 import org.junit.Assert;
 import org.junit.Test;
-
-import javax.swing.*;
-import java.util.Arrays;
 
 public class AnswersTest {
 

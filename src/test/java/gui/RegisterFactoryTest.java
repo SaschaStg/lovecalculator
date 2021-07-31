@@ -1,6 +1,6 @@
 package gui;
 
-import de.hdm_stuttgart.love_calculator.gui.GuiController.RegisterFactory;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.RegisterFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

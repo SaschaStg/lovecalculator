@@ -9,9 +9,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.LoggedInController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.Gui.GuiController.LoggedInController">
     <children>
-        <Button fx:id="logoutButton" layoutX="807.0" layoutY="531.0" mnemonicParsing="false" onAction="#logout" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Abmelden">
+        <Button layoutX="807.0" layoutY="531.0" mnemonicParsing="false" onAction="#logout" prefHeight="58.0" prefWidth="169.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Abmelden">
             <font>
                 <Font size="33.0" />
             </font></Button>
@@ -19,7 +19,7 @@
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
                     <children>
-                        <Button fx:id="startButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
                             <graphic>
                                 <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -31,7 +31,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="playButton" contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
+                        <Button contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
                             <graphic>
                                 <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -43,7 +43,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="profileButton" contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
+                        <Button contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
                             <graphic>
                                 <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -60,25 +60,25 @@
             </items>
         </SplitPane>
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="531.0" layoutX="244.0" layoutY="55.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="418.0" />
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="157.0" layoutX="766.0" layoutY="190.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="243.0" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="185.0" layoutX="766.0" layoutY="190.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="243.0" />
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="114.0" layoutX="766.0" layoutY="53.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="243.0" />
       <ImageView fx:id="profilePicture" fitHeight="300.0" fitWidth="300.0" layoutX="304.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="108.0" />
-      <Label fx:id="userInformation" layoutX="316.0" layoutY="477.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname nachname" />
-      <Label fx:id="username" layoutX="316.0" layoutY="517.0" stylesheets="@../styles/styles.css" text="username" textFill="#d97791">
+      <Label fx:id="userInformation" layoutX="272.0" layoutY="433.0" prefHeight="86.0" prefWidth="382.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Vorname nachname" />
+      <Label fx:id="username" layoutX="276.0" layoutY="509.0" prefHeight="30.0" prefWidth="374.0" styleClass="username" stylesheets="@../styles/styles.css" text="username" textFill="#d92949">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font></Label>
-      <Label fx:id="bisherGespielt" layoutX="789.0" layoutY="66.0" prefHeight="86.0" prefWidth="143.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Bisher gespielt:" wrapText="true" />
+      <Label  layoutX="784.0" layoutY="57.0" prefHeight="106.0" prefWidth="162.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Bisher gespielt:" wrapText="true" />
       <Label fx:id="counter" alignment="CENTER" layoutX="907.0" layoutY="67.0" prefHeight="86.0" prefWidth="89.0" styleClass="resultCounter" stylesheets="@../styles/styles.css" text="23" textFill="#d92949">
          <font>
             <Font size="30.0" />
          </font></Label>
-      <Label fx:id="highestMatch" layoutX="789.0" layoutY="248.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name Flamme" />
-      <Label fx:id="highestMatchNumber" layoutX="789.0" layoutY="272.0" styleClass="creativeText" stylesheets="@../styles/styles.css" text="Ergebnis" textFill="#d92949">
+      <Label fx:id="highestMatch" layoutX="789.0" layoutY="254.0" prefHeight="35.0" prefWidth="214.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name Flamme" />
+      <Label fx:id="highestMatchNumber" layoutX="791.0" layoutY="279.0" styleClass="resultCounter" stylesheets="@../styles/styles.css" text="Ergebnis" textFill="#d92949">
          <font>
             <Font size="30.0" />
          </font></Label>
-      <Button fx:id="leaderBoard" layoutX="810.0" layoutY="411.0" mnemonicParsing="false" onAction="#openLeaderBoard" prefHeight="57.0" prefWidth="161.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Rangliste" />
+      <Button layoutX="810.0" layoutY="411.0" mnemonicParsing="false" onAction="#openLeaderBoard" prefHeight="57.0" prefWidth="161.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Rangliste" />
       <Label layoutX="17.0" layoutY="624.0" prefHeight="29.0" prefWidth="123.0" text="ss534, ss532, pk090, vv014" textAlignment="CENTER">
          <font>
             <Font size="10.0" />
@@ -89,6 +89,6 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Label layoutX="789.0" layoutY="209.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Bestes Match:" />
+      <Label layoutX="789.0" layoutY="209.0" prefHeight="47.0" prefWidth="207.0" styleClass="textRegister" stylesheets="@../styles/styles.css" text="Bestes Match:" />
     </children>
 </AnchorPane>

@@ -1,7 +1,7 @@
 package calculator;
 
-import de.hdm_stuttgart.love_calculator.calculator.Description;
-import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.Calculator.Description;
+import de.hdm_stuttgart.love_calculator.Game.Session;
 import org.junit.Assert;
 import org.junit.Test;
 

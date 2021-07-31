@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.love_calculator.exception;
+package de.hdm_stuttgart.love_calculator.Exception;
 
 public class InvalidCsvFileSize extends Exception {
 

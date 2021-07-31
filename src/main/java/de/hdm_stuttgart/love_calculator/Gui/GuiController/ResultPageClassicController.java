@@ -1,12 +1,13 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.calculator.Calculator;
-import de.hdm_stuttgart.love_calculator.calculator.Description;
-import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
-import de.hdm_stuttgart.love_calculator.game.Session;
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.gui.Navigatable;
-import de.hdm_stuttgart.love_calculator.sql.ResultUpdater;
+import de.hdm_stuttgart.love_calculator.Calculator.Calculator;
+import de.hdm_stuttgart.love_calculator.Calculator.Description;
+import de.hdm_stuttgart.love_calculator.Calculator.NameCalculation;
+import de.hdm_stuttgart.love_calculator.Game.Session;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
+import de.hdm_stuttgart.love_calculator.Gui.Navigatable;
+import de.hdm_stuttgart.love_calculator.Sql.ResultUpdater;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,7 +17,7 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class resultPageClassicController implements Navigatable {
+public class ResultPageClassicController implements Navigatable {
 
     @FXML
     private Label percentageLabel;
@@ -32,7 +33,7 @@ public class resultPageClassicController implements Navigatable {
     private int countToPercentage = 0;
 
 
-    Timeline timeline = new Timeline();
+    private Timeline timeline = new Timeline();
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
@@ -80,9 +81,9 @@ public class resultPageClassicController implements Navigatable {
             descriptionLabel.setWrapText(true);
             generatePercentage(finalPercentage);
 
-            LOGGER.info("Name percentage is: " + namePercentage / 2 + "%");
-            LOGGER.info("Studium percentage is: " + finalStudiumResult + "%");
-            LOGGER.info("Final percentage is: " + finalPercentage + "%");
+            LOGGER.debug("Name percentage is: " + namePercentage / 2 + "%");
+            LOGGER.debug("Studium percentage is: " + finalStudiumResult + "%");
+            LOGGER.debug("Final percentage is: " + finalPercentage + "%");
 
         }
     }

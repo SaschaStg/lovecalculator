@@ -1,10 +1,11 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiFactory;
 
-import de.hdm_stuttgart.love_calculator.game.Answers;
-import de.hdm_stuttgart.love_calculator.game.Catalog;
-import de.hdm_stuttgart.love_calculator.game.Session;
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.game.Question;
+import de.hdm_stuttgart.love_calculator.Game.Answers;
+import de.hdm_stuttgart.love_calculator.Game.Catalog;
+import de.hdm_stuttgart.love_calculator.Game.Session;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Game.Question;
+import de.hdm_stuttgart.love_calculator.Gui.GuiController.InputType;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -47,16 +48,16 @@ public class QuestionsFactory {
         //returns true if its user1's turn
         if (session.isUser1Turn()) {
             //sets question text for user1, otherwise set question text for user2
-            label.setText(question.questionContent);
+            label.setText(question.QUESTIONCONTENT);
         } else {
-            label.setText(question.questionContentUser2);
+            label.setText(question.QUESTIONCONTENTUSER2);
         }
 
         //add label to pane
         pane.getChildren().addAll(label);
 
         //check type of question, then display required inputs
-        InputType input = Enum.valueOf(InputType.class, answers.inputType);
+        InputType input = Enum.valueOf(InputType.class, answers.INPUTTYPE);
         switch (input) {
             case CHECKBOX:
                 generateCheckboxes(answers, session, pane);
@@ -163,7 +164,7 @@ public class QuestionsFactory {
                 return Optional.of(false);
             }
         } else {
-            LOGGER.info("No answer is selected!");
+            LOGGER.debug("No answer is selected!");
             return Optional.empty();
         }
     }
@@ -176,7 +177,7 @@ public class QuestionsFactory {
         switch (session.getCurrentIndex()) {
 
             case 0:
-                if (session.isClassicMode()) {
+                if (session.isCLASSICMODE()) {
                     setProgress(nameActive, "/images/classic-name-active.png", progressBar, 0.4, session);
                 } else {
                     setProgress(nameActive, "/images/advanced-name-active.png", progressBar, 0.1, session);
@@ -184,7 +185,7 @@ public class QuestionsFactory {
                 break;
 
             case 1:
-                if (session.isClassicMode()) {
+                if (session.isCLASSICMODE()) {
                     setProgress(nameActive, "/images/classic-studium-active.png", progressBar, 0.8, session);
                 } else {
                     setProgress(nameActive, "/images/advanced-studium-active.png", progressBar, 0.18, session);
@@ -205,7 +206,7 @@ public class QuestionsFactory {
                 break;
 
             default:
-                LOGGER.error("Index out of bonds exception aka theres no image");
+                LOGGER.error("No Progress image found for this index.");
         }
 
         nameActive.setFitWidth(1065);

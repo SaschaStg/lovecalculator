@@ -1,6 +1,5 @@
 /* Application wide styles */
 
-
 @font-face {
     font-family: "Mouse Memoirs";
     src: url("../fonts/MouseMemoirs-Regular.ttf");
@@ -40,6 +39,7 @@
     -fx-border-radius: 40px;
     -fx-max-width: 490px;
     -fx-background-color: none;
+    -fx-font-size: 24px;
 }
 
 .textOutput {
@@ -74,10 +74,6 @@
 }
 .btn-small:hover .text {
     -fx-fill: #fff;
-}
-
-.nextButton {
-    -fx-font-family: "Mouse Memoirs-Regular";
 }
 
 .btn-play{
@@ -159,14 +155,6 @@
     -fx-font-color: #3C3957;
 }
 
-/*.radio-button:selected > .radio {
-    /* background color for selected checkbox */
-    /*-fx-background-radius: #d92949;*/
-    /*-fx-font-size: 24px;
-    -fx-font-family: "Poppins";
-    -fx-spacing: 10;
-}*/
-
 .classicModusSubMenuHeader {
     -fx-font-color: #3C3957;
     -fx-font-family: "Mouse Memoirs";
@@ -178,11 +166,15 @@
     -fx-font-size: 72px;
 }
 
+.username {
+    -fx-font-color: #3C3957;
+    -fx-font-family: "Mouse Memoirs";
+    -fx-font-size: 36px;
+}
+
 
 .userNameLabel {
-
     -fx-font-family: "Poppins";
-
 }
 
 .courseResult {

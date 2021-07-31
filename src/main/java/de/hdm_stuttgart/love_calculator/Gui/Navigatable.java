@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.love_calculator.gui;
+package de.hdm_stuttgart.love_calculator.Gui;
 
 public interface Navigatable {
 

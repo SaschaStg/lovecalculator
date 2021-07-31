@@ -1,7 +1,7 @@
-package de.hdm_stuttgart.love_calculator.game;
+package de.hdm_stuttgart.love_calculator.Game;
 
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.gui.GuiController.QuestionsFactory;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Session {
-    private final boolean classicMode;
-    private final List<List<String>> answersUser1 = new ArrayList<>();
-    private final List<List<String>> answersUser2 = new ArrayList<>();
+    private final boolean CLASSICMODE;
+    private final List<List<String>> ANSWERSUSER1 = new ArrayList<>();
+    private final List<List<String>> ANSWERSUSER2 = new ArrayList<>();
 
     private boolean isUser1;
     private static int index;
@@ -19,16 +19,16 @@ public class Session {
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
     //toggles user1 and classic mode
-    public Session(boolean user1Starts, boolean classicMode) {
+    public Session(boolean user1Starts, boolean CLASSICMODE) {
         isUser1 = user1Starts;
-        this.classicMode = classicMode;
+        this.CLASSICMODE = CLASSICMODE;
 
         //creates a list inside of a list (the (multiple) answer options, for every question, are
         //stored in an arraylists "answersToQuestion1") and this arraylist is stored in "everyAnswerFromUser1"
         //creates as much empty array lists as there are questions
         for (int i = 0; i < Catalog.INSTANCE.getQuestionsCount(); i++) {
-            answersUser1.add(new ArrayList<>());
-            answersUser2.add(new ArrayList<>());
+            ANSWERSUSER1.add(new ArrayList<>());
+            ANSWERSUSER2.add(new ArrayList<>());
         }
     }
 
@@ -38,29 +38,29 @@ public class Session {
     }
 
     //is classic mode active? return state
-    public boolean isClassicMode() {
-        return classicMode;
+    public boolean isCLASSICMODE() {
+        return CLASSICMODE;
     }
 
     public List<String> getUserAnswer(boolean user1, int questionIndex) {
         if (user1) {
-            return answersUser1.get(questionIndex);
+            return ANSWERSUSER1.get(questionIndex);
         }
-        return answersUser2.get(questionIndex);
+        return ANSWERSUSER2.get(questionIndex);
     }
 
     public boolean hasAnswers() {
 
-        if (answersUser1 == null) {
+        if (ANSWERSUSER1 == null) {
             return false;
-        } else if (answersUser2.get(index) == null) {
+        } else if (ANSWERSUSER2.get(index) == null) {
             return false;
         }
 
         if (isUser1) {
-            return answersUser1.get(index).size() > 0;
+            return ANSWERSUSER1.get(index).size() > 0;
         } else {
-            return answersUser2.get(index).size() > 0;
+            return ANSWERSUSER2.get(index).size() > 0;
         }
     }
 
@@ -94,8 +94,8 @@ public class Session {
 
     public void backToMenu() {
         index = 0;
-        answersUser1.clear();
-        answersUser2.clear();
+        ANSWERSUSER1.clear();
+        ANSWERSUSER2.clear();
         isUser1 = false;
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
         LOGGER.info("User canceled game, going back to startScene");
@@ -109,7 +109,7 @@ public class Session {
         //first expression handles end of classic mode, second handles end of advanced mode (index is smaller than QuestionCount until end of questions is reached)
         //question 1 -> index 0
         //question 2 -> index 1 -> stop here for classic question results
-        boolean result = (classicMode && index < 2) || (!classicMode && index < Catalog.INSTANCE.getQuestionsCount());
+        boolean result = (CLASSICMODE && index < 2) || (!CLASSICMODE && index < Catalog.INSTANCE.getQuestionsCount());
 
         //in case user wants to play another game, index is set to zero
         if (!result) {
@@ -127,42 +127,42 @@ public class Session {
     //fills the empty arraylist, created in Session constructor
     public void addAnswer(String answer) {
 
-        if (answersUser1.size() == 0 || answersUser2.size() == 0) {
+        if (ANSWERSUSER1.size() == 0 || ANSWERSUSER2.size() == 0) {
 
             List<String> firstInput = new ArrayList<>();
-            answersUser1.add(firstInput);
+            ANSWERSUSER1.add(firstInput);
         }
         if (isUser1) {
-            answersUser1.get(index).add(answer);
+            ANSWERSUSER1.get(index).add(answer);
         } else {
-            answersUser2.get(index).add(answer);
+            ANSWERSUSER2.get(index).add(answer);
         }
     }
 
     //in case user un ticks answer option
     public void removeAnswer(String answer) {
         if (isUser1) {
-            answersUser1.get(index).remove(answer);
+            ANSWERSUSER1.get(index).remove(answer);
         } else {
-            answersUser2.get(index).remove(answer);
+            ANSWERSUSER2.get(index).remove(answer);
         }
     }
 
     //clears answers
     public void clearAnswers() {
         if (isUser1) {
-            answersUser1.get(index).clear();
+            ANSWERSUSER1.get(index).clear();
         } else {
-            answersUser2.get(index).clear();
+            ANSWERSUSER2.get(index).clear();
         }
     }
 
 
     public int getSizeOfAnswers() {
         if (isUser1) {
-            return answersUser1.get(index).size();
+            return ANSWERSUSER1.get(index).size();
         } else {
-            return answersUser2.get(index).size();
+            return ANSWERSUSER2.get(index).size();
         }
     }
 

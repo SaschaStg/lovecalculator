@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.love_calculator.gui;
+package de.hdm_stuttgart.love_calculator.Gui;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.*;

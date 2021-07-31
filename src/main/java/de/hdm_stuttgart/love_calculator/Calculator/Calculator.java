@@ -1,9 +1,9 @@
-package de.hdm_stuttgart.love_calculator.calculator;
+package de.hdm_stuttgart.love_calculator.Calculator;
 
-import de.hdm_stuttgart.love_calculator.game.Answers;
-import de.hdm_stuttgart.love_calculator.game.Catalog;
-import de.hdm_stuttgart.love_calculator.game.Question;
-import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.Game.Answers;
+import de.hdm_stuttgart.love_calculator.Game.Catalog;
+import de.hdm_stuttgart.love_calculator.Game.Question;
+import de.hdm_stuttgart.love_calculator.Game.Session;
 
 /**
  * Class providing the calculation logic with thread support

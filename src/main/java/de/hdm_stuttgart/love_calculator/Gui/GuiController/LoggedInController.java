@@ -1,8 +1,10 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.gui.Navigatable;
-import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.LoginFactory;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
+import de.hdm_stuttgart.love_calculator.Gui.Navigatable;
+import de.hdm_stuttgart.love_calculator.Sql.SqlParameter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -49,25 +51,22 @@ public class LoggedInController implements Navigatable {
                 username.setText(rs.getString(2));
                 counter.setText(rs.getString(4));
                 highestMatch.setText(rs.getString(5));
-                highestMatchNumber.setText(rs.getString(6));
+                highestMatchNumber.setText(rs.getString(6) + "%");
                 showProfilePicture(rs.getInt(9));
 
-                LOGGER.info("User " + username.getText() + " logged in.");
+                LOGGER.debug("User " + username.getText() + " logged in.");
 
             }
-
-
             con.close();
 
-
         } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.fatal(e.getMessage());
         }
     }
 
     @FXML
     private void logout() {
-        LOGGER.info("User " + LoginFactory.getLoggedInUser() + " logged out. Set LoggedInUser to null");
+        LOGGER.debug("User " + LoginFactory.getLoggedInUser() + " logged out. Set LoggedInUser to null");
         LoginFactory.setLoggedInUser(null);
         FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
 
@@ -92,18 +91,19 @@ public class LoggedInController implements Navigatable {
             case 5:
                 profilePicture.setImage(new Image(Objects.requireNonNull(FxmlGuiDriver.class.getResource("/images/harold.jpg")).toExternalForm()));
                 break;
+            default: LOGGER.error("No profile picture found!");
         }
-        LOGGER.info("Profilepicture loaded for " + LoginFactory.getLoggedInUser());
+        LOGGER.debug("Profilepicture loaded for " + LoginFactory.getLoggedInUser());
     }
 
     @FXML
     private void profileScene() {
         if (LoginFactory.getLoggedInUser() != null) {
             FxmlGuiDriver.setScene("/fxml/loggedInScene.fxml");
-            LOGGER.info("User " + LoginFactory.getLoggedInUser() + " is logged in. Showing loggedInScene");
+            LOGGER.debug("User " + LoginFactory.getLoggedInUser() + " is logged in. Showing loggedInScene");
         } else {
             FxmlGuiDriver.setScene("/fxml/profileScene.fxml");
-            LOGGER.info("User is not logged in. Showing profileScene");
+            LOGGER.debug("User is not logged in. Showing profileScene");
         }
     }
 
@@ -111,19 +111,19 @@ public class LoggedInController implements Navigatable {
     private void playScene() {
         //FxmlGuiDriver.sceneSwitcher("/fxml/playScene.fxml", playButton);
         FxmlGuiDriver.setScene("/fxml/playScene.fxml");
-        LOGGER.info("Switched scene to playScene");
+        LOGGER.debug("Switched scene to playScene");
     }
 
     @FXML
     private void openLeaderBoard() {
         FxmlGuiDriver.setScene("/fxml/leaderBoardScene.fxml");
-        LOGGER.info("Switched scene to leaderBoardScene");
+        LOGGER.debug("Switched scene to leaderBoardScene");
     }
 
     @FXML
     private void startScene() {
         FxmlGuiDriver.setScene("/fxml/startScene.fxml");
-        LOGGER.info("Switched scene to startScene");
+        LOGGER.debug("Switched scene to startScene");
     }
 
 }

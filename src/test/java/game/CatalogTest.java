@@ -1,14 +1,9 @@
 package game;
 
-import de.hdm_stuttgart.love_calculator.exception.InvalidCsvFileSize;
-import de.hdm_stuttgart.love_calculator.game.Answers;
-import de.hdm_stuttgart.love_calculator.game.Catalog;
-import de.hdm_stuttgart.love_calculator.game.Question;
+import de.hdm_stuttgart.love_calculator.Exception.InvalidCsvFileSize;
+import de.hdm_stuttgart.love_calculator.Game.Catalog;
 import org.junit.Assert;
 import org.junit.Test;
-
-import javax.swing.*;
-import java.util.Arrays;
 
 
 public class CatalogTest {

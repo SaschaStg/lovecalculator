@@ -1,8 +1,8 @@
-package de.hdm_stuttgart.love_calculator.sql;
+package de.hdm_stuttgart.love_calculator.Sql;
 
-import de.hdm_stuttgart.love_calculator.game.Session;
-import de.hdm_stuttgart.love_calculator.gui.GuiController.LoginFactory;
-import de.hdm_stuttgart.love_calculator.gui.GuiController.QuestionsFactory;
+import de.hdm_stuttgart.love_calculator.Game.Session;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.LoginFactory;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

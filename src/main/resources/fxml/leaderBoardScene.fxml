@@ -9,13 +9,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.LeaderBoardController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.Gui.GuiController.LeaderBoardController">
     <children>
         <SplitPane prefHeight="670.0" prefWidth="156.0">
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
                     <children>
-                        <Button fx:id="startButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
                             <graphic>
                                 <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -27,7 +27,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="playButton" contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
+                        <Button contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
                             <graphic>
                                 <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -39,7 +39,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="profileButton" contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
+                        <Button contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
                             <graphic>
                                 <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -66,11 +66,11 @@
         </SplitPane>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="235.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#f0f0f0" height="71.0" layoutX="214.0" layoutY="177.0" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="20.0" strokeType="OUTSIDE" strokeWidth="0.0" width="772.0" />
-        <Label fx:id="platz1Label" layoutX="302.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 1" textAlignment="CENTER" />
-      <Label fx:id="platz2Label" layoutX="302.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 2" textAlignment="CENTER" />
-      <Label fx:id="platz3Label" layoutX="302.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 3" textAlignment="CENTER" />
-      <Label fx:id="platz4Label" layoutX="302.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 4" textAlignment="CENTER" />
-      <Label fx:id="platz5Label" layoutX="302.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 5" textAlignment="CENTER" />
+        <Label layoutX="302.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 1" textAlignment="CENTER" />
+      <Label layoutX="302.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 2" textAlignment="CENTER" />
+      <Label layoutX="302.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 3" textAlignment="CENTER" />
+      <Label layoutX="302.0" layoutY="461.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 4" textAlignment="CENTER" />
+      <Label layoutX="302.0" layoutY="518.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Platz 5" textAlignment="CENTER" />
       <Label fx:id="username1Label" layoutX="568.0" layoutY="286.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name1" textAlignment="CENTER" />
       <Label fx:id="username2Label" layoutX="568.0" layoutY="346.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name2" textAlignment="CENTER" />
       <Label fx:id="username3Label" layoutX="568.0" layoutY="402.0" styleClass="text-p" stylesheets="@../styles/styles.css" text="Name3" textAlignment="CENTER" />

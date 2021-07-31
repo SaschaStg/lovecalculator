@@ -1,8 +1,8 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiFactory;
 
-import de.hdm_stuttgart.love_calculator.gui.AlertDialogue;
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
+import de.hdm_stuttgart.love_calculator.Gui.AlertDialogue;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Sql.SqlParameter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,7 +33,7 @@ public class RegisterFactory {
 
     public static boolean validRegister(String username, String password, String vorname, String nachname) {
         if (username.isEmpty() || password.isEmpty() || vorname.isEmpty() || nachname.isEmpty()) {
-            LOGGER.error("Not all fields are filled.");
+            LOGGER.debug("Not all fields are filled.");
             return false;
         }
         return true;
@@ -43,7 +43,7 @@ public class RegisterFactory {
         try {
             // Verbindung aufbauen
             Connection con = DriverManager.getConnection(SqlParameter.URL, SqlParameter.USER, SqlParameter.PASSW);
-            LOGGER.info("Connection to database successful.");
+            LOGGER.debug("Connection to database successful.");
 
 
             String searchInDB = "SELECT * FROM userdata WHERE username = ?;";
@@ -57,7 +57,7 @@ public class RegisterFactory {
 
 
             if (rs.next()) {
-                LOGGER.info("Tried to create an already existing username (" + username + ")");
+                LOGGER.debug("Tried to create an already existing username (" + username + ")");
                 return false;
 
             } else {
@@ -91,7 +91,7 @@ public class RegisterFactory {
             return true;
 
         } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.fatal(e.getMessage());
         }
         return false;
     }

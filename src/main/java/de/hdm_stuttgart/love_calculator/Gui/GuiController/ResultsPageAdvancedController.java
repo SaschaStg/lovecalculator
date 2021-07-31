@@ -1,12 +1,13 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.calculator.Calculator;
-import de.hdm_stuttgart.love_calculator.calculator.Description;
-import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
-import de.hdm_stuttgart.love_calculator.game.Session;
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.gui.Navigatable;
-import de.hdm_stuttgart.love_calculator.sql.ResultUpdater;
+import de.hdm_stuttgart.love_calculator.Calculator.Calculator;
+import de.hdm_stuttgart.love_calculator.Calculator.Description;
+import de.hdm_stuttgart.love_calculator.Calculator.NameCalculation;
+import de.hdm_stuttgart.love_calculator.Game.Session;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
+import de.hdm_stuttgart.love_calculator.Gui.Navigatable;
+import de.hdm_stuttgart.love_calculator.Sql.ResultUpdater;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -17,7 +18,7 @@ import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class resultsPageAdvancedController implements Navigatable {
+public class ResultsPageAdvancedController implements Navigatable {
 
     private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
 
@@ -40,17 +41,17 @@ public class resultsPageAdvancedController implements Navigatable {
     private Label zodiacRingLabel;
 
     @FXML
-    ProgressIndicator nameRing = new ProgressIndicator();
+    private ProgressIndicator nameRing = new ProgressIndicator();
     @FXML
-    ProgressIndicator socialRing = new ProgressIndicator();
+    private ProgressIndicator socialRing = new ProgressIndicator();
     @FXML
-    ProgressIndicator studiumRing = new ProgressIndicator();
+    private ProgressIndicator studiumRing = new ProgressIndicator();
     @FXML
-    ProgressIndicator zodiacRing = new ProgressIndicator();
+    private ProgressIndicator zodiacRing = new ProgressIndicator();
 
     private int countToPercentage = 0;
 
-    Timeline timeline = new Timeline();
+    private Timeline timeline = new Timeline();
 
     @Override
     public void onShow(Object argument) {
@@ -88,9 +89,9 @@ public class resultsPageAdvancedController implements Navigatable {
             int finalZodiacResult = zodiacCalculator.calculationResult;
             int finalSocialResult = (socialCalculator1.calculationResult + socialCalculator2.calculationResult) / 2;
 
-            LOGGER.info("Final Percentage for Studium: " + finalStudiumResult + "%");
-            LOGGER.info("Final Percentage for Zodiac: " + finalZodiacResult + "%");
-            LOGGER.info("Final Percentage for Social: " + finalSocialResult + "%");
+            LOGGER.debug("Final Percentage for Studium: " + finalStudiumResult + "%");
+            LOGGER.debug("Final Percentage for Zodiac: " + finalZodiacResult + "%");
+            LOGGER.debug("Final Percentage for Social: " + finalSocialResult + "%");
 
 
             generatePieChar(studiumRing, finalStudiumResult, studiumRingLabel);

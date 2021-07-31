@@ -1,6 +1,6 @@
 package calculator;
 
-import de.hdm_stuttgart.love_calculator.calculator.NameCalculation;
+import de.hdm_stuttgart.love_calculator.Calculator.NameCalculation;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.resultsPageAdvancedController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.Gui.GuiController.ResultsPageAdvancedController">
    <children>
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="203.0" layoutX="541.0" layoutY="91.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="470.0" />
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#e5e5e5" height="420.0" layoutX="79.0" layoutY="142.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="100.0" strokeType="INSIDE" strokeWidth="0.0" width="418.0" />
@@ -31,7 +31,7 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets></Label>
-      <Button fx:id="backToMainMenuButton" layoutX="813.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="51.0" prefWidth="201.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Zum Start" />
+      <Button layoutX="813.0" layoutY="583.0" mnemonicParsing="false" onAction="#backToMainMenu" prefHeight="51.0" prefWidth="201.0" styleClass="btn-small" stylesheets="@../styles/styles.css" text="Zum Start" />
       <Label fx:id="heading" layoutX="79.0" layoutY="19.0" prefHeight="105.0" prefWidth="531.0" styleClass="mouseFont" text="Label">
          <font>
             <Font size="86.0" />

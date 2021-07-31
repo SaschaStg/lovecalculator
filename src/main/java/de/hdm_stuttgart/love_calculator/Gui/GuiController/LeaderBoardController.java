@@ -1,8 +1,10 @@
-package de.hdm_stuttgart.love_calculator.gui.GuiController;
+package de.hdm_stuttgart.love_calculator.Gui.GuiController;
 
-import de.hdm_stuttgart.love_calculator.gui.FxmlGuiDriver;
-import de.hdm_stuttgart.love_calculator.gui.Navigatable;
-import de.hdm_stuttgart.love_calculator.sql.SqlParameter;
+import de.hdm_stuttgart.love_calculator.Gui.FxmlGuiDriver;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.LoginFactory;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
+import de.hdm_stuttgart.love_calculator.Gui.Navigatable;
+import de.hdm_stuttgart.love_calculator.Sql.SqlParameter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import org.apache.logging.log4j.LogManager;
@@ -55,7 +57,7 @@ public class LeaderBoardController implements Navigatable {
             top5Map.entrySet().stream().sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
                     .forEachOrdered(x -> top5MapSorted.put(x.getKey(), x.getValue()));
 
-            LOGGER.info("Sorted top 5 list");
+            LOGGER.debug("Sorted top 5 list");
 
             //Getting Set of keys from HashMap
             Set<Integer> keySet = top5MapSorted.keySet();

@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.love_calculator.sql;
+package de.hdm_stuttgart.love_calculator.Sql;
 
 public class SqlParameter {
 

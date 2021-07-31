@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.Gui.GuiController.MainMenuController">
    <children>
       <SplitPane prefHeight="670.0" prefWidth="156.0">
          <items>
             <AnchorPane prefHeight="200.0" prefWidth="100.0" styleClass="split-pane" stylesheets="@../styles/styles.css">
                <children>
-                  <Button fx:id="startButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#startScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Start">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,7 +27,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="playButton" contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
+                  <Button contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -39,7 +39,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="profileButton" contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
+                  <Button contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -62,7 +62,7 @@
                   <Image url="@../images/lc-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="ClassicButton" alignment="CENTER" layoutX="105.0" layoutY="252.0" mnemonicParsing="false" onAction="#playClassic" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="CLASSIC" textFill="#3c3957">
+            <Button alignment="CENTER" layoutX="105.0" layoutY="252.0" mnemonicParsing="false" onAction="#playClassic" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="CLASSIC" textFill="#3c3957">
                <graphic>
                   <ImageView fitHeight="110.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="12.0">
                      <image>
@@ -80,7 +80,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="advancedButton" alignment="CENTER" layoutX="109.0" layoutY="446.0" mnemonicParsing="false" onAction="#playAdvanced" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ADVANCED" textFill="#3c3957">
+            <Button alignment="CENTER" layoutX="109.0" layoutY="446.0" mnemonicParsing="false" onAction="#playAdvanced" prefHeight="142.0" prefWidth="690.0" styleClass="btn-play" stylesheets="@../styles/styles.css" text="ADVANCED" textFill="#3c3957">
                <graphic>
                   <ImageView fitHeight="103.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0" translateY="12.0">
                      <image>

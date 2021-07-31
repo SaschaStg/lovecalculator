@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.gui.GuiController.MainMenuController">
+<AnchorPane prefHeight="670.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.love_calculator.Gui.GuiController.MainMenuController">
    <children>
       <SplitPane prefHeight="670.0" prefWidth="156.0">
          <items>
@@ -27,7 +27,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="playButton" contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
+                  <Button contentDisplay="TOP" layoutY="156.0" mnemonicParsing="false" onAction="#playScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Play">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -39,7 +39,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="profileButton" contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
+                  <Button contentDisplay="TOP" layoutY="312.0" mnemonicParsing="false" onAction="#profileScene" prefHeight="156.0" prefWidth="156.0" stylesheets="@../styles/styles.css" text="Profile">
                      <graphic>
                         <ImageView fitHeight="76.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                            <image>

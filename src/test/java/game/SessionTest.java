@@ -1,6 +1,6 @@
 package game;
 
-import de.hdm_stuttgart.love_calculator.game.Session;
+import de.hdm_stuttgart.love_calculator.Game.Session;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,24 +16,16 @@ public class SessionTest {
     public void test_isClassicMode() {
 
 
-        Assert.assertTrue(user1Classic.isClassicMode());
-        Assert.assertTrue(user2Classic.isClassicMode());
-        Assert.assertFalse(user1Advanced.isClassicMode());
-        Assert.assertFalse(user2Advanced.isClassicMode());
+        Assert.assertTrue(user1Classic.isCLASSICMODE());
+        Assert.assertTrue(user2Classic.isCLASSICMODE());
+        Assert.assertFalse(user1Advanced.isCLASSICMODE());
+        Assert.assertFalse(user2Advanced.isCLASSICMODE());
 
-        Assert.assertNotEquals(false, user1Classic.isClassicMode());
-        Assert.assertNotEquals(false, user2Classic.isClassicMode());
-        Assert.assertNotEquals(true, user1Advanced.isClassicMode());
-        Assert.assertNotEquals(true, user2Advanced.isClassicMode());
+        Assert.assertNotEquals(false, user1Classic.isCLASSICMODE());
+        Assert.assertNotEquals(false, user2Classic.isCLASSICMODE());
+        Assert.assertNotEquals(true, user1Advanced.isCLASSICMODE());
+        Assert.assertNotEquals(true, user2Advanced.isCLASSICMODE());
     }
-
-    /*@Test
-    public void test_hasAnswer() {
-        Session user1Classic = new Session(true, true);
-
-        Assert.assertFalse(user1Classic.hasAnswers());
-    }*/
-
 
     @Test
     public void test_isUser1Turn() {

@@ -1,6 +1,9 @@
-package de.hdm_stuttgart.love_calculator.game;
+package de.hdm_stuttgart.love_calculator.Game;
 
-import de.hdm_stuttgart.love_calculator.exception.InvalidCsvFileSize;
+import de.hdm_stuttgart.love_calculator.Exception.InvalidCsvFileSize;
+import de.hdm_stuttgart.love_calculator.Gui.GuiFactory.QuestionsFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,24 +16,26 @@ public class Catalog {
     public static Catalog INSTANCE = new Catalog();
     private Catalog() {}
 
+    private static final Logger LOGGER = LogManager.getLogger(QuestionsFactory.class);
+
     /**
      * Relation (1 zu n) zu Questions - Klasse
      * ArrayList Type Object (alle Objekte die aus der Klasse Questions initialisiert werden)
      * Methoden addCatalog und deleteCatalog
      * Alles auf privat setzen
      */
-    private final Map<Question, Answers> questions = new HashMap<>();
+    private final Map<Question, Answers> QUESTIONS = new HashMap<>();
 
     public int getQuestionsCount() {
-        return questions.size();
+        return QUESTIONS.size();
     }
 
     public Question getQuestion(int index) {
-        return questions.keySet().stream().filter(q -> q.index == index).findFirst().get();
+        return QUESTIONS.keySet().stream().filter(q -> q.INDEX == index).findFirst().get();
     }
 
     public Answers getAnswers(Question question) {
-        return questions.get(question);
+        return QUESTIONS.get(question);
     }
 
     public void initialize() throws InvalidCsvFileSize {
@@ -44,7 +49,9 @@ public class Catalog {
                     Question q = getQuestion(questionsCsv.get(i), i);
                     Answers a = getAnswers(answersCsv.get(i));
 
-                    this.questions.put(q, a);
+                    this.QUESTIONS.put(q, a);
+                    LOGGER.info("Question: " + q + "saved in map.");
+                    LOGGER.info("Answer: " + a + "saved in map.");
                 }
             } else {
                 throw new InvalidCsvFileSize("QuestionsCsv and AnswersCsv do not have the same size. Shutting down.");

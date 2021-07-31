@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.love_calculator.calculator;
+package de.hdm_stuttgart.love_calculator.Calculator;
 
 /**
  * Provides the calculation logic of two names

@@ -1,6 +1,6 @@
-package de.hdm_stuttgart.love_calculator.gui;
+package de.hdm_stuttgart.love_calculator.Gui;
 
-import de.hdm_stuttgart.love_calculator.game.Catalog;
+import de.hdm_stuttgart.love_calculator.Game.Catalog;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ import java.util.Objects;
  * Driver class for a simple JavaFX demonstration.
  */
 public class FxmlGuiDriver extends Application {
-    public static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
+    public static final Logger LOGGER = LogManager.getLogger(FxmlGuiDriver.class);
     private static Stage window;
 
     /**
@@ -37,7 +37,7 @@ public class FxmlGuiDriver extends Application {
         window.setResizable(false);
 
         final Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/startScene.fxml")));
-        log.debug("Showing JFX scene");
+        LOGGER.info("Showing JFX scene");
         final Scene scene = new Scene(root, 1065, 670);
         scene.getStylesheets().add(Objects.requireNonNull(FxmlGuiDriver.class.getResource("/styles/styles.css")).toExternalForm());
         primaryStage.setTitle("LoveCalculator");
